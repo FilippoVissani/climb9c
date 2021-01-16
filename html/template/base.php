@@ -36,6 +36,11 @@
                 require 'template/search-bar.php';
             }
             ?>
+            <?php
+            if(isset($templateParams["name"])){
+                require($templateParams["name"]);
+            }
+            ?>
 
             <div class="row mx-0">
                 <div class="col-12">
