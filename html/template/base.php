@@ -7,13 +7,12 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
-
         
     </head>
     <body class="bg-light m-0">
         <div class="container-fluid p-0">
-            <div class="row">
-                <div class="col-12">
+            <div class="row mb-2 mx-0">
+                <div class="col-12 p-0">
                     <header>
                         <nav class="navbar navbar-dark bg-dark fw-bold">
                             <a class="navbar-brand" href="#">
@@ -21,12 +20,35 @@
                                 Climb9c
                             </a>
                             <div class="d-flex">
-                                <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
-                                <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
-                                <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                                <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
+                                <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
+                                <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
                             </div>
                         </nav>
                     </header>  
+                </div>
+            </div>
+
+            <div class="row mx-0">
+                <div class="col-12">
+                    <form action="#">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control rounded-pill-start" placeholder="Cerca" aria-label="Cerca" aria-describedby="button-search">
+                            <button class="btn bg-primary rounded-pill-bottom" type="button" id="button-search">
+                                <img src="./svg_icons/search.svg" width="30" height="30" class="img-fluid" alt="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row mx-0">
+                <div class="col-12">
+                    <footer>
+                        <nav class="nav fixed-bottom bg-dark justify-content-center">
+                            <a class="text-light" href="#">FOOTER</a>
+                        </nav>
+                    </footer>
                 </div>
             </div>
         </div>
