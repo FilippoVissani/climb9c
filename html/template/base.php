@@ -7,9 +7,11 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
-        
     </head>
     <body class="bg-light m-0">
+        <?php
+        require 'template/sidebar.php';
+        ?>
         <div class="container-fluid p-0">
             <div class="row mb-2 mx-0">
                 <div class="col-12 p-0">
@@ -22,7 +24,9 @@
                             <div class="d-flex">
                                 <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
                                 <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
-                                <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                                <button class="navbar-toggler mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block">
+                                </button>
                             </div>
                         </nav>
                     </header>  
@@ -49,5 +53,5 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-    </body>
+        </body>
 </html>
