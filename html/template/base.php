@@ -24,9 +24,7 @@
                             <div class="d-flex">
                                 <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
                                 <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
-                                <button class="navbar-toggler mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block">
-                                </button>
+                                <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3" id="menu-toggler">
                             </div>
                         </nav>
                     </header>  
@@ -52,6 +50,7 @@
         <!-- jQuery, Popper.js, Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-        </body>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="./js/toggle-menu.js"></script>
+    </body>
 </html>
