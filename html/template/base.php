@@ -20,9 +20,9 @@
                                 Climb9c
                             </a>
                             <div class="d-flex">
-                                <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
-                                <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
-                                <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
+                                <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                                <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                                <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
                             </div>
                         </nav>
                     </header>  
