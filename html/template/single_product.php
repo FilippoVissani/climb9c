@@ -1,11 +1,11 @@
+<div class="container-lg">
 <?php if(count($templateParams["product"])==0): ?>
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger text-center" role="alert">
         L'articolo non esiste. <a href="index.php" class="alert-link">Clicca qui per andare alla home</a>
     </div>
 <?php else:
     $product = $templateParams["product"];
 ?>
-    <div class="container-lg">
         <div class="row">
             <div class="col-12">
                 <img src="./upload/products_images_by_id/<?php echo $product["idPRODUCT"]; ?>/1.jpg" class="card-img-top" alt="...">
@@ -24,5 +24,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 <?php endif; ?>
+</div>
