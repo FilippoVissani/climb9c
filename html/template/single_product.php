@@ -27,19 +27,23 @@
             <!--riga quantità-->
             <div class="row mb-2">
                 <div class="col-auto align-self-center">
-                    <span class="align-middle">Quantità:</span>
+                    <label for="text-quantity" class="align-middle">Quantità: </label>
                 </div>
                 <div class="col-auto">
                     <div class="input-group quantity-wrapper mb-2">
                                     
                         <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus">-</button>
+                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus" aria-label="Meno">
+                                <span class="fas fa-minus"></span>
+                            </button>
                         </div>
 
-                        <input type="number" id="text-quantity" class="form-control input-number input-sm quantity-style text-center" value="1" min="1" disabled>
+                        <input type="number" name="Quantità" id="text-quantity" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="1" min="1" placeholder="Quantità">
 
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus">+</button>
+                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus" aria-label="Più">
+                                <span class="fas fa-plus"></span>
+                            </button>
                         </div>
 
                     </div>
