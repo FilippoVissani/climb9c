@@ -1,6 +1,6 @@
 <div class="collapse" id="menu">
-    <header class="bg-dark">
-        <img src="./svg_icons/back_arrow.svg" alt="" width="30" height="30" class="d-inline-block m-2" id="menu-back">
+    <header class="nav bg-dark d-flex justify-content-end">
+        <img src="./svg_icons/back_arrow.svg" alt="" width="30" height="30" class="m-3" id="menu-back">
     </header>
     <ul class="list-group">
         <li class="list-group-item">

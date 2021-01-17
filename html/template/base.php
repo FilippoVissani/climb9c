@@ -10,23 +10,21 @@
     </head>
     <body class="bg-light m-0">
         <?php
-        require 'template/sidebar.php';
+        require 'template/menu.php';
         ?>
         <div class="container-fluid p-0">
             <div class="row mb-2 mx-0">
                 <div class="col-12 p-0">
-                    <header>
-                        <nav class="navbar navbar-dark bg-dark fw-bold">
-                            <a class="navbar-brand" href="#">
-                                <img src="./svg_icons/jam_mountain.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
+                    <header class="navbar navbar-dark bg-dark fw-bold">
+                        <a class="navbar-brand" href="#">
+                            <img src="./svg_icons/jam_mountain.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
                                 Climb9c
-                            </a>
-                            <div class="d-flex">
-                                <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
-                                <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
-                                <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3" id="menu-toggler">
-                            </div>
-                        </nav>
+                        </a>
+                        <div class="d-flex">
+                            <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                            <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                            <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3" id="menu-toggler">
+                        </div>
                     </header>  
                 </div>
             </div>
@@ -37,12 +35,10 @@
             }
             ?>
 
-            <div class="row mx-0">
-                <div class="col-12">
-                    <footer>
-                        <nav class="nav fixed-bottom bg-dark justify-content-center">
-                            <a class="text-light" href="#">FOOTER</a>
-                        </nav>
+            <div class="row mb-2 mx-0">
+                <div class="col-12 p-0">
+                    <footer class="nav bg-dark justify-content-center position-absolute bottom-0 end-0 start-0">
+                        <a class="text-light" href="#">FOOTER</a>
                     </footer>
                 </div>
             </div>
