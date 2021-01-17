@@ -6,3 +6,5 @@
 <a href="product.php?id=99">pagina del prodotto che non esiste</a>
 <br/>
 <a href="subcategory.php?id=5">pagina della categoria che non esiste</a>
+<br/>
+<a href="subcategory.php?id=2">pagina della categoria senza articoli</a>
