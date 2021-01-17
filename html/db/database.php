@@ -30,7 +30,7 @@ class DatabaseHelper{
     }
 
     public function getproductsInSubcategory($idSubcategory){
-        $query = "SELECT p.idPRODUCT, p.name, p.price FROM product as p INNER JOIN subcategory as s ON p.idSUBCATEGORY = s.idSUBCATEGORY WHERE s.idSUBCATEGORY=?";
+        $query = "SELECT p.idPRODUCT, p.name, p.price, p.quantity FROM product as p INNER JOIN subcategory as s ON p.idSUBCATEGORY = s.idSUBCATEGORY WHERE s.idSUBCATEGORY=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$idSubcategory);
         $stmt->execute();
