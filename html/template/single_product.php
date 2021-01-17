@@ -33,13 +33,17 @@
                     <div class="input-group quantity-wrapper mb-2">
                                     
                         <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus">-</button>
+                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus">
+                                <span class="fas fa-minus"></span>
+                            </button>
                         </div>
 
                         <input type="number" id="text-quantity" class="form-control input-number input-sm quantity-style text-center" value="1" min="1" disabled>
 
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus">+</button>
+                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus">
+                                <span class="fas fa-plus"></span>
+                            </button>
                         </div>
 
                     </div>
