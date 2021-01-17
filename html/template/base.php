@@ -44,35 +44,35 @@
                 <div class="col-12 p-0">
                     <footer class="nav bg-dark py-3">
                         <div class="col-3 border-end border-1 border-light mb-2">
-                            <div class="row d-flex justify-content-center">
-                                <img src="./svg_icons/credit-card.svg" alt="" width="30" height="30" class="mb-2" />
+                            <div class="row m-0 d-flex justify-content-center">
+                                <img src="./svg_icons/credit-card.svg" alt="" width="30" height="30" class="mb-2 p-0" />
                             </div>
-                            <div class="row">
-                                <p class="text-light text-center m-0">Metodo di pagamento sicuro</p>
-                            </div>
-                        </div>
-                        <div class="col-3 border-end border-1 border-light mb-2">
-                            <div class="row d-flex justify-content-center">
-                                <img src="./svg_icons/delivery-truck.svg" alt="" width="30" height="30" class="mb-2" />
-                            </div>
-                            <div class="row">
-                                <p class="text-light text-center m-0">Spedizioni in tutto il mondo</p>
+                            <div class="row m-0">
+                                <p class="text-light text-center m-0 p-0">Metodo di pagamento sicuro</p>
                             </div>
                         </div>
                         <div class="col-3 border-end border-1 border-light mb-2">
-                            <div class="row d-flex justify-content-center">
-                                <img src="./svg_icons/chronometer.svg" alt="" width="30" height="30" class="mb-2" />
+                            <div class="row m-0 d-flex justify-content-center">
+                                <img src="./svg_icons/delivery-truck.svg" alt="" width="30" height="30" class="mb-2 p-0" />
                             </div>
-                            <div class="row">
-                                <p class="text-light text-center m-0">Spedizioni in 24 ore + 100 giorni per il reso</p>
+                            <div class="row m-0">
+                                <p class="text-light text-center m-0 p-0">Spedizioni in tutto il mondo</p>
+                            </div>
+                        </div>
+                        <div class="col-3 border-end border-1 border-light mb-2">
+                            <div class="row m-0 d-flex justify-content-center">
+                                <img src="./svg_icons/chronometer.svg" alt="" width="30" height="30" class="mb-2 p-0" />
+                            </div>
+                            <div class="row m-0">
+                                <p class="text-light text-center m-0 p-0">Spedizioni in 24 ore + 100 giorni per il reso</p>
                             </div>
                         </div>
                         <div class="col-3 mb-2">
-                            <div class="row d-flex justify-content-center">
-                                <img src="./svg_icons/sale-tag.svg" alt="" width="30" height="30" class="mb-2" />
+                            <div class="row m-0 d-flex justify-content-center">
+                                <img src="./svg_icons/sale-tag.svg" alt="" width="30" height="30" class="mb-2 p-0" />
                             </div>
-                            <div class="row">
-                                <p class="text-light text-center m-0">Coupon per gli acquisti</p>
+                            <div class="row m-0">
+                                <p class="text-light text-center m-0 p-0">Coupon per gli acquisti</p>
                             </div>
                         </div>
                     </footer>
