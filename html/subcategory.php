@@ -14,7 +14,7 @@ $templateParams["productsInSubcategory"]=$dbh->getproductsInSubcategory($idSubca
 //se non trova l'articolo scrive nel title 'articolo non trovato'
 if(!count($templateParams["subcategory"])==0){
     $templateParams["subcategory"]=$templateParams["subcategory"][0];
-    $templateParams["title"]="Climb9c - ".$templateParams["subcategory"]["name"];
+    $templateParams["title"]="Climb9c - ".$templateParams["subcategory"]["subcategoryName"];
 } else{
     $templateParams["title"]="Climb9c - Sottocategoria non trovata";
 }

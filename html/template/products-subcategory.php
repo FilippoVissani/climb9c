@@ -6,7 +6,7 @@
     <?php else:
         $subcategory = $templateParams["subcategory"];
     ?>
-        <h2>Categoria: Scarpe > <?php echo $subcategory["name"]; ?> </h2>
+        <h2>Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </h2>
         <?php if(count($templateParams["productsInSubcategory"])==0): ?>
             <div class="alert alert-secondary text-center" role="alert">
                 Nessun prodotto in questa categoria. <a href="index.php" class="alert-link">Clicca qui per andare alla home</a>
