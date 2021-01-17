@@ -31,28 +31,16 @@
                 </div>
                 <div class="col-auto">
                     <div class="input-group quantity-wrapper mb-2">
-
-                        <!--<span class="input-group-prepend">
-                            <button type="button" class="btn btn-default btn-number btn-sm" disabled="disabled" data-type="minus" data-field="quant[2]">
-                                <span class="glyphicon glyphicon-minus"></span>
-                            </button>
-                        </span>-->
                                     
                         <div class="input-group-prepend">
                             <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus">-</button>
                         </div>
 
-                        <input type="number" id="text-quantity" name="quant[2]" class="form-control input-number input-sm quantity-style text-center" value="1" min="1" disabled>
+                        <input type="number" id="text-quantity" class="form-control input-number input-sm quantity-style text-center" value="1" min="1" disabled>
 
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus">+</button>
                         </div>
-
-                        <!--<span class="input-group-append">
-                            <button type="button" class="btn btn-default btn-number btn-sm" data-type="plus" data-field="quant[2]">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>-->
 
                     </div>
                 </div>
