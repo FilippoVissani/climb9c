@@ -11,15 +11,54 @@
     <div class="card">
         <img class="card-img-top" src="./upload/products_images_by_id/<?php echo $product["idPRODUCT"]; ?>/1.jpg" alt="<?php echo $product["name"]; ?>">
         <div class="card-body">
+
+            <!--riga nome e prezzo-->
             <div class="row mb-2">
                 <div class="col-9"> 
                     <h2 class="card-title"><?php echo $product["name"]; ?></h2>
                 </div>
                 <div class="col-3 single-product-price">
                     <!--<span class="badge bg-success"><?php echo $product["price"]; ?> €</span>-->
-                    <span><?php echo $product["price"]; ?> €</span>
+                    <p><?php echo $product["price"]; ?> €</p>
                 </div>
             </div>
+            <!--END riga nome e prezzo-->
+
+            <!--riga quantità-->
+            <div class="row mb-2">
+                <div class="col-auto align-self-center">
+                    <span class="align-middle">Quantità:</span>
+                </div>
+                <div class="col-auto">
+                    <div class="input-group quantity-wrapper mb-2">
+
+                        <!--<span class="input-group-prepend">
+                            <button type="button" class="btn btn-default btn-number btn-sm" disabled="disabled" data-type="minus" data-field="quant[2]">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>-->
+                                    
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus">-</button>
+                        </div>
+
+                        <input type="number" id="text-quantity" name="quant[2]" class="form-control input-number input-sm quantity-style text-center" value="1" min="1" disabled>
+
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus">+</button>
+                        </div>
+
+                        <!--<span class="input-group-append">
+                            <button type="button" class="btn btn-default btn-number btn-sm" data-type="plus" data-field="quant[2]">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>-->
+
+                    </div>
+                </div>
+            </div>
+            <!--END riga quantità-->
+
             <a href="#" class="btn btn-primary d-grid mb-2">Aggiungi al carrello</a>
             <div class="col">
                 <hr/>
@@ -61,3 +100,4 @@
     
 <?php endif; ?>
 </div>
+
