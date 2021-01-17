@@ -40,7 +40,7 @@
             }
             ?>
 
-            <div class="row mb-2 mx-0">
+            <div class="row m-0">
                 <div class="col-12 p-0">
                     <footer class="nav bg-dark justify-content-center">
                         <a class="text-light" href="#">FOOTER</a>
