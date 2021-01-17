@@ -23,10 +23,6 @@
     padding: inherit!important;
 }
 
-#menu-back {
-    transform: rotate(90deg);
-}
-
 .single-product-price {
     font-size: 1.25em;
     text-align: right;
