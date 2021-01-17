@@ -7,6 +7,8 @@ INSERT INTO `Climb_9c`.`CATEGORY` (`idCATEGORY`, `name`) VALUES (1, "Scarpe");
 
 INSERT INTO `Climb_9c`.`SUBCATEGORY` (`idSUBCATEGORY`, `idCATEGORY`, `name`) VALUES (1, 1, "Dure");
 
+INSERT INTO `Climb_9c`.`SUBCATEGORY` (`idSUBCATEGORY`, `idCATEGORY`, `name`) VALUES (2, 1, "Morbide");
+
 -- insert sul prodotto
 
 --ID1
