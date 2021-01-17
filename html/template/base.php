@@ -42,7 +42,7 @@
 
             <div class="row mb-2 mx-0">
                 <div class="col-12 p-0">
-                    <footer class="nav bg-dark justify-content-center position-absolute bottom-0 end-0 start-0">
+                    <footer class="nav bg-dark justify-content-center">
                         <a class="text-light" href="#">FOOTER</a>
                     </footer>
                 </div>
