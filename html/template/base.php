@@ -16,7 +16,7 @@
             <div class="row mb-2 mx-0">
                 <div class="col-12 p-0">
                     <header class="navbar navbar-dark bg-dark fw-bold">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="./index.php">
                             <img src="./svg_icons/jam_mountain.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
                                 Climb9c
                         </a>
@@ -28,17 +28,17 @@
                     </header>  
                 </div>
             </div>
-
-            <?php
-            if($templateParams["search_bar"] == TRUE){
-                require 'template/search-bar.php';
-            }
-            ?>
-            <?php
-            if(isset($templateParams["name"])){
-                require($templateParams["name"]);
-            }
-            ?>
+            
+                <?php
+                    if($templateParams["search_bar"] == TRUE){
+                        require 'template/search-bar.php';
+                    }
+                    ?>
+                    <?php
+                    if(isset($templateParams["name"])){
+                        require($templateParams["name"]);
+                    }
+                ?>
 
             <div class="row m-0">
                 <div class="col-12 p-0">
