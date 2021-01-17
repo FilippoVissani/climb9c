@@ -10,7 +10,7 @@ class DatabaseHelper{
     }
 
     public function getProductById($idProduct){
-        $query = "SELECT idPRODUCT, name, price, description FROM PRODUCT WHERE idPRODUCT=?";
+        $query = "SELECT idPRODUCT, name, price, description, tecnical_specifications FROM PRODUCT WHERE idPRODUCT=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$idProduct);
         $stmt->execute();

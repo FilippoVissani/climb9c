@@ -12,15 +12,23 @@
         <img class="card-img-top" src="./upload/products_images_by_id/<?php echo $product["idPRODUCT"]; ?>/1.jpg" alt="<?php echo $product["name"]; ?>">
         <div class="card-body">
             <div class="row mb-2">
-                <div class="col-10"> 
-                    <h5 class="card-title"><?php echo $product["name"]; ?></h5>
+                <div class="col-9"> 
+                    <h2 class="card-title"><?php echo $product["name"]; ?></h2>
                 </div>
-                <div class="col-2">
-                    <span class="badge bg-success "><?php echo $product["price"]; ?> €</span>
+                <div class="col-3 single-product-price">
+                    <!--<span class="badge bg-success"><?php echo $product["price"]; ?> €</span>-->
+                    <span><?php echo $product["price"]; ?> €</span>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary d-grid">Aggiungi al carrello</a>
-            <p class="card-text"><?php echo $product["description"]; ?></p>
+            <a href="#" class="btn btn-primary d-grid mb-2">Aggiungi al carrello</a>
+            <div class="col">
+                <hr/>
+                <h3>Descrizione:</h3>
+                <p class="card-text"><?php echo $product["description"]; ?></p>
+                <hr/>
+                <h3>Caratteristiche tecniche:</h3>
+                <p class="card-text"><?php echo $product["tecnical_specifications"]; ?></p>
+            </div>
         </div>
     </div>
 </div>
