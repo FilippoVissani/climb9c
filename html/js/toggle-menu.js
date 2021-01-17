@@ -1,12 +1,30 @@
-function isDesktop(){
-    return $(window).width() >= 1366;
+var isDesktop=false;
+
+function setDesktop(){
+    isDesktop = ($(window).width() >= 1366) ? true : false;
+}
+
+function checkDesktop(){
+    if(isDesktop){
+        $("#search-bar").addClass("w-50");
+    }else{
+        $("#search-bar").removeClass("w-50");
+    }
 }
 
 $(document).ready(function(){
 
+    setDesktop();
+    checkDesktop();
+
+    $(window).resize(function(){
+        setDesktop();
+        checkDesktop();
+    });
+
     $("img#menu-toggler").click(function(){
         $( "div#menu" ).slideDown();
-        if (!isDesktop()) {
+        if (!isDesktop) {
             $( "div.container-fluid" ).slideUp();
         }
     });
@@ -14,7 +32,7 @@ $(document).ready(function(){
     $("img#menu-back").click(function(){
         if($( "ul#menu-list" ).is(":visible")){
             $( "div#menu" ).slideUp();
-            if (!isDesktop()) {
+            if (!isDesktop) {
                 $( "div.container-fluid" ).slideDown();
             }
         }else{

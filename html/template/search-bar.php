@@ -1,5 +1,5 @@
-<div class="row mx-0">
-    <div class="col-12">
+<div class="row mx-0 justify-content-center">
+    <div class="col-12" id="search-bar">
         <form action="#">
             <div class="input-group mb-3">
                 <input type="text" class="form-control rounded-pill-start" placeholder="Cerca" aria-label="Cerca"
