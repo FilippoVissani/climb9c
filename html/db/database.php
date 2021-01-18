@@ -28,6 +28,8 @@ class DatabaseHelper{
         $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
     
     public function getSubcategoryById($idSubcategory){
