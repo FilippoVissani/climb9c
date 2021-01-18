@@ -3,7 +3,7 @@
         <div id="productCarousel" class="carousel carousel-light slide" data-bs-ride="carousel">
             <ol class="carousel-indicators">
                 <?php foreach ($templateParams["carouselProducts"] as $carouselProduct): ?>
-                <li data-bs-target="#productCarousel" data-bs-slide-to="0" class=""></li>
+                    <li data-bs-target="#productCarousel" data-bs-slide-to="0" class=""></li>
                 <?php endforeach; ?>
             </ol>
             <div class="carousel-inner">
