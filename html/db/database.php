@@ -6,7 +6,7 @@ class DatabaseHelper{
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
         if ($this->db->connect_error) {
             die("Connection failed: " . $db->connect_error);
-        }        
+        }
     }
 
     public function getProductById($idProduct){
@@ -31,7 +31,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+
     public function getSubcategoryById($idSubcategory){
         $query = "SELECT s.idSUBCATEGORY, s.idCATEGORY , s.name as subcategoryName, c.name as categoryName FROM subcategory as s INNER JOIN category as c ON s.idCATEGORY = c.idCATEGORY WHERE idSUBCATEGORY=?";
         $stmt = $this->db->prepare($query);
@@ -50,6 +50,53 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkEmailPresence($email){
+      $query = ("SELECT idCUSTOMER FROM customer WHERE email = ?");
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('s',$email);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $value = $result->fetch_all(MYSQLI_ASSOC);
+      if (count($value) != 0) {
+         return TRUE;
+       }
+       else{
+         return FALSE;
+       }
+    }
+
+    public function getCustomerIdByEmail($email){
+      $query = ("SELECT idCUSTOMER FROM customer WHERE email = ?");
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('s',$email);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addNewCustomer($email, $password, $name, $surname, $telephone, $gender, $bithdate){
+      $query = "INSERT INTO customer (name, surname, email, password, telephone, gender, birthdate)
+      VALUES (?, ?, ?, ?, ?, ?, ?)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('sssssis',$name, $surname, $email, $password, $telephone, $gender, $bithdate);
+      $stmt->execute();
+    }
+
+    public function addNewAddressToCustomer($email, $name, $surname, $address, $province, $city, $zip_code){
+      $query = "INSERT INTO climb_9c.address (street, province, city, zip_code, name, surname)
+      VALUES (?, ?, ?, ?, ?, ?)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ssssss',$address, $province, $city, $zip_code, $name, $surname);
+      $stmt->execute();
+
+      //$query1 = "INSERT INTO climb_9c.customer_address (idCUSTOMER, idADDRESS)
+      //VALUES (?, ?)";
+      //$stmt1 = $this->db->prepare($query);
+      //$stmt1->bind_param('ii',this->getCustomerIdByEmail($email), $surname);
+      //$stmt1->execute();
+
     }
 }
 ?>
