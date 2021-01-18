@@ -7,7 +7,7 @@ if(count($_POST) > 0){
     $templateParams["errorelogin"] = "Errore! Dati inseriti non validi";
     $templateParams["title"]="Climb9c - Registrati";
     $templateParams["search_bar"] = FALSE;
-    $templateParams["name"]="sign_up2.php";
+    $templateParams["name"]="sign_up.php";
   }
   else{
     //add customer to db
@@ -24,7 +24,7 @@ if(count($_POST) > 0){
 else{
   $templateParams["title"]="Climb9c - Registrati";
   $templateParams["search_bar"] = FALSE;
-  $templateParams["name"]="sign_up2.php";
+  $templateParams["name"]="sign_up.php";
 }
 require 'template/base.php';
 ?>
