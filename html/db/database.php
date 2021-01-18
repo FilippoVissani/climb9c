@@ -28,6 +28,7 @@ class DatabaseHelper{
         $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
+    }
     
     public function getSubcategoryById($idSubcategory){
         $query = "SELECT s.idSUBCATEGORY, s.idCATEGORY , s.name as subcategoryName, c.name as categoryName FROM subcategory as s INNER JOIN category as c ON s.idCATEGORY = c.idCATEGORY WHERE idSUBCATEGORY=?";
