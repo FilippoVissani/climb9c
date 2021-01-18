@@ -9,7 +9,7 @@
 
 <div class="col-12">
     <div class="card">
-        <img class="card-img-top" src="./upload/products_images_by_id/<?php echo $product["idPRODUCT"]; ?>/1.jpg" alt="<?php echo $product["name"]; ?>">
+        <img class="card-img-top" src="<?php echo UPLOAD_DIR.$product["idPRODUCT"]; ?>/1.jpg" alt="<?php echo $product["name"]; ?>">
         <div class="card-body">
 
             <!--riga nome e prezzo-->
