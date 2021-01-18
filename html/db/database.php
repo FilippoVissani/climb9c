@@ -21,9 +21,9 @@ class DatabaseHelper{
 
     public function getLatestArticlesAdded($n){
         $query = "SELECT * FROM (
-                    SELECT * FROM PRODUCT ORDER BY id DESC LIMIT ?
+                    SELECT * FROM product ORDER BY idPRODUCT DESC LIMIT ?
                     ) sub
-                    ORDER BY id ASC";
+                    ORDER BY idPRODUCT ASC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$n);
         $stmt->execute();
