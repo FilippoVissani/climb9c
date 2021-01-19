@@ -4,13 +4,14 @@
     <input type="number" class="form-control" placeholder="idPRODUCT" aria-label="id prodotto" aria-describedby="basic-addon1">
     </div>
 <?php
-    $tecnical_spec = [
-    "player" => "Cristiano Ronaldo",
-    "age" => 34,
-    
-];
+    $tecnical_specifications = [
+    "Chiusura" => "Strappo",
+    "Utilizzo scarpetta" => "Boulder, Falesia",
+    "Tipo suola scarpetta" => "Suola intera",
+    "Aggressivita scarpetta" => "Performante"
+    ];
 
-$json = json_encode($player);
+$json = json_encode($tecnical_specifications);
 
 var_dump($json);
 

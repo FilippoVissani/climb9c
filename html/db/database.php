@@ -107,5 +107,14 @@ class DatabaseHelper{
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+
+    public function addJson($json){
+      $query = "UPDATE product SET tecnical_specifications = ? WHERE idPRODUCT = 1";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('s',$json);
+      $stmt->execute();
+    }
+
 }
 ?>
