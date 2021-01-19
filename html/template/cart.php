@@ -1,4 +1,4 @@
-<div class="container-fluid h-100 text-dark">
+
   <div class="row">
     <header>
       <h1 class="font-weight-bold">CARRELLO</h1>
@@ -64,4 +64,3 @@
   </main>
 
 <?php endif; ?>
-</div>
