@@ -25,6 +25,10 @@
                 <input id="accedi" type="submit" class="btn btn-primary" value="Accedi"/>
               </div>
             </form>
+            <div class="text-center p-4">
+              <p>Non sei ancora registrato? <a href="sign.php" class="pe-auto">REGISTRATI</a></p>
+
+            </div>
           </div>
         </div>
       </main>
