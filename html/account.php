@@ -1,12 +1,13 @@
 <?php
 require_once 'bootstrap.php';
 
-function isUserLoggedIn(){
-    return !empty($_SESSION['idCUSTOMER']);
+if(isset($_GET["logout"])){
+  unset($_SESSION["idCUSTOMER"]);
+  header("location: index.php");
+}
+else {
+  header("location: login.php");
 }
 
-if (isUserLoggedIn()){
-  
-}
-
- ?>
+require './template/base.php';
+?>

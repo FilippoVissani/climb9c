@@ -8,15 +8,18 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
         $templateParams["login_error"] = "Errore! Username o password errata!";
     }
     else{
-      $templateParams["customer_logged_info"] = $result[0];
-      $_SESSION["idCUSTOMER"] = $templateParams["customer_logged_info"]["idCUSTOMER"];
+      $_SESSION["idCUSTOMER"] = $result[0]["idCUSTOMER"];
+      $_SESSION["name"] = $result[0]["name"];
+      $_SESSION["surname"] = $result[0]["surname"];
+      $_SESSION["email"] = $result[0]["email"];
+      $_SESSION["telephone"] = $result[0]["telephone"];
     }
 }
 
 if(isUserLoggedIn()){
   $templateParams["title"]="Climb9c - Account";
   $templateParams["search_bar"] = FALSE;
-  $templateParams["name"] = "account.php";
+  $templateParams["name"] = "account_form.php";
 
 }
 else{
