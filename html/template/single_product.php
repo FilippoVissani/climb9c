@@ -52,7 +52,26 @@
             <!--END riga quantità-->
 
             <!--Bottone AGGIUNGI AL CARRELLO-->
-            <a href="#" class="btn btn-primary d-grid mb-2">Aggiungi al carrello</a>
+            <button type="button" class="btn btn-primary d-grid mb-2" data-bs-toggle="modal" data-bs-target="#addedToCart">Aggiungi al carrello</button>
+            <!-- Button trigger modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><?php echo $product["name"]; ?></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Prodotto aggiunto al carrello.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continua gli acquisti</button>
+                        <button type="button" class="btn btn-primary">Vai al carrello</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
             <!--END Bottone AGGIUNGI AL CARRELLO-->
 
             <!-- descrizione e caratteristiche tecniche-->
