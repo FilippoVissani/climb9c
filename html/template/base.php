@@ -25,7 +25,7 @@
                             <a href="<?php echo isset($_SESSION["idCUSTOMER"]) ? "account.php" : "login.php" ?>">
                                 <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
                             </a>
-                            <a href="">
+                            <a href="<?php echo isset($_SESSION["idCUSTOMER"]) ? "cart.php" : "login.php" ?>">
                                 <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
                             </a>
                             <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3" id="menu-toggler">

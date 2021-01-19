@@ -7,9 +7,13 @@ function setDesktop(){
 
 function checkDesktop(){
     if(isDesktop){
-        $("#search-bar").addClass("w-50");
+        $("#search-bar").addClass("w-25");
+        $("div.carousel-item > div > img").addClass("w-25");
+        $("div#home-card").addClass("w-50");
     }else{
-        $("#search-bar").removeClass("w-50");
+        $("#search-bar").removeClass("w-25");
+        $("div.carousel-item > div > img").removeClass("w-25");
+        $("div#home-card").removeClass("w-50");
     }
 }
 

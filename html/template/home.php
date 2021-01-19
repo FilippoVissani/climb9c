@@ -1,7 +1,13 @@
+<div class="row m-2">
+    <div class="col-12 p-0">
+        <h1>NUOVI ARRIVI</h1>
+    </div>
+</div>
+
 <div class="row m-0">
     <div class="col-12 p-0">
         <div id="productCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
+            <ol class="carousel-indicators m-auto">
                 <?php
                                 $active=TRUE;
                                 $i=0;
@@ -18,7 +24,7 @@
                                 endforeach;
                                 ?>
                 </ol>
-                <div class="carousel-inner">
+                <div class="carousel-inner m-auto p-auto w-75">
                     <?php
                                 $active=TRUE;
                                 foreach ($templateParams["carouselProducts"] as $carouselProduct):
@@ -29,12 +35,15 @@
                         <?php else: ?>
                         <div class="carousel-item" data-bs-interval="10000">
                             <?php endif; ?>
-                            <img src="<?php echo UPLOAD_DIR.$carouselProduct["idPRODUCT"]; ?>/1.jpg" class="d-block rounded w-100" alt="#">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1 class="text-dark">
-                                    <?php echo $carouselProduct["name"]; ?>
-                                </h1>
-                            </div>
+                            <div class="card">
+                        <img src="<?php echo UPLOAD_DIR.$carouselProduct["idPRODUCT"]; ?>/1.jpg" class="card-img-top img-fluid" alt="<?php echo $carouselProduct["name"]; ?>">
+                        <div class="card-body">
+                            <h2 class="card-title"><?php echo $carouselProduct["name"]; ?></h2>
+                            <h3 class="card-text text-center"><?php echo $carouselProduct["price"]; ?> €</h3>
+                            <a href="./product.php?id=<?php echo $carouselProduct["idPRODUCT"]; ?>" class="stretched-link"></a>
+                        </div>
+                        
+                        </div>
                         </div>
                         <?php endforeach; ?>
                     </div>
@@ -46,6 +55,36 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </a>
+        </div>
+    </div>
+</div>
+
+<div class="row my-2 mx-5">
+    <div class="col-12">
+        <div class="card bg-dark text-white" id="home-card">
+            <img src="./images/scarpette.jpg" class="card-img h-100" alt="">
+            <div class="card-img-overlay">
+                <h1 class="card-title fw-bold">SCARPETTE DA ARRAMPICATA</h1>
+                <h2 class="card-text fw-bold">
+                    Indoor, outdoor e boulder
+                </h2>
+                <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row my-2 mx-5">
+    <div class="col-12">
+        <div class="card bg-dark text-white" id="home-card">
+            <img src="./images/corde.jpg" class="card-img h-100" alt="">
+            <div class="card-img-overlay">
+                <h1 class="card-title fw-bold text-dark">CORDE</h1>
+                <h2 class="card-text fw-bold text-dark">
+                    Corde singole e mezze corde
+                </h2>
+                <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
+            </div>
         </div>
     </div>
 </div>
