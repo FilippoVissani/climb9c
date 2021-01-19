@@ -6,8 +6,8 @@
     <?php foreach($templateParams["categories"] as $category): ?>
     <ul class="list-group collapse" id="<?php echo $category["id"] ?>-subcategory">
         <?php foreach($templateParams[$category["id"]."-subcategory"] as $subcategory): ?>
-        <li class="list-group-item">
-            <a href="subcategory.php?id=<?php echo $subcategory["id"] ?>">
+        <li class="list-group-item menu-item">
+            <a class="text-dark" href="subcategory.php?id=<?php echo $subcategory["id"] ?>">
                 <?php echo strtoupper($subcategory["name"]) ?>
                 <img src="./svg_icons/arrow.svg" alt="" width="30" height="30" class="d-inline-block float-end">
             </a>
