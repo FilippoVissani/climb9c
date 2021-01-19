@@ -3,5 +3,5 @@ session_start();
 define("UPLOAD_DIR", "./upload/products_images_by_id/");
 /*require_once("utils/functions.php");*/
 require_once("db/database.php");
-$dbh = new DatabaseHelper("0.tcp.ngrok.io", "root", "", "climb_9c", 13540);
+$dbh = new DatabaseHelper("4.tcp.ngrok.io", "root", "", "climb_9c", 15989);
 ?>

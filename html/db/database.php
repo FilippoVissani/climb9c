@@ -107,5 +107,24 @@ class DatabaseHelper{
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getCategories(){
+      $query = "SELECT name, idCATEGORY AS id FROM category";
+      $stmt = $this->db->prepare($query);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getSubcategories($idCategory){
+      $query = "SELECT s.name, s.idSUBCATEGORY AS id FROM subcategory s, category c WHERE s.idCATEGORY=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idCategory);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
