@@ -42,7 +42,7 @@
                     <span class="fas fa-minus"></span>
                   </button>
                 </div>
-                <input type="number" name="Quantità" id="text-quantity" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="1" min="1" placeholder="Quantità">
+                <input type="number" name="Quantità" id="text-quantity" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="<?php echo $singleProduct["productQuantity"]; ?>" min="1" placeholder="Quantità">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus" aria-label="Più">
                     <span class="fas fa-plus"></span>
@@ -51,9 +51,10 @@
               </div>
               <div class="col-md justify-content-center">
                 <label for="elimina" class="invisible">Elimina</label>
-                <input id="elimina" type="button" class="btn btn-secondary" value="Elimina"/>
+                <input id="elimina" name"delete" type="button" class="btn btn-secondary" value="Elimina"/>
               </div>
             </div>
+            <input type="hidden" name="idproduct" value="<?php echo $singleProduct["idPRODUCT"]; ?>" />
             <hr/>
             <?php endforeach; ?>
           </fieldset>

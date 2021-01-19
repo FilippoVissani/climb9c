@@ -122,7 +122,7 @@ class DatabaseHelper{
     }
 
     public function getCartByCustomerID($idCUSTOMER){
-      $query = "SELECT p.name as productName, cp.quantity as productQuantity, p.price as productPrice FROM customer
+      $query = "SELECT p.name as productName, cp.quantity as productQuantity, p.price as productPrice, p.idPRODUCT as idPRODUCT FROM customer
       as cu INNER JOIN cart as ca ON ca.idCUSTOMER = cu.idCUSTOMER INNER JOIN cart_product
       as cp ON cp.idCART = ca.idCUSTOMER INNER JOIN product as p ON p.idPRODUCT = cp.idPRODUCT WHERE cu.idCUSTOMER = ?";
       $stmt = $this->db->prepare($query);
