@@ -6,7 +6,7 @@
 
 <div class="row m-0">
     <div class="col-12 p-0">
-        <div id="productCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div id="productCarousel" class="carousel carousel-dark slide shadow p-5 mb-5 bg-white rounded" data-bs-ride="carousel">
             <ol class="carousel-indicators m-auto">
                 <?php
                                 $active=TRUE;
@@ -61,7 +61,7 @@
 
 <div class="row my-2 mx-5">
     <div class="col-12">
-        <div class="card bg-dark text-white" id="home-card">
+        <div class="card text-white shadow p-0 mb-5 rounded" id="home-card">
             <img src="./images/scarpette.jpg" class="card-img h-100" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold">SCARPETTE DA ARRAMPICATA</h1>
@@ -76,7 +76,7 @@
 
 <div class="row my-2 mx-5">
     <div class="col-12">
-        <div class="card bg-dark text-white" id="home-card">
+        <div class="card text-white shadow p-0 mb-5 rounded" id="home-card">
             <img src="./images/corde.jpg" class="card-img h-100" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold text-dark">CORDE</h1>
