@@ -4,7 +4,7 @@ require_once 'bootstrap.php';
 if(count($_POST) > 0){
   //check username esistente || check pw != pw-confirm
   if($dbh->checkEmailPresence($_POST["username"]) == TRUE || $_POST["password"] != $_POST["password-confirm"]){
-    $templateParams["errorelogin"] = "Errore! Dati inseriti non validi";
+    $templateParams["sign_up_error"] = "Errore! Dati inseriti non validi";
     $templateParams["title"]="Climb9c - Registrati";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"]="sign_up.php";

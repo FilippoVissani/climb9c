@@ -12,9 +12,11 @@
         <div class="col-12">
           <section>
             <h3 class="font-weight-bold">Informazioni di contatto</h3>
-            <p>Nome Cognome</p>
-            <p>Email</p>
-            <p>Numero di Telefono</p>
+            <?php if(isset($_SESSION['idCUSTOMER'])): ?>
+            <p><?php echo $templateParams["customer_logged_info"]["name"]." ".$templateParams["customer_logged_info"]["surname"]; ?></p>
+            <p><?php echo $templateParams["customer_logged_info"]["email"]; ?></p>
+            <p><?php echo $templateParams["customer_logged_info"]["telephone"]; ?></p>
+            <?php endif; ?>
           </section>
         </div>
         <hr/>

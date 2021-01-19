@@ -9,8 +9,8 @@
   <hr/>
   <main>
     <form class="row g-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      <?php if(isset($templateParams["errorelogin"])): ?>
-      <p class="fw-bold  bg-danger text-white"><?php echo $templateParams["errorelogin"]; ?></p>
+      <?php if(isset($templateParams["sign_up_error"])): ?>
+      <p class="fw-bold  bg-danger text-white"><?php echo $templateParams["sign_up_error"]; ?></p>
       <?php endif; ?>
       <div class="col-md-6  pt-2">
         <label for="username" class="form-label">Email*</label>

@@ -96,7 +96,16 @@ class DatabaseHelper{
       //$stmt1 = $this->db->prepare($query);
       //$stmt1->bind_param('ii',this->getCustomerIdByEmail($email), $surname);
       //$stmt1->execute();
+    }
 
+    public function checkLogin($email, $password){
+      $query = "SELECT * FROM customer WHERE email = ? AND password = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ss',$email, $password);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>
