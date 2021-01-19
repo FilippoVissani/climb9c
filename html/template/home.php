@@ -29,11 +29,11 @@
                         <?php else: ?>
                         <div class="carousel-item" data-bs-interval="10000">
                             <?php endif; ?>
-                            <img src="<?php echo UPLOAD_DIR.$carouselProduct["idPRODUCT"]; ?>/1.jpg" class="d-block w-100" alt="#">
+                            <img src="<?php echo UPLOAD_DIR.$carouselProduct["idPRODUCT"]; ?>/1.jpg" class="d-block rounded w-100" alt="#">
                             <div class="carousel-caption d-none d-md-block">
-                                <p class="text-dark">
+                                <h1 class="text-dark">
                                     <?php echo $carouselProduct["name"]; ?>
-                                </p>
+                                </h1>
                             </div>
                         </div>
                         <?php endforeach; ?>
