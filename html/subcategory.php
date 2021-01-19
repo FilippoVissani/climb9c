@@ -21,6 +21,11 @@ if(!count($templateParams["subcategory"])==0){
 
 $templateParams["search_bar"] = TRUE;
 $templateParams["name"]="products-subcategory.php";
+
+$templateParams["categories"]=$dbh->getCategories();
+foreach($templateParams["categories"] as $category){
+    $templateParams[$category["id"]."-subcategory"]=$dbh->getSubcategories($category["id"]);
+}
 require 'template/base.php';
 
 ?>

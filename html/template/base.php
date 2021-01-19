@@ -22,8 +22,12 @@
                                 Climb9c
                         </a>
                         <div class="d-flex">
-                            <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
-                            <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                            <a href="<?php echo isset($_SESSION["idCUSTOMER"]) ? "account.php" : "login.php" ?>">
+                                <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                            </a>
+                            <a href="">
+                                <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                            </a>
                             <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3" id="menu-toggler">
                         </div>
                     </header>  
