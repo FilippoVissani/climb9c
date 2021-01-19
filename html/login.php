@@ -1,10 +1,6 @@
 <?php
 require_once 'bootstrap.php';
 
-function isUserLoggedIn(){
-    return !empty($_SESSION['idCUSTOMER']);
-}
-
 if(isset($_POST["username"]) && isset($_POST["password"])){
     $result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
     if(count($result)==0){
@@ -21,7 +17,6 @@ if(isUserLoggedIn()){
   $templateParams["title"]="Climb9c - Account";
   $templateParams["search_bar"] = FALSE;
   $templateParams["name"] = "account.php";
-  //modifica account
 
 }
 else{
