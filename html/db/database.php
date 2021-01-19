@@ -150,5 +150,8 @@ class DatabaseHelper{
       $stmt->execute();
     }
 
+    public function searchElements($wordsArray){
+
+    }
 }
 ?>

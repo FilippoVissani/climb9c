@@ -28,6 +28,10 @@
     text-align: right;
 }
 
+.menu-item > a {
+    text-decoration: none;
+}
+
 /*remove up and down arrows form input type number*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

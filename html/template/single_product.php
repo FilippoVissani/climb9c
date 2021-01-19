@@ -51,7 +51,11 @@
             </div>
             <!--END riga quantità-->
 
+            <!--Bottone AGGIUNGI AL CARRELLO-->
             <a href="#" class="btn btn-primary d-grid mb-2">Aggiungi al carrello</a>
+            <!--END Bottone AGGIUNGI AL CARRELLO-->
+
+            <!-- descrizione e caratteristiche tecniche-->
             <div class="col">
                 <hr/>
                 <h3>Descrizione:</h3>
@@ -74,6 +78,8 @@
                     <?php endif;?>
                 </p>
             </div>
+            <!-- END descrizione e caratteristiche tecniche-->
+
         </div>
     </div>
 </div>
