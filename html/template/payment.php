@@ -26,7 +26,7 @@
           <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <p>Articoli</p>
-              <p>10$</p>
+              <p><?php echo numberProduct($dbh->getCartByCustomerID($_SESSION['idCUSTOMER'])); ?></p>
             </li>
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <p>Spese di spedizione</p>
@@ -41,7 +41,7 @@
             </li>
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <p class="font-weight-bold">TOTALE</p>
-              <p class="font-weight-bold">10$</p>
+              <p><?php echo cartPrice($dbh->getCartByCustomerID($_SESSION['idCUSTOMER']))."€"; ?>
             </li>
           </ul>
           <form class="card p-2" action="#" method="post">

@@ -1,4 +1,7 @@
 <div class="container-fluid h-100 text-dark">
+<?php
+    $product = $dbh->getCartByCustomerID($_SESSION['idCUSTOMER']);
+?>
   <div class="row">
     <header>
       <h1 class="font-weight-bold">CARRELLO</h1>
@@ -11,12 +14,17 @@
         <form class="" action="#" method="get">
           <section>
             <div class="row">
-              <div class="col text-right">Totale</div>
-              <div class="col text-center">Numero Articoli</div>
-              <div class="col text-left">Costo</div>
+              <div class="col text-center">Totale</div>
+              <div class="col text-center">
+                <p><?php echo numberProduct($product)." "."Articoli"; ?></p>
+              </div>
+              <div class="col text-center">
+                <p><?php echo cartPrice($product)."€"; ?></p>
+              </div>
             </div>
-              <label for="procedi" class="invisible">Procedi all'ordine</label>
-              <input id="procedi" type="submit" class="btn btn-primary btn-block" value="Procedi all'ordine"/>
+            <div class="row justify-content-center pt-3">
+              <a class="btn btn-primary btn-block" href="payment.php" role="button">Procedi all'ordine</a>
+            </div>
           </section>
           <hr/>
           <fieldset>

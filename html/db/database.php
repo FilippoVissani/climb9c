@@ -116,6 +116,22 @@ class DatabaseHelper{
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
+    public function getAddressByCustomerID($idCUSTOMER){
+
+    }
+
+    public function getCartByCustomerID($idCUSTOMER){
+      $query = "SELECT p.name as productName, cp.quantity as productQuantity, p.price as productPrice FROM customer
+      as cu INNER JOIN cart as ca ON ca.idCUSTOMER = cu.idCUSTOMER INNER JOIN cart_product
+      as cp ON cp.idCART = ca.idCUSTOMER INNER JOIN product as p ON p.idPRODUCT = cp.idPRODUCT WHERE cu.idCUSTOMER = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idCUSTOMER);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     public function getSubcategories($idCategory){
       $query = "SELECT s.name, s.idSUBCATEGORY AS id FROM subcategory s, category c WHERE s.idCATEGORY=?";
@@ -126,5 +142,16 @@ class DatabaseHelper{
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function addJson($json){
+      $query = "UPDATE product SET tecnical_specifications = ? WHERE idPRODUCT = 1";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('s',$json);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 ?>
