@@ -58,7 +58,21 @@
                 <p class="card-text"><?php echo $product["description"]; ?></p>
                 <hr/>
                 <h3>Caratteristiche tecniche:</h3>
-                <p class="card-text"><?php echo $product["tecnical_specifications"]; ?></p>
+                <p class="card-text">
+                    <?php $tecnical_specs=json_decode($product["tecnical_specifications"]); ?>
+                    <?php if(JSON_ERROR_NONE == json_last_error()): ?>
+                        <table class="table table-striped">
+                            <tbody>
+                                <?php foreach ($tecnical_specs as $key => $val):?>
+                                    <tr>
+                                    <th scope="row"><?php echo $key?></th>
+                                    <td><?php echo $val?></td>
+                                    </tr>
+                                <?php endforeach;?>
+                            </tbody>
+                        </table>
+                    <?php endif;?>
+                </p>
             </div>
         </div>
     </div>
