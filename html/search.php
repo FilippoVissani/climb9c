@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
-$wordsArray=explode(" ", $_GET["search-text"]);
-$templateParams["products"]=$dbh->searchElements($wordsArray);
+$templateParams["wordsArray"]=explode(" ", $_GET["search-text"]);
+$templateParams["products"]=$dbh->searchElements($templateParams["wordsArray"]);
 $templateParams["title"]="Climb9c - Search";
 $templateParams["search_bar"] = TRUE;
 $templateParams["name"] = "search-template.php";

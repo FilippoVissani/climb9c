@@ -1,3 +1,9 @@
+<div class="row m-2">
+    <div class="col-12 p-0">
+        <h1>CERCA: <?php foreach($templateParams["wordsArray"] as $word){ echo strtoupper($word . " "); } ?></h1>
+    </div>
+</div>
+
 <div class="row my-2 mx-5">
         <?php foreach($templateParams["products"] as $product): ?>
             <div class="col">

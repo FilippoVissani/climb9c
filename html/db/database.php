@@ -153,7 +153,7 @@ class DatabaseHelper{
     public function searchElements($wordsArray){
       $query="SELECT p.idPRODUCT, p.name, p.price, p.quantity FROM product p WHERE true";
       foreach($wordsArray as $word){
-        $query=$query . " AND p.description LIKE '%". $word . "%'";
+        $query=$query . " AND LOWER(p.description) LIKE LOWER('%". $word . "%')";
       }
       
       $stmt = $this->db->prepare($query);
