@@ -6,7 +6,7 @@
 
 <div class="row m-0">
     <div class="col-12 p-0">
-        <div id="productCarousel" class="carousel carousel-dark slide shadow p-5 m-5 bg-white rounded" data-bs-ride="carousel">
+        <div id="productCarousel" class="carousel carousel-dark slide shadow p-5 m-5 bg-white rounded-pill-home" data-bs-ride="carousel">
             <ol class="carousel-indicators m-auto">
                 <?php
                                 $active=TRUE;
@@ -35,7 +35,7 @@
                         <?php else: ?>
                         <div class="carousel-item" data-bs-interval="10000">
                             <?php endif; ?>
-                            <div class="card">
+                            <div class="card border-0">
                                 <img src="<?php echo UPLOAD_DIR.$carouselProduct["idPRODUCT"]; ?>/1.jpg" class="card-img-top img-fluid mx-auto" alt="<?php echo $carouselProduct["name"]; ?>">
                                 <div class="card-body">
                                     <h2 class="card-title text-center"><?php echo $carouselProduct["name"]; ?></h2>
@@ -61,8 +61,8 @@
 
 <div class="row my-2 mx-5">
     <div class="col-12">
-        <div class="card text-white shadow p-0 mb-5 rounded" id="home-card">
-            <img src="./images/scarpette.jpg" class="card-img h-100 rounded" alt="">
+        <div class="card text-white shadow p-0 mb-5 rounded-pill-home" id="home-card">
+            <img src="./images/scarpette.jpg" class="card-img h-100 rounded-pill-home" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold">SCARPETTE DA ARRAMPICATA</h1>
                 <h2 class="card-text fw-bold">
@@ -76,8 +76,8 @@
 
 <div class="row my-2 mx-5">
     <div class="col-12">
-        <div class="card text-white shadow p-0 mb-5 rounded" id="home-card">
-            <img src="./images/corde.jpg" class="card-img h-100" alt="">
+        <div class="card text-white shadow p-0 mb-5 rounded-pill-home" id="home-card">
+            <img src="./images/corde.jpg" class="card-img h-100 rounded-pill-home" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold text-dark">CORDE</h1>
                 <h2 class="card-text fw-bold text-dark">
