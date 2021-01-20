@@ -1,4 +1,4 @@
-<div class="row mx-0 justify-content-center">
+<div class="row mx-0 mt-3 justify-content-center">
     <div class="col-12" id="search-bar">
         <form action="./search.php" method="get">
             <div class="input-group mb-3">

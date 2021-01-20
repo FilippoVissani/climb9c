@@ -8,6 +8,10 @@ $templateParams["name"] = "admin-home.php";
 if(isset($_GET["formmsg"])){
     $templateParams["formmsg"] = $_GET["formmsg"];
 }
+$templateParams["categories"]=$dbh->getCategories();
+foreach($templateParams["categories"] as $category){
+    $templateParams[$category["id"]."-subcategory"]=$dbh->getSubcategories($category["id"]);
+}
 
 require './template/base.php';
 ?>

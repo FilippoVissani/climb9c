@@ -5,6 +5,7 @@ $templateParams["products"]=$dbh->searchElements($templateParams["wordsArray"]);
 $templateParams["title"]="Climb9c - Search";
 $templateParams["search_bar"] = TRUE;
 $templateParams["name"] = "search-template.php";
+$templateParams["categories"]=$dbh->getCategories();
 foreach($templateParams["categories"] as $category){
     $templateParams[$category["id"]."-subcategory"]=$dbh->getSubcategories($category["id"]);
 }
