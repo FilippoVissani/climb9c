@@ -28,5 +28,10 @@ else{
   $templateParams["name"]="login_form.php";
 }
 
+$templateParams["categories"]=$dbh->getCategories();
+foreach($templateParams["categories"] as $category){
+    $templateParams[$category["id"]."-subcategory"]=$dbh->getSubcategories($category["id"]);
+}
+
 require 'template/base.php';
 ?>

@@ -18,6 +18,11 @@ if(!count($templateParams["product"])==0){
     $templateParams["title"]="Climb9c - Articolo non trovato";
 }
 
+$templateParams["categories"]=$dbh->getCategories();
+foreach($templateParams["categories"] as $category){
+    $templateParams[$category["id"]."-subcategory"]=$dbh->getSubcategories($category["id"]);
+}
+
 $templateParams["search_bar"] = TRUE;
 $templateParams["name"]="single_product.php";
 require 'template/base.php';

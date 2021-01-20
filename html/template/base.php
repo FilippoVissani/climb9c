@@ -14,9 +14,9 @@
         require './template/menu.php';
         ?>
         <div class="container-fluid p-0">
-            <div class="row mb-2 mx-0">
+            <div class="row mx-0">
                 <div class="col-12 p-0">
-                    <header class="navbar navbar-dark bg-dark fw-bold">
+                    <header class="navbar navbar-dark bg-dark fw-bold shadow">
                         <a class="navbar-brand" href="./index.php">
                             <img src="./svg_icons/jam_mountain.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
                                 Climb9c
@@ -91,5 +91,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
         <?php require './js/toggle-menu.php'; ?>
         <script src="./js/quantity-product.js"></script>
+        <script src="./js/add-to-cart.js"></script>
     </body>
 </html>

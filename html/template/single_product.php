@@ -52,10 +52,13 @@
             <!--END riga quantità-->
 
             <!--Bottone AGGIUNGI AL CARRELLO-->
-            <button type="button" class="btn btn-primary d-grid mb-2" data-bs-toggle="modal" data-bs-target="#addedToCart">Aggiungi al carrello</button>
+
+
+
+            <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2" >Aggiungi al carrello</button>
             <!-- Button trigger modal -->
             <!-- Modal -->
-            <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="addedToCart" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -67,7 +70,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continua gli acquisti</button>
-                        <button type="button" class="btn btn-primary">Vai al carrello</button>
+                        <a class="btn btn-primary" href="cart.php" role="button">Vai al carrello</a>
                     </div>
                     </div>
                 </div>
