@@ -182,5 +182,15 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
 
     }
+
+    public function getBestSeller($limit){
+      $query = "SELECT p.idPRODUCT, p.name, p.price, p.quantity FROM product p INNER JOIN product_order po ON p.idPRODUCT=po.idPRODUCT GROUP BY po.idPRODUCT ORDER BY SUM(po.quantity) DESC LIMIT ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$limit);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
