@@ -91,11 +91,16 @@ class DatabaseHelper{
       $stmt->bind_param('ssssss',$address, $province, $city, $zip_code, $name, $surname);
       $stmt->execute();
 
-      //$query1 = "INSERT INTO climb_9c.customer_address (idCUSTOMER, idADDRESS)
-      //VALUES (?, ?)";
-      //$stmt1 = $this->db->prepare($query);
-      //$stmt1->bind_param('ii',this->getCustomerIdByEmail($email), $surname);
-      //$stmt1->execute();
+      $query1 = "SELECT MAX(idADDRESS) FROM address";
+      $stmt1 = $this->db->prepare($query);
+      $stmt1->execute();
+      $max = $stmt->get_result();
+
+      $query2 = "INSERT INTO customer_address (idCUSTOMER, idADDRESS)
+      VALUES (?, ?)";
+      $stmt2 = $this->db->prepare($query);
+      $stmt2->bind_param('ii',$this->getCustomerIdByEmail($email)[0], $max);
+      $stmt2->execute();
     }
 
     public function checkLogin($email, $password){
