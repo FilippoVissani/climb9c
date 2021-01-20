@@ -23,7 +23,7 @@
       <div class="col-md-4 order-md-2">
         <h2>RIEPILOGO CARRELLO</h2>
         <ul class="list-group">
-          <?php if(isset($templateParams["login_error"])): ?>
+          <?php if(isset($templateParams["coupon_error"])): ?>
             <p class="fw-bold  bg-danger text-white"><?php echo $templateParams["coupon_error"]; ?></p>
           <?php endif; ?>
           <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -31,8 +31,8 @@
             <p><?php echo numberProduct($dbh->getCartByCustomerID($_SESSION['idCUSTOMER'])); ?></p>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <p>Spese di spedizione</p>
-            <p>0.00€</p>
+            <p>Totale Articoli</p>
+            <p><?php $total = cartPrice($dbh->getCartByCustomerID($_SESSION['idCUSTOMER'])); echo $total."€";?></p>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
@@ -48,22 +48,26 @@
             </div>
             <p><?php
               if(isset($_SESSION["couponDiscount"])){
-                  echo $_SESSION["couponDiscount"]."€";
-              }
-              else {
-                echo "0.00€";
+                  echo $_SESSION["couponDiscount"]."%";
               }
               ?></p>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <p class="font-weight-bold">TOTALE</p>
-            <p><?php echo cartPrice($dbh->getCartByCustomerID($_SESSION['idCUSTOMER']))."€"; ?>
+            <p><?php
+              if(isset($_SESSION["couponDiscount"])){
+                echo calculateFinalPrice($total, $_SESSION["couponDiscount"])."€";
+              }
+              else{
+                echo $total."€";
+              }
+            ?></p>
           </li>
         </ul>
         <form class="card p-2" action="payment.php" method="get">
           <div class="input-group">
             <label for="coupon" class="invisible">Codice sconto</label>
-            <input id="coupon" name"couponCode" type="text" class="form-control" placeholder="Codice Sconto"/>
+            <input id="coupon" name="couponCode" type="text" class="form-control" placeholder="Codice Sconto"/>
             <div class="input-group-append">
               <label for="inserisci" class="invisible">Inserisci</label>
               <input id="inserisci" type="submit" class="btn btn-secondary" value="Inserisci"/>

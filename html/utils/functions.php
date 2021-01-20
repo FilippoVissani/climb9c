@@ -19,4 +19,9 @@ function cartPrice($productArray){
   }
   return $total;
 }
+
+function calculateFinalPrice($total, $discount){
+  $finalPrice = $total - ($total*$discount)/100;
+  return round($finalPrice, 2);
+}
 ?>
