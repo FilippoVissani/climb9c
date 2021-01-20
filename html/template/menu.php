@@ -7,7 +7,7 @@
     <ul class="list-group collapse" id="<?php echo $category["id"] ?>-subcategory">
         <?php foreach($templateParams[$category["id"]."-subcategory"] as $subcategory): ?>
         <li class="list-group-item menu-item">
-            <a class="text-dark" href="subcategory.php?id=<?php echo $subcategory["id"] ?>">
+            <a class="text-dark fw-bold" href="subcategory.php?id=<?php echo $subcategory["id"] ?>">
                 <?php echo strtoupper($subcategory["name"]) ?>
                 <img src="./svg_icons/arrow.svg" alt="" width="30" height="30" class="d-inline-block float-end">
             </a>
@@ -18,7 +18,7 @@
 
     <ul class="list-group" id="menu-categories">
         <?php foreach($templateParams["categories"] as $category): ?>
-        <li class="list-group-item" id="<?php echo $category["id"] ?>-category">
+        <li class="list-group-item fw-bold" id="<?php echo $category["id"] ?>-category">
             <?php echo strtoupper($category["name"]) ?>
             <img src="./svg_icons/arrow.svg" alt="" width="30" height="30" class="d-inline-block float-end">
         </li>
