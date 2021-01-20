@@ -151,7 +151,15 @@ class DatabaseHelper{
     }
 
     public function searchElements($wordsArray){
-
+      $query="SELECT p.idPRODUCT, p.name, p.price, p.quantity FROM product p WHERE true";
+      foreach($wordsArray as $word){
+        $query=$query . " AND p.description LIKE '%". $word . "%'";
+      }
+      
+      $stmt = $this->db->prepare($query);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>
