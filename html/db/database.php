@@ -91,16 +91,13 @@ class DatabaseHelper{
       $stmt->bind_param('ssssss',$address, $province, $city, $zip_code, $name, $surname);
       $stmt->execute();
 
-      $query1 = "SELECT MAX(idADDRESS) FROM address";
-      $stmt1 = $this->db->prepare($query);
-      $stmt1->execute();
-      $max = $stmt->get_result();
+      $lastIdAddrress = $this->db->insert_id;
 
-      $query2 = "INSERT INTO customer_address (idCUSTOMER, idADDRESS)
+      $query1 = "INSERT INTO customer_address (idCUSTOMER, idADDRESS)
       VALUES (?, ?)";
-      $stmt2 = $this->db->prepare($query);
-      $stmt2->bind_param('ii',$this->getCustomerIdByEmail($email)[0], $max);
-      $stmt2->execute();
+      $stmt1 = $this->db->prepare($query1);
+      $stmt1->bind_param('ii',$this->getCustomerIdByEmail($email)[0], $lastIdAddrress);
+      $stmt1->execute();
     }
 
     public function checkLogin($email, $password){
@@ -123,6 +120,14 @@ class DatabaseHelper{
     }
 
     public function getAddressByCustomerID($idCUSTOMER){
+      $query = "SELECT a.idADDRESS as idADDRESS, a.street as street, a.province as province, a.city as city, a.zip_code as zip_code, a.name as name, a.surname as surname
+      FROM customer as cu INNER JOIN customer_address as ca ON ca.idCUSTOMER = cu.idCUSTOMER INNER JOIN address as a
+      ON ca.idADDRESS = a.idADDRESS WHERE cu.idCUSTOMER=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('s',$idCUSTOMER);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result->fetch_all(MYSQLI_ASSOC);
 
     }
 
@@ -160,7 +165,7 @@ class DatabaseHelper{
       foreach($wordsArray as $word){
         $query=$query . " AND p.description LIKE '%". $word . "%'";
       }
-      
+
       $stmt = $this->db->prepare($query);
       $stmt->execute();
       $result = $stmt->get_result();

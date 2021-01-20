@@ -5,86 +5,98 @@
 </div>
 <hr/>
 <main>
-  <!--<form action="#" method="post">-->
-    <div class="row m-3">
-      <div class="col orderd-first">
-        <fieldset>
-          <legend>METODO DI PAGAMENTO</legend>
-          <label for="name" class="invisible">Nome sulla carta</label>
-          <input type="text" id="name" class="form-control" placeholder="Nome sulla Carta" required/>
-          <label for="ccnum" class="invisible">Numero della Carta</label>
-          <input type="text" id="ccnum" class="form-control" placeholder="Numero della carta" required/>
-          <label for="scadenza" class="invisible">Data di scadenza</label>
-          <input type="date" id="scadenza" class="form-control" placeholder="Data di scadenza" required/>
-          <label for="cvv" class="invisible">CVV</label>
-          <input type="text" id="cvv" class="form-control" placeholder="CVV" required/>
-        </fieldset>
-      </div>
-      <div class="col-md-4 order-md-2">
-        <h2>RIEPILOGO CARRELLO</h2>
-        <ul class="list-group">
-          <?php if(isset($templateParams["coupon_error"])): ?>
-            <p class="fw-bold  bg-danger text-white"><?php echo $templateParams["coupon_error"]; ?></p>
-          <?php endif; ?>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <p>Articoli</p>
-            <p><?php echo numberProduct($dbh->getCartByCustomerID($_SESSION['idCUSTOMER'])); ?></p>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <p>Totale Articoli</p>
-            <p><?php $total = cartPrice($dbh->getCartByCustomerID($_SESSION['idCUSTOMER'])); echo $total."€";?></p>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <p>Codice Sconto</p>
-              <small><?php
-                if(isset($_SESSION["couponCode"])){
-                    echo $_SESSION["couponCode"];
-                }
-                else {
-                  echo "NESSUNCODICESCONTOINSERITO";
-                }
-                ?></small>
-            </div>
-            <p><?php
-              if(isset($_SESSION["couponDiscount"])){
-                  echo $_SESSION["couponDiscount"]."%";
+  <div class="row m-3">
+    <div class="col-md-4 order-md-2">
+      <h2>RIEPILOGO CARRELLO</h2>
+      <ul class="list-group">
+        <?php if(isset($templateParams["coupon_error"])): ?>
+          <p class="fw-bold  bg-danger text-white"><?php echo $templateParams["coupon_error"]; ?></p>
+        <?php endif; ?>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <p>Articoli</p>
+          <p><?php echo numberProduct($dbh->getCartByCustomerID($_SESSION['idCUSTOMER'])); ?></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <p>Totale Articoli</p>
+          <p><?php $total = cartPrice($dbh->getCartByCustomerID($_SESSION['idCUSTOMER'])); echo $total."€";?></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <p>Codice Sconto</p>
+            <small><?php
+              if(isset($_SESSION["couponCode"])){
+                  echo $_SESSION["couponCode"];
               }
-              ?></p>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <p class="font-weight-bold">TOTALE</p>
-            <p><?php
-              if(isset($_SESSION["couponDiscount"])){
-                echo calculateFinalPrice($total, $_SESSION["couponDiscount"])."€";
+              else {
+                echo "NESSUNCODICESCONTOINSERITO";
               }
-              else{
-                echo $total."€";
-              }
-            ?></p>
-          </li>
-        </ul>
-        <form class="card p-2" action="payment.php" method="get">
-          <div class="input-group">
-            <label for="coupon" class="invisible">Codice sconto</label>
-            <input id="coupon" name="couponCode" type="text" class="form-control" placeholder="Codice Sconto"/>
-            <div class="input-group-append">
-              <label for="inserisci" class="invisible">Inserisci</label>
-              <input id="inserisci" type="submit" class="btn btn-secondary" value="Inserisci"/>
-            </div>
+              ?></small>
           </div>
-        </form>
-      </div>
+          <p><?php
+            if(isset($_SESSION["couponDiscount"])){
+                echo $_SESSION["couponDiscount"]."%";
+            }
+            ?></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <p class="font-weight-bold">TOTALE</p>
+          <p><?php
+            if(isset($_SESSION["couponDiscount"])){
+              echo calculateFinalPrice($total, $_SESSION["couponDiscount"])."€";
+            }
+            else{
+              echo $total."€";
+            }
+          ?></p>
+        </li>
+      </ul>
+      <form class="card p-2" action="payment.php" method="get">
+        <div class="input-group">
+          <label for="coupon" class="invisible">Codice sconto</label>
+          <input id="coupon" name="couponCode" type="text" class="form-control" placeholder="Codice Sconto"/>
+          <div class="input-group-append">
+            <label for="inserisci" class="invisible">Inserisci</label>
+            <input id="inserisci" type="submit" class="btn btn-secondary" value="Inserisci"/>
+          </div>
+        </div>
+      </form>
     </div>
+    <div class="col orderd-first">
+      <form action="#" method="post">
+      <fieldset>
+        <legend>METODO DI PAGAMENTO</legend>
+        <label for="name" class="invisible">Nome sulla carta</label>
+        <input type="text" id="name" class="form-control" placeholder="Nome sulla Carta" required/>
+        <label for="ccnum" class="invisible">Numero della Carta</label>
+        <input type="text" id="ccnum" class="form-control" placeholder="Numero della carta" required/>
+        <label for="scadenza" class="invisible">Data di scadenza</label>
+        <input type="date" id="scadenza" class="form-control" placeholder="Data di scadenza" required/>
+        <label for="cvv" class="invisible">CVV</label>
+        <input type="text" id="cvv" class="form-control" placeholder="CVV" required/>
+      </fieldset>
+      <div class="row mt-5">
+        <div class="col">
+          <fieldset>
+            <?php $addresses = $dbh->getAddressByCustomerID($_SESSION['idCUSTOMER']); ?>
+            <legend>INDIRIZZO DI SPEDIZIONE</legend>
+            <div class="form-check">
+            <?php foreach($addresses as $address): ?>
+              <input type="radio" id="<?php echo $address["idADDRESS"]; ?>" name="idADDRESS" value="<?php echo $address["idADDRESS"]; ?>"/>
+              <label for="<?php echo $address["idADDRESS"]; ?>" class="pt-2">
+                <?php echo $address["street"]; ?></br>
+                <?php echo $address["city"].", ".$address["province"].", ".$address["zip_code"]; ?></br>
+                <?php echo "Presso ".$address["name"]." ".$address["surname"]; ?>
+              </label><br/>
+            <?php endforeach; ?>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
     <div class="row m-3">
       <div class="col">
-        <fieldset>
-          <legend>INDIRIZZO DI SPEDIZIONE</legend>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="flexRadioDefault1" checked/>
-            <label class="form-check-label" for="flexRadioDefault1">Indirizzo di default</label>
-          </div>
-        </fieldset>
         <?php if(!isset($_GET["add_address"])): ?>
         <div class="m-3">
           <form class="" action="" method="get">
@@ -128,5 +140,4 @@
         <?php endif; ?>
       </div>
     </div>
-  <!--</form>-->
 </main>

@@ -4,6 +4,12 @@
   </header>
 </div>
 <hr/>
+
+<?php if(!isUserLoggedIn()): ?>
+  <div class="alert alert-danger text-center" role="alert">
+    <a href="login.php" class="alert-link">ACCEDI PER VISUALIZZARE LE INFORMAZIONI DELL'ACCOUNT</a>
+  </div>
+<?php else: $addresses = $dbh->getAddressByCustomerID($_SESSION['idCUSTOMER']); ?>
 <main>
   <div class="row">
     <div class="col-12">
@@ -11,7 +17,7 @@
       <div class="col-12">
         <section>
           <h3 class="font-weight-bold">Informazioni di contatto</h3>
-          <?php if(isset($_SESSION['idCUSTOMER'])): ?>
+          <?php if(isUserLoggedIn()): ?>
           <p><?php echo $_SESSION["name"]." ".$_SESSION["surname"]; ?></p>
           <p><?php echo $_SESSION["email"]; ?></p>
           <p><?php echo $_SESSION["telephone"]; ?></p>
@@ -30,7 +36,16 @@
       <div class="col-12">
         <section>
           <h3 class="font-weight-bold">Informazioni di spedizione</h3>
-          <p>Indirizzi</p>
+          <ul class="list-group list-group-flush">
+          <?php foreach($addresses as $address): ?>
+            <li class="list-group-item bg-light">
+              <p><?php echo $address["street"]; ?><br/>
+              <?php echo $address["city"]; ?><br/>
+              <?php echo $address["province"]; ?><br/>
+              <?php echo $address["zip_code"]; ?></p>
+            </li>
+          <?php endforeach; ?>
+          </ul>
           <?php if(!isset($_GET["add_address"])): ?>
           <div class="row justify-content-center">
             <form class="" action="" method="get">
@@ -77,3 +92,4 @@
     </div>
   </div>
 </main>
+<?php endif; ?>
