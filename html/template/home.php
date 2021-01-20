@@ -6,7 +6,7 @@
 
 <div class="row m-0">
     <div class="col-12 p-0">
-        <div id="productCarousel" class="carousel carousel-dark slide shadow p-5 mb-5 bg-white rounded" data-bs-ride="carousel">
+        <div id="productCarousel" class="carousel carousel-dark slide shadow p-5 m-5 bg-white rounded" data-bs-ride="carousel">
             <ol class="carousel-indicators m-auto">
                 <?php
                                 $active=TRUE;
@@ -36,14 +36,14 @@
                         <div class="carousel-item" data-bs-interval="10000">
                             <?php endif; ?>
                             <div class="card">
-                        <img src="<?php echo UPLOAD_DIR.$carouselProduct["idPRODUCT"]; ?>/1.jpg" class="card-img-top img-fluid" alt="<?php echo $carouselProduct["name"]; ?>">
-                        <div class="card-body">
-                            <h2 class="card-title"><?php echo $carouselProduct["name"]; ?></h2>
-                            <h3 class="card-text text-center"><?php echo $carouselProduct["price"]; ?> €</h3>
-                            <a href="./product.php?id=<?php echo $carouselProduct["idPRODUCT"]; ?>" class="stretched-link"></a>
-                        </div>
+                                <img src="<?php echo UPLOAD_DIR.$carouselProduct["idPRODUCT"]; ?>/1.jpg" class="card-img-top img-fluid mx-auto" alt="<?php echo $carouselProduct["name"]; ?>">
+                                <div class="card-body">
+                                    <h2 class="card-title text-center"><?php echo $carouselProduct["name"]; ?></h2>
+                                    <h3 class="card-text text-center"><?php echo $carouselProduct["price"]; ?> €</h3>
+                                    <a href="./product.php?id=<?php echo $carouselProduct["idPRODUCT"]; ?>" class="stretched-link"></a>
+                                </div>
                         
-                        </div>
+                            </div>
                         </div>
                         <?php endforeach; ?>
                     </div>
@@ -62,7 +62,7 @@
 <div class="row my-2 mx-5">
     <div class="col-12">
         <div class="card text-white shadow p-0 mb-5 rounded" id="home-card">
-            <img src="./images/scarpette.jpg" class="card-img h-100" alt="">
+            <img src="./images/scarpette.jpg" class="card-img h-100 rounded" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold">SCARPETTE DA ARRAMPICATA</h1>
                 <h2 class="card-text fw-bold">
