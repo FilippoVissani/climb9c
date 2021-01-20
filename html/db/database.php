@@ -180,7 +180,24 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
+    public function getCoustomerAddressID($idCUSTOMER, $idADDRESS){
+        $query = "SELECT idCUSTOMER_ADDRESS FROM customer_address WHERE idCUSTOMER=? AND idADDRESS=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$idCUSTOMER, $idADDRESS);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $shipping_date, $coupon){
+      $query = "INSERT INTO order (date, customer_address, shipping_date, COUPONcode)
+      VALUES (NULL, NULL, NULL, NULL)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('siss',$date, $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0], $shipping_date, $coupon);
+      $stmt->execute();
     }
 
     public function getBestSeller($limit){
