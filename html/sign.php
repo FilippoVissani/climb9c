@@ -17,7 +17,7 @@ if(count($_POST) > 0){
     //visualizza pagina account
     $templateParams["title"]="Climb9c - Account";
     $templateParams["search_bar"] = FALSE;
-    $templateParams["name"]="account.php";
+    $templateParams["name"]="account_form.php";
   }
 
 }

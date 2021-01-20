@@ -161,5 +161,16 @@ class DatabaseHelper{
       $result = $stmt->get_result();
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getCoupon($couponCode){
+        $query = "SELECT discount, validity FROM coupon WHERE code=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$couponCode);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+
+    }
 }
 ?>

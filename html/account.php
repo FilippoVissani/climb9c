@@ -1,12 +1,14 @@
 <?php
 require_once 'bootstrap.php';
 
-function isUserLoggedIn(){
-    return !empty($_SESSION['idCUSTOMER']);
+if(isset($_GET["logout"])){
+  unset($_SESSION["idCUSTOMER"]);
+  header("location: index.php");
 }
-
-if (isUserLoggedIn()){
-  
+else if(isset($_POST["address"])){
+  $dbh->addNewAddressToCustomer($_SESSION["email"], $_POST["name"], $_POST["surname"], $_POST["address"], $_POST["province"], $_POST["city"], $_POST["zip_code"]);
 }
+header("location: login.php");
 
- ?>
+require './template/base.php';
+?>
