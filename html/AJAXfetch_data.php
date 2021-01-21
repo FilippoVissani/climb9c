@@ -7,15 +7,16 @@ foreach($templateParams["FilteredProduct"] as $row)
 		{
 			$output .= '
                     <div class="col">
-                        <div class="card h-100">
+                        <div class="card rounded shadow mb-5 h-100">
                         <img src="'.UPLOAD_DIR.$row["idPRODUCT"].'/1.jpg" class="card-img-top" alt="'.$row["name"].'">
-                        <div class="card-body">
-                            <h5 class="card-title">'.$row["name"].'</h5>
-                            <p class="card-text text-center">'.$row["price"]. '€</p>
+                        <div class="card-body border-top">
+                            <p class="card-title text-center fs-5">'.$row["name"].'</p>
+                            
                             <a href="./product.php?id='.$row["idPRODUCT"].'" class="stretched-link"></a>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Disponibili '.$row['quantity'].' pezzi</small>
+                            <span class="badge bg-primary text-dark fs-5">'.$row["price"]. '€</span>
+                            <p class="text-muted fs-5">Pezzi disponibili: '.$row['quantity'].'</p>
                         </div>
                         </div>
                     </div>
