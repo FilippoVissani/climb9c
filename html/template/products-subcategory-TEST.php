@@ -71,21 +71,21 @@
                 Nessun prodotto in questa categoria. <a href="index.php" class="alert-link">Clicca qui per andare alla home</a>
             </div>
         <?php else: ?>
+            
+
+
             <div class="row row-cols-2 row-cols-md-4 g-4 filter_data">
             
+            </div>
+
+            <div id="loading" class="text-center m-5">
+            <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
             </div>
         <?php endif; ?>
     <?php endif; ?>
 </div>
-
-<style>
-#loading
-{
-	text-align:center; 
-	background: url('images/loader.gif') no-repeat center; 
-	height: 150px;
-}
-</style>
 
 
 <script>
@@ -97,34 +97,27 @@
             $('#filters').modal("show");
         });
 
-        filter_data();
+        filter_data("Chiave", "Tutti");
 
         $('select').on('change', function() {
             $chiave = this.id;
             $valore = this.value;
 
-            $('.filter_data').html('<div id="loading" style="" ></div>');
-            
+            filter_data($chiave, $valore);
+        });
+
+        function filter_data($chiave, $valore){
+            $('.filter_data').html("");
+            $("#loading").show();
             $.ajax({
                 url:"./AJAXfetch_data.php",
                 method:"POST",
                 data:{categoria:<?php echo $subcategory["idSUBCATEGORY"]; ?>, chiave:$chiave, valore:$valore},
                 success:function(data){
+                    $("#loading").hide();
                     $('.filter_data').html(data);
                 }
             });
-        });
-
-        function filter_data(){
-            $.ajax({
-                url:"./AJAXfetch_data.php",
-                method:"POST",
-                data:{categoria:<?php echo $subcategory["idSUBCATEGORY"]; ?>, chiave:"chiave", valore:"Tutti"},
-                success:function(data){
-                    $('.filter_data').html(data);
-                }
-            });
-            
         }
 
 
