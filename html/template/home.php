@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<div class="row mb-5">
+<div class="row mb-5 mx-auto">
     <div class="col-12 p-0">
         <div id="productCarousel" class="carousel carousel-dark slide shadow p-5 m-3 bg-white rounded-pill-home" data-bs-ride="carousel">
             <ol class="carousel-indicators m-auto">
@@ -74,13 +74,28 @@
 </div>
 
 <div class="row my-2 mx-auto">
+    <div class="col-md-12">
+        <div class="card text-white shadow mb-5 w-100 px-auto rounded-pill-home" id="home-card">
+            <img src="./images/trave2.jpg" class="card-img rounded-pill-home" alt="">
+            <div class="card-img-overlay">
+                <h1 class="card-title fw-bold text-light">TRAVI ARRAMPICATA</h1>
+                <h2 class="card-text fw-bold text-light">
+                    Allenarsi bene, allenarsi sempre
+                </h2>
+                <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row my-2 mx-auto">
     <div class="col-md-4">
         <div class="card text-white shadow mb-5 w-100 px-auto rounded-pill-home" id="home-card">
-            <img src="./images/scarpette.jpg" class="card-img h-100 rounded-pill-home" alt="">
+            <img src="./images/corde.jpg" class="card-img h-100 rounded-pill-home" alt="">
             <div class="card-img-overlay">
-                <h1 class="card-title fw-bold">SCARPETTE DA ARRAMPICATA</h1>
-                <h2 class="card-text fw-bold">
-                    Indoor, outdoor e boulder
+                <h1 class="card-title fw-bold text-dark">CORDE</h1>
+                <h2 class="card-text fw-bold text-dark">
+                    Volare sicuri
                 </h2>
                 <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
             </div>
@@ -89,11 +104,11 @@
 
     <div class="col-md-4">
         <div class="card text-white shadow mb-5 w-100 px-auto rounded-pill-home" id="home-card">
-            <img src="./images/corde.jpg" class="card-img h-100 rounded-pill-home" alt="">
+            <img src="./images/scarpette.jpg" class="card-img h-100 rounded-pill-home" alt="">
             <div class="card-img-overlay">
-                <h1 class="card-title fw-bold text-dark">CORDE</h1>
-                <h2 class="card-text fw-bold text-dark">
-                    Volare sicuri
+                <h1 class="card-title fw-bold">SCARPETTE DA ARRAMPICATA</h1>
+                <h2 class="card-text fw-bold">
+                    Indoor, outdoor e boulder
                 </h2>
                 <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
             </div>
@@ -122,7 +137,7 @@
 
 <div class="row m-auto">
     <?php foreach($templateParams["bestSeller"] as $product): ?>
-    <div class="col-md-4 m-auto">
+    <div class="col-md-3 mx-auto">
         <div class="card m-1">
             <img src="<?php echo UPLOAD_DIR.$product["idPRODUCT"]; ?>/1.jpg" class="card-img-top" alt="
             <?php echo $product["name"]; ?>">
