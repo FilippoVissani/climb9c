@@ -36,6 +36,11 @@
     text-decoration: none;
 }
 
+.scroll {
+    overflow: auto!important;
+    white-space: nowrap!important;
+  }
+
 /*remove up and down arrows form input type number*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

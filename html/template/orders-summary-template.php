@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<div class="row m-auto">
+<div class="row m-auto scroll">
     <div class="col-md-12 m-auto">
         <table class="table table-striped">
             <thead>
