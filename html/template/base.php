@@ -47,7 +47,7 @@
                     }
                 ?>
 
-            <div class="row m-0">
+            <div class="row mx-0 mt-3">
                 <div class="col-12 p-0">
                     <footer class="nav bg-dark py-3">
                         <div class="col-3 border-end border-1 border-light mb-2">

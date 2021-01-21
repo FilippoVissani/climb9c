@@ -137,24 +137,13 @@
 <div class="row m-auto">
     <?php foreach($templateParams["bestSeller"] as $product): ?>
     <div class="col-md-2 mx-auto">
-        <div class="card m-1">
-            <img src="<?php echo UPLOAD_DIR.$product["idPRODUCT"]; ?>/1.jpg" class="card-img-top" alt="
-            <?php echo $product["name"]; ?>">
-            <div class="card-body">
-                <h2 class="card-title text-center">
-                    <?php echo $product["name"]; ?>
-                </h2>
-                <h3 class="card-text text-center">
-                    <?php echo $product["price"]; ?> €
-                </h3>
-                <a href="./product.php?id=<?php echo $product["idPRODUCT"]; ?>" class="stretched-link"></a>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Disponibili
-                    <?php echo $product["quantity"]; ?> pezzi
-                </small>
-            </div>
-        </div>
+        <?php 
+        $templateParams["idPRODUCT"]=$product["idPRODUCT"];
+        $templateParams["productName"]=$product["name"];
+        $templateParams["productPrice"]=$product["price"];
+        $templateParams["quantity"]=$product["quantity"];
+        require "product-card-template.php"
+        ?>
     </div>
     <?php endforeach; ?>
 </div>
