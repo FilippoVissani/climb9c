@@ -96,7 +96,7 @@ class DatabaseHelper{
       $query1 = "INSERT INTO customer_address (idCUSTOMER, idADDRESS)
       VALUES (?, ?)";
       $stmt1 = $this->db->prepare($query1);
-      $stmt1->bind_param('ii',$this->getCustomerIdByEmail($email)[0], $lastIdAddrress);
+      $stmt1->bind_param('ii',$this->getCustomerIdByEmail($email)[0]["idCUSTOMER"], $lastIdAddrress);
       $stmt1->execute();
     }
 
@@ -357,12 +357,21 @@ class DatabaseHelper{
     }
 
     public function deleteCart($idCUSTOMER){
+      //update quantities in stock
+      $product = $this->getCartByCustomerID($idCUSTOMER);
+      foreach($product as $singleProduct){
+        $query = "UPDATE product SET quantity = ? WHERE idPRODUCT = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $singleProduct["productQuantity"], $singleProduct["idPRODUCT"]);
+        $stmt->execute();
+      }
+      //delete from cart_product
       $query = "DELETE FROM cart_product WHERE idCART=?";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('i',$idCUSTOMER);
       $stmt->execute();
       $result = $stmt->get_result();
-
+      //delete cart
       $query = "DELETE FROM cart WHERE idCUSTOMER=?";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('i',$idCUSTOMER);
@@ -392,15 +401,20 @@ class DatabaseHelper{
 
       if($newQuantity > $quantitaInMagazzino){
         echo "Spiacente, ".$newQuantity." pezzi non sono disponibili";
-        return;
+
+        //update cart_product
+        $query1 = "UPDATE cart_product SET quantity = ? WHERE idPRODUCT = ?";
+        $stmt1 = $this->db->prepare($query1);
+        $stmt1->bind_param('ii', $quantitaInMagazzino, $idProduct);
+        $stmt1->execute();
       }
-
-      //update cart_product
-      $query1 = "UPDATE cart_product SET quantity = ? WHERE idPRODUCT = ?";
-      $stmt1 = $this->db->prepare($query1);
-      $stmt1->bind_param('ii', $newQuantity, $idProduct);
-      $stmt1->execute();
-
+      else{
+        //update cart_product
+        $query1 = "UPDATE cart_product SET quantity = ? WHERE idPRODUCT = ?";
+        $stmt1 = $this->db->prepare($query1);
+        $stmt1->bind_param('ii', $newQuantity, $idProduct);
+        $stmt1->execute();
+      }
       //aggiorno ultima modifica del carrello
       $dataAttuale = date("Y-m-d");
       $query2 = "UPDATE cart SET last_update = ? WHERE idCUSTOMER = ?";
@@ -414,8 +428,8 @@ class DatabaseHelper{
           return $this->getproductsInSubcategory($idSubcategory);
         }
 
-        $query = "SELECT p.idPRODUCT, p.name, p.price, p.quantity 
-        FROM product as p INNER JOIN subcategory as s ON p.idSUBCATEGORY = s.idSUBCATEGORY 
+        $query = "SELECT p.idPRODUCT, p.name, p.price, p.quantity
+        FROM product as p INNER JOIN subcategory as s ON p.idSUBCATEGORY = s.idSUBCATEGORY
                           INNER JOIN tag_product as tp ON tp.idPRODUCT = p.idPRODUCT
                           INNER JOIN tag as t ON t.idTAG = tp.idTAG
                           INNER JOIN tag_subcategory as ts ON ts.idTAG = t.idTAG AND ts.idSUBCATEGORY = s.idSUBCATEGORY
@@ -424,7 +438,7 @@ class DatabaseHelper{
         $stmt->bind_param('iss',$idSubcategory, $chiave, $valore);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC); 
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 
