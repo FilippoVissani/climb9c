@@ -4,7 +4,7 @@
             <div class="input-group mb-3">
                 <input type="text" name="search-text" class="form-control rounded-pill-start" placeholder="Cerca" aria-label="Cerca" aria-describedby="button-search">
                 <button class="btn bg-primary rounded-pill-bottom" type="submit" id="button-search">
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search fs-2"></i>
                 </button>
             </div>
         </form>
