@@ -193,8 +193,8 @@ class DatabaseHelper{
     }
 
     public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $shipping_date, $coupon){
-      $query = "INSERT INTO order (date, customer_address, shipping_date, COUPONcode)
-      VALUES (NULL, NULL, NULL, NULL)";
+      var_dump($query = "INSERT INTO order ("'date'", customer_address, shipping_date, COUPONcode)
+      VALUES (?, ?, ?, ?)");
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('siss',$date, $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0], $shipping_date, $coupon);
       $stmt->execute();
