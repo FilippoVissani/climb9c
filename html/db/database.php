@@ -211,7 +211,7 @@ class DatabaseHelper{
     }
 
     public function getOrders($idCUSTOMER){
-      $query = "SELECT o.idORDER, o.date, o.shipping_date, o.COUPONcode, a.street, a.province, a.city, a.zip_code, SUM(p.unit_price) AS total_price
+      $query = "SELECT o.idORDER, o.date, o.shipping_date, o.COUPONcode, a.street, a.province, a.city, a.zip_code, p.unit_price, p.quantity
       FROM (((`order` o JOIN `customer_address` c ON o.customer_address=c.idCUSTOMER_ADDRESS)
       JOIN `address` a ON c.idADDRESS=a.idADDRESS)
       JOIN `product_order` p ON p.idORDER=o.idORDER)
@@ -222,6 +222,19 @@ class DatabaseHelper{
       $stmt->execute();
       $result = $stmt->get_result();
 
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProducts($idOrder){
+      $query = "SELECT `product`.`idPRODUCT`, `product`.`name`, `product`.`brand`,`product_order`.`quantity`, `product_order`.`unit_price`
+      FROM (`order` JOIN `product_order` ON `order`.`idORDER`=`product_order`.`idORDER`)
+      JOIN `product` ON `product_order`.`idPRODUCT`=`product`.`idPRODUCT`
+      WHERE `order`.`idORDER`=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idOrder);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 

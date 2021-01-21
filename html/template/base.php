@@ -20,17 +20,17 @@
                 <div class="col-12 p-0">
                     <header class="navbar navbar-dark bg-dark fw-bold shadow">
                         <a class="navbar-brand" href="./index.php">
-                            <img src="./svg_icons/jam_mountain.svg" alt="" width="30" height="30" class="d-inline-block mx-2">
+                        <i class="fas fa-mountain fs-2"></i>
                                 Climb9c
                         </a>
-                        <div class="d-flex">
+                        <div class="d-flex text-light">
                             <a href="<?php echo isset($_SESSION["idCUSTOMER"]) ? "account.php" : "login.php" ?>">
-                                <img src="./svg_icons/user.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                            <i class="d-inline-block mx-4 far fa-user text-light fs-2"></i>
                             </a>
                             <a href="<?php echo isset($_SESSION["idCUSTOMER"]) ? "cart.php" : "login.php" ?>">
-                                <img src="./svg_icons/shopping-cart.svg" alt="" width="30" height="30" class="d-inline-block mx-3">
+                            <i class="d-inline-block mx-4 fas fa-shopping-cart text-light fs-2"></i>
                             </a>
-                            <img src="./svg_icons/dash.svg" alt="" width="30" height="30" class="d-inline-block mx-3" id="menu-toggler">
+                            <i class="d-inline-block mx-4 fas fa-bars fs-2" id="menu-toggler"></i>
                         </div>
                     </header>  
                 </div>

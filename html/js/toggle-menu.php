@@ -27,7 +27,7 @@ $(document).ready(function(){
         checkDesktop();
     });
 
-    $("img#menu-toggler").click(function(){
+    $("i#menu-toggler").click(function(){
         $( "div#menu" ).slideDown();
         if (!isDesktop) {
             $( "div.container-fluid" ).slideUp();
@@ -35,7 +35,7 @@ $(document).ready(function(){
     });
 
     <?php foreach($templateParams["categories"] as $category): ?>
-        $("img#menu-back").click(function(){
+        $("i#menu-back").click(function(){
             if($( "ul#menu-categories" ).is(":visible")){
                 $( "div#menu" ).slideUp();
                 if (!isDesktop) {

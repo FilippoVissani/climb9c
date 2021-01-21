@@ -17,7 +17,6 @@
                 <th scope="col">Provincia</th>
                 <th scope="col">Codice Postale</th>
                 <th scope="col">Coupon</th>
-                <th scope="col">Totale</th>
                 <th scope="col">Visualizza Dettagli</th>
               </tr>
             </thead>
@@ -32,7 +31,6 @@
                 <td><?php echo $order["province"] ?></td>
                 <td><?php echo $order["zip_code"] ?></td>
                 <td><?php echo $order["COUPONcode"] ?></td>
-                <td><?php echo $order["total_price"] ?> €</td>
                 <td>
                   <form action="./order-detail.php" method="post">
                     <input class="collapse" type="text" name="id" value="<?php echo $order["idORDER"] ?>" readonly="readonly">
