@@ -137,7 +137,7 @@
 
 <div class="row m-auto">
     <?php foreach($templateParams["bestSeller"] as $product): ?>
-    <div class="col-md-3 mx-auto">
+    <div class="col-md-2 mx-auto">
         <div class="card m-1">
             <img src="<?php echo UPLOAD_DIR.$product["idPRODUCT"]; ?>/1.jpg" class="card-img-top" alt="
             <?php echo $product["name"]; ?>">

@@ -209,5 +209,20 @@ class DatabaseHelper{
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getOrders($idCUSTOMER){
+      $query = "SELECT o.idORDER, o.date, o.shipping_date, o.COUPONcode, a.street, a.province, a.city, a.zip_code, SUM(p.unit_price) AS total_price
+      FROM (((`order` o JOIN `customer_address` c ON o.customer_address=c.idCUSTOMER_ADDRESS)
+      JOIN `address` a ON c.idADDRESS=a.idADDRESS)
+      JOIN `product_order` p ON p.idORDER=o.idORDER)
+      WHERE c.idCUSTOMER=?
+      GROUP BY o.idORDER";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idCUSTOMER);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
