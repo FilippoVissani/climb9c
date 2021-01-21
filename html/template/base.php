@@ -20,7 +20,7 @@
                 <div class="col-12 p-0">
                     <header class="navbar navbar-dark bg-dark fw-bold shadow">
                         <a class="navbar-brand" href="./index.php">
-                        <i class="fas fa-mountain fs-2"></i>
+                        <i class="fas fa-mountain fs-2 mx-2"></i>
                                 Climb9c
                         </a>
                         <div class="d-flex text-light">
@@ -51,8 +51,8 @@
                 <div class="col-12 p-0">
                     <footer class="nav bg-dark py-3">
                         <div class="col-3 border-end border-1 border-light mb-2">
-                            <div class="row m-0 d-flex justify-content-center">
-                                <img src="./svg_icons/credit-card.svg" alt="" width="30" height="30" class="mb-2 p-0" />
+                            <div class="row m-0 d-flex">
+                                <i class="far fa-credit-card text-light fs-2 mb-2 text-center p-0"></i>
                             </div>
                             <div class="row m-0">
                                 <p class="text-light text-center m-0 p-0">Metodo di pagamento sicuro</p>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-3 border-end border-1 border-light mb-2">
                             <div class="row m-0 d-flex justify-content-center">
-                                <img src="./svg_icons/delivery-truck.svg" alt="" width="30" height="30" class="mb-2 p-0" />
+                            <i class="fas fa-truck-moving text-light fs-2 mb-2 text-center p-0"></i>
                             </div>
                             <div class="row m-0">
                                 <p class="text-light text-center m-0 p-0">Spedizioni in tutto il mondo</p>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="col-3 border-end border-1 border-light mb-2">
                             <div class="row m-0 d-flex justify-content-center">
-                                <img src="./svg_icons/chronometer.svg" alt="" width="30" height="30" class="mb-2 p-0" />
+                            <i class="fas fa-clock text-light fs-2 mb-2 text-center p-0"></i>
                             </div>
                             <div class="row m-0">
                                 <p class="text-light text-center m-0 p-0">Spedizioni in 24 ore + 100 giorni per il reso</p>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="col-3 mb-2">
                             <div class="row m-0 d-flex justify-content-center">
-                                <img src="./svg_icons/sale-tag.svg" alt="" width="30" height="30" class="mb-2 p-0" />
+                            <i class="fas fa-percentage text-light fs-2 mb-2 text-center p-0"></i>
                             </div>
                             <div class="row m-0">
                                 <p class="text-light text-center m-0 p-0">Coupon per gli acquisti</p>
