@@ -23,9 +23,11 @@
               <p><?php echo cartPrice($product)."€"; ?></p>
             </div>
           </div>
+          <?php if(numberProduct($product)!=0): ?>
           <div class="row justify-content-center pt-3">
             <a class="btn btn-primary btn-block" href="payment.php" role="button">Procedi all'ordine</a>
           </div>
+          <?php endif; ?>
         </section>
         <hr/>
         <fieldset>
