@@ -10,6 +10,8 @@ $idSubcategory = $_GET["id"];
 $templateParams["subcategory"]=$dbh->getSubcategoryById($idSubcategory);
 $templateParams["productsInSubcategory"]=$dbh->getproductsInSubcategory($idSubcategory);
 
+$templateParams["tags"]=$dbh->getTagsBySubcategory($idSubcategory);
+
 
 //se non trova l'articolo scrive nel title 'articolo non trovato'
 if(!count($templateParams["subcategory"])==0){

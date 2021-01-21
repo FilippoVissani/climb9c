@@ -237,11 +237,8 @@ class DatabaseHelper{
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    //ADD TO CART
     public function addToCart($idCustomer, $idProduct, $quantity){
-
-      //controllo se la quantità che vuole acquistare è disponibile.
-      // se non c'è return echo "quantità selezionata non disponibile. nel carrello hai n pezzi che sono tutti i pezzi disponibili in magazzino "
-
       //controllo la quantità in magazzino
       $querya = "SELECT quantity FROM product WHERE idPRODUCT = ?";
       $stmta = $this->db->prepare($querya);
@@ -326,11 +323,26 @@ class DatabaseHelper{
         $stmt5 = $this->db->prepare($query5);
         $stmt5->bind_param('ii', $nuovaQuantita, $idProduct);
         $stmt5->execute();
-        $result = $stmt->get_result();
+        //$result = $stmt5->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        //return $result->fetch_all(MYSQLI_ASSOC);
       }
-
     }
+    // END ADD TO CART
+
+    public function getTagsBySubcategory($idSubcategory){
+      $query = "SELECT DISTINCT t.name as chiave, tp.value as valore FROM (((tag_product as tp INNER JOIN tag as t ON t.idTAG = tp.idTAG)
+                                                                                  INNER JOIN tag_subcategory as ts ON ts.idTAG = t.idTAG)
+                                                                                  INNER JOIN subcategory as s ON s.idSUBCATEGORY = ts.idSUBCATEGORY)
+                                                                                  WHERE s.idSUBCATEGORY = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idSubcategory);
+      $result = $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);                         
+    }
+
+
 }
 ?>
