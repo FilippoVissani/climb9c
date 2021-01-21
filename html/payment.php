@@ -7,7 +7,7 @@ if(!isUserLoggedIn()){
 
 if(isset($_POST["cvv"])){
   if(isset($_POST["idADDRESS"])){
-    //completa pagamentos
+    //completa pagamento
     //salva ordine su db
     if(!isset($_SESSION["couponCode"])){
       $_SESSION["couponCode"]=NULL;
@@ -15,6 +15,7 @@ if(isset($_POST["cvv"])){
     $dbh->addNewOrder(date("Y/m/d"), $_SESSION["idCUSTOMER"], $_POST["idADDRESS"], date('Y-m-d', strtotime(date("Y/m/d"). ' + 1 days')), $_SESSION["couponCode"]);
 
     //elimina ordine dal carrello
+     $dbh->deleteCart($_SESSION["idCUSTOMER"]);
 
     $templateParams["title"]="Climb9c - Pagamento";
     $templateParams["search_bar"] = FALSE;

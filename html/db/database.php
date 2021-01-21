@@ -340,7 +340,51 @@ class DatabaseHelper{
       $result = $stmt->execute();
       $result = $stmt->get_result();
 
-      return $result->fetch_all(MYSQLI_ASSOC);                         
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteCart($idCUSTOMER){
+      $query = "DELETE FROM cart_product WHERE idCART=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idCUSTOMER);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      
+      $query = "DELETE FROM cart WHERE idCUSTOMER=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idCUSTOMER);
+      $stmt->execute();
+      $result = $stmt->get_result();
+    }
+
+
+    public function updateCartQuantity($idCustomer, $idProduct, $newQuantity){
+      //controllo la quantità in magazzino
+      $query = "SELECT quantity FROM product WHERE idPRODUCT = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idProduct);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $value = $result->fetch_all(MYSQLI_ASSOC);
+
+      $quantitaInMagazzino=$value[0]["quantity"];
+
+      if($newQuantity > $quantitaInMagazzino){
+        echo "Spiacente, ".$newQuantity." pezzi non sono disponibili";
+        return;
+      }
+
+      //update cart_product
+      $query1 = "UPDATE cart_product SET quantity = ? WHERE idPRODUCT = ?";
+      $stmt1 = $this->db->prepare($query1);
+      $stmt1->bind_param('ii', $newQuantity, $idProduct);
+      $stmt1->execute();
+
+      //aggiorno ultima modifica del carrello
+      $dataAttuale = date("Y-m-d");
+      $query2 = "UPDATE cart SET last_update = ? WHERE idCUSTOMER = ?";
+      $stmt2 = $this->db->prepare($query2);
+      $stmt2->bind_param('si', $dataAttuale, $idCustomer);
     }
 
 
