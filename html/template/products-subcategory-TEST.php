@@ -109,6 +109,7 @@
         function filter_data($chiave, $valore){
             $('.filter_data').html("");
             $("#loading").show();
+            $('#filters').modal("hide");
             $.ajax({
                 url:"./AJAXfetch_data.php",
                 method:"POST",
