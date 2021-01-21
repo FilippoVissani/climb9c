@@ -185,6 +185,7 @@ class DatabaseHelper{
     public function getCoustomerAddressID($idCUSTOMER, $idADDRESS){
         $query = "SELECT idCUSTOMER_ADDRESS FROM customer_address WHERE idCUSTOMER=? AND idADDRESS=?";
         $stmt = $this->db->prepare($query);
+        //var_dump($stmt);
         $stmt->bind_param('ii',$idCUSTOMER, $idADDRESS);
         $result = $stmt->execute();
         $result = $stmt->get_result();
@@ -193,11 +194,22 @@ class DatabaseHelper{
     }
 
     public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $shipping_date, $coupon){
-      $query = "INSERT INTO order (date, customer_address, shipping_date, COUPONcode)
-      VALUES (NULL, NULL, NULL, NULL)";
+      $query = "INSERT INTO climb_9c.order (order.date, customer_address, shipping_date, COUPONcode) VALUES (?, ?, ?, ?)";
       $stmt = $this->db->prepare($query);
-      $stmt->bind_param('siss',$date, $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0], $shipping_date, $coupon);
+      $IDcustomer_address = $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0]["idCUSTOMER_ADDRESS"];
+      $stmt->bind_param('siss', $date, $IDcustomer_address, $date, $coupon);
       $stmt->execute();
+
+      $lastIdAddrress = $this->db->insert_id;
+      $product = $this->getCartByCustomerID($idCUSTOMER);
+
+      foreach($product as $singleProduct){
+        $query = "INSERT INTO product_order (idPRODUCT, idORDER, quantity, unit_price)
+        VALUES (?,?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iisd', $singleProduct["idPRODUCT"], $lastIdAddrress, $singleProduct["productQuantity"], $singleProduct["productPrice"]);
+        $stmt->execute();
+      }
     }
 
     public function getBestSeller($limit){
@@ -283,7 +295,7 @@ class DatabaseHelper{
           $quantity=$quantitaInMagazzino;
           echo "sono stati aggiunti ".$quantitaInMagazzino." pezzi nel carrello, che è la quantità disponibile in magazzino";
         } else{
-          
+
           echo "Hai aggiunto questo articolo nel carrello, quantità: ".$quantity;
         }
         $query4 = "INSERT INTO cart_product (idCART, idPRODUCT, quantity)

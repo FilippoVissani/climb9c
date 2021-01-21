@@ -7,13 +7,12 @@ if(!isUserLoggedIn()){
 
 if(isset($_POST["cvv"])){
   if(isset($_POST["idADDRESS"])){
-    //completa pagamento
-
+    //completa pagamentos
     //salva ordine su db
     if(!isset($_SESSION["couponCode"])){
       $_SESSION["couponCode"]=NULL;
     }
-    //$dbh->addNewOrder(date("Y/m/d"), $_SESSION["idCUSTOMER"], $_POST["idADDRESS"], date('Y-m-d', strtotime(date("Y/m/d"). ' + 1 days')), $_SESSION["couponCode"]);
+    $dbh->addNewOrder(date("Y/m/d"), $_SESSION["idCUSTOMER"], $_POST["idADDRESS"], date('Y-m-d', strtotime(date("Y/m/d"). ' + 1 days')), $_SESSION["couponCode"]);
 
     //elimina ordine dal carrello
 
