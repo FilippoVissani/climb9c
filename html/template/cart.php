@@ -23,15 +23,17 @@
               <p><?php echo cartPrice($product)."€"; ?></p>
             </div>
           </div>
+          <?php if(numberProduct($product)!=0): ?>
           <div class="row justify-content-center pt-3">
             <a class="btn btn-primary btn-block" href="payment.php" role="button">Procedi all'ordine</a>
           </div>
+          <?php endif; ?>
         </section>
         <hr/>
-        <form class="" action="#" method="get">
-          <fieldset>
-            <legend>RIEPILOGO ORDINE</legend>
-            <?php foreach($product as $singleProduct): ?>
+        <fieldset>
+          <legend>RIEPILOGO ORDINE</legend>
+          <?php foreach($product as $singleProduct): ?>
+          <form class="" action="#" method="get">
             <div class="row m-2">
               <div class="col-md text-center"><?php echo $singleProduct["productName"]; ?></div>
               <div class="col-md text-center"><?php echo $singleProduct["productPrice"]."€"; ?></div>
@@ -50,15 +52,15 @@
                 </div>
               </div>
               <div class="col-md justify-content-center">
-                <label for="elimina" class="invisible">Elimina</label>
-                <input id="elimina" name"delete" type="button" class="btn btn-secondary" value="Elimina"/>
+                <label for="<?php echo $singleProduct["idPRODUCT"]; ?>" class="invisible">Elimina</label>
+                <input id="<?php echo $singleProduct["idPRODUCT"]; ?>" name"delete" type="submit" class="btn btn-secondary" value="Elimina"/>
               </div>
+              <input type="hidden" name="idproduct" value="<?php echo $singleProduct["idPRODUCT"]; ?>" />
             </div>
-            <input type="hidden" name="idproduct" value="<?php echo $singleProduct["idPRODUCT"]; ?>" />
-            <hr/>
-            <?php endforeach; ?>
-          </fieldset>
-        </form>
+          </form>
+          <hr/>
+          <?php endforeach; ?>
+        </fieldset>
       </div>
     </div>
   </main>

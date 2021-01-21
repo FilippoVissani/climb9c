@@ -71,29 +71,21 @@
                 Nessun prodotto in questa categoria. <a href="index.php" class="alert-link">Clicca qui per andare alla home</a>
             </div>
         <?php else: ?>
-            <div class="row row-cols-2 row-cols-md-4 g-4">
-
-                <?php foreach($templateParams["productsInSubcategory"] as $product): ?>
-                    <div class="col">
-                        <div class="card h-100">
-                        <img src="<?php echo UPLOAD_DIR.$product["idPRODUCT"]; ?>/1.jpg" class="card-img-top" alt="<?php echo $product["name"]; ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $product["name"]; ?></h5>
-                            <p class="card-text text-center"><?php echo $product["price"]; ?> €</p>
-                            <a href="./product.php?id=<?php echo $product["idPRODUCT"]; ?>" class="stretched-link"></a>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Disponibili <?php echo $product["quantity"]; ?> pezzi</small>
-                        </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-
+            <div class="row row-cols-2 row-cols-md-4 g-4 filter_data">
+            
             </div>
         <?php endif; ?>
     <?php endif; ?>
 </div>
 
+<style>
+#loading
+{
+	text-align:center; 
+	background: url('images/loader.gif') no-repeat center; 
+	height: 150px;
+}
+</style>
 
 
 <script>
@@ -105,44 +97,37 @@
             $('#filters').modal("show");
         });
 
-        //4test
-        $('#btnAnnulla').click(function(){
-
-            <?php foreach ($group as $key=>$value): ?>
-                var arr = { "one": 1, "two": 2, "three": 3 }; 
-            <?php endforeach; ?>
-        });
-
-        $(".form-control").change(function(){
-            //$('#<?php //echo $key; ?> option:selected').text()
-            //console.log(this.text());
-        });
+        filter_data();
 
         $('select').on('change', function() {
             $chiave = this.id;
             $valore = this.value;
 
-            alert( this.value + " a " + this.id );
+            $('.filter_data').html('<div id="loading" style="" ></div>');
+            
+            $.ajax({
+                url:"./AJAXfetch_data.php",
+                method:"POST",
+                data:{categoria:<?php echo $subcategory["idSUBCATEGORY"]; ?>, chiave:$chiave, valore:$valore},
+                success:function(data){
+                    $('.filter_data').html(data);
+                }
+            });
         });
 
+        function filter_data(){
+            $.ajax({
+                url:"./AJAXfetch_data.php",
+                method:"POST",
+                data:{categoria:<?php echo $subcategory["idSUBCATEGORY"]; ?>, chiave:"chiave", valore:"Tutti"},
+                success:function(data){
+                    $('.filter_data').html(data);
+                }
+            });
+            
+        }
 
 
 
-
-        //mostra prodotti
-        $("#btnApply").click(function(){
-            $.ajax({  
-                url:"./AJAXaddToCart.php",  
-                method:"post",  
-                data:{product:<?php echo $product['idPRODUCT']; ?>, quantity:$("#text-quantity").val()},  
-                success:function(data){  
-                    //qui mostrare i prodotti
-                },
-                error: function()
-                {
-                    alert("Errore nel database, contattare l'amministratore del sito");
-                }  
-            });  
-        });
     });
 </script>

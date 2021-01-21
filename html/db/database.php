@@ -185,6 +185,7 @@ class DatabaseHelper{
     public function getCoustomerAddressID($idCUSTOMER, $idADDRESS){
         $query = "SELECT idCUSTOMER_ADDRESS FROM customer_address WHERE idCUSTOMER=? AND idADDRESS=?";
         $stmt = $this->db->prepare($query);
+        //var_dump($stmt);
         $stmt->bind_param('ii',$idCUSTOMER, $idADDRESS);
         $result = $stmt->execute();
         $result = $stmt->get_result();
@@ -193,11 +194,22 @@ class DatabaseHelper{
     }
 
     public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $shipping_date, $coupon){
-      $query = "INSERT INTO order (date, customer_address, shipping_date, COUPONcode)
-      VALUES (NULL, NULL, NULL, NULL)";
+      $query = "INSERT INTO climb_9c.order (order.date, customer_address, shipping_date, COUPONcode) VALUES (?, ?, ?, ?)";
       $stmt = $this->db->prepare($query);
-      $stmt->bind_param('siss',$date, $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0], $shipping_date, $coupon);
+      $IDcustomer_address = $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0]["idCUSTOMER_ADDRESS"];
+      $stmt->bind_param('siss', $date, $IDcustomer_address, $date, $coupon);
       $stmt->execute();
+
+      $lastIdAddrress = $this->db->insert_id;
+      $product = $this->getCartByCustomerID($idCUSTOMER);
+
+      foreach($product as $singleProduct){
+        $query = "INSERT INTO product_order (idPRODUCT, idORDER, quantity, unit_price)
+        VALUES (?,?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iisd', $singleProduct["idPRODUCT"], $lastIdAddrress, $singleProduct["productQuantity"], $singleProduct["productPrice"]);
+        $stmt->execute();
+      }
     }
 
     public function getBestSeller($limit){
@@ -238,11 +250,8 @@ class DatabaseHelper{
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    //ADD TO CART
     public function addToCart($idCustomer, $idProduct, $quantity){
-
-      //controllo se la quantità che vuole acquistare è disponibile.
-      // se non c'è return echo "quantità selezionata non disponibile. nel carrello hai n pezzi che sono tutti i pezzi disponibili in magazzino "
-
       //controllo la quantità in magazzino
       $querya = "SELECT quantity FROM product WHERE idPRODUCT = ?";
       $stmta = $this->db->prepare($querya);
@@ -299,7 +308,7 @@ class DatabaseHelper{
           $quantity=$quantitaInMagazzino;
           echo "sono stati aggiunti ".$quantitaInMagazzino." pezzi nel carrello, che è la quantità disponibile in magazzino";
         } else{
-          
+
           echo "Hai aggiunto questo articolo nel carrello, quantità: ".$quantity;
         }
         $query4 = "INSERT INTO cart_product (idCART, idPRODUCT, quantity)
@@ -327,11 +336,97 @@ class DatabaseHelper{
         $stmt5 = $this->db->prepare($query5);
         $stmt5->bind_param('ii', $nuovaQuantita, $idProduct);
         $stmt5->execute();
-        $result = $stmt->get_result();
+        //$result = $stmt5->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        //return $result->fetch_all(MYSQLI_ASSOC);
+      }
+    }
+    // END ADD TO CART
+
+    public function getTagsBySubcategory($idSubcategory){
+      $query = "SELECT DISTINCT t.name as chiave, tp.value as valore, t.idTAG as id FROM (((tag_product as tp INNER JOIN tag as t ON t.idTAG = tp.idTAG)
+                                                                                  INNER JOIN tag_subcategory as ts ON ts.idTAG = t.idTAG)
+                                                                                  INNER JOIN subcategory as s ON s.idSUBCATEGORY = ts.idSUBCATEGORY)
+                                                                                  WHERE s.idSUBCATEGORY = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idSubcategory);
+      $result = $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteCart($idCUSTOMER){
+      $query = "DELETE FROM cart_product WHERE idCART=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idCUSTOMER);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      $query = "DELETE FROM cart WHERE idCUSTOMER=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idCUSTOMER);
+      $stmt->execute();
+      $result = $stmt->get_result();
+    }
+
+    public function deleteProductFromCart($idCUSTOMER, $idPRODUCT){
+      $query = "DELETE FROM cart_product WHERE idCART=? AND idPRODUCT=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ii', $idCUSTOMER, $idPRODUCT);
+      $stmt->execute();
+      $result = $stmt->get_result();
+    }
+
+
+    public function updateCartQuantity($idCustomer, $idProduct, $newQuantity){
+      //controllo la quantità in magazzino
+      $query = "SELECT quantity FROM product WHERE idPRODUCT = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idProduct);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $value = $result->fetch_all(MYSQLI_ASSOC);
+
+      $quantitaInMagazzino=$value[0]["quantity"];
+
+      if($newQuantity > $quantitaInMagazzino){
+        echo "Spiacente, ".$newQuantity." pezzi non sono disponibili";
+        return;
       }
 
+      //update cart_product
+      $query1 = "UPDATE cart_product SET quantity = ? WHERE idPRODUCT = ?";
+      $stmt1 = $this->db->prepare($query1);
+      $stmt1->bind_param('ii', $newQuantity, $idProduct);
+      $stmt1->execute();
+
+      //aggiorno ultima modifica del carrello
+      $dataAttuale = date("Y-m-d");
+      $query2 = "UPDATE cart SET last_update = ? WHERE idCUSTOMER = ?";
+      $stmt2 = $this->db->prepare($query2);
+      $stmt2->bind_param('si', $dataAttuale, $idCustomer);
     }
+
+    public function filterProducts($idSubcategory, $chiave, $valore){
+
+        if($valore=="Tutti"){
+          return $this->getproductsInSubcategory($idSubcategory);
+        }
+
+        $query = "SELECT p.idPRODUCT, p.name, p.price, p.quantity 
+        FROM product as p INNER JOIN subcategory as s ON p.idSUBCATEGORY = s.idSUBCATEGORY 
+                          INNER JOIN tag_product as tp ON tp.idPRODUCT = p.idPRODUCT
+                          INNER JOIN tag as t ON t.idTAG = tp.idTAG
+                          INNER JOIN tag_subcategory as ts ON ts.idTAG = t.idTAG AND ts.idSUBCATEGORY = s.idSUBCATEGORY
+                            WHERE s.idSUBCATEGORY = ? AND t.name = ? AND tp.value = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iss',$idSubcategory, $chiave, $valore);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC); 
+    }
+
+
 }
 ?>
