@@ -51,31 +51,27 @@
             </div>
             <!--END riga quantità-->
 
-            <!--Bottone AGGIUNGI AL CARRELLO-->
-
-
-
+            <!--Aggiungi al carrello-->
             <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2">Aggiungi al carrello</button>
-            <!-- Button trigger modal -->
             <!-- Modal -->
             <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="addedToCart" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><?php echo $product["name"]; ?></h5>
+                    <div class="modal-header" id="modal-header">
+                        <h5 class="modal-title" id="modal-title"><?php echo $product["name"]; ?></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="modal-body">
                         Prodotto aggiunto al carrello.
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continua gli acquisti</button>
-                        <a class="btn btn-primary" href="cart.php" role="button">Vai al carrello</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="continueShopping">Continua gli acquisti</button>
+                        <a class="btn btn-primary" href="cart.php" role="button" id="goToCart">Vai al carrello</a>
                     </div>
                     </div>
                 </div>
             </div>
-            <!--END Bottone AGGIUNGI AL CARRELLO-->
+            <!--END Aggiungi al carrello-->
 
             <!-- descrizione e caratteristiche tecniche-->
             <div class="col">
@@ -143,12 +139,28 @@
                 method:"post",  
                 data:{product:<?php echo $product['idPRODUCT']; ?>, quantity:$("#text-quantity").val()},  
                 success:function(data){  
-                     $('#addToCart').html(data);
+                    
+                    if(data==0){
+                        //se non sei loggato
+                        $('#addedToCart').on('show.bs.modal', function () {
+                            $('#modal-title').text("ATTENZIONE");
+                            $("#modal-header").addClass("bg-warning");
+                            $('#modal-body').text("devi fare il login per poter aggiungere prodotti al carrello");
+                            $("#goToCart").html("Login");
+                            $("#goToCart").prop('href', 'login.php');
+                            $("#continueShopping").html("Annulla");
+                        });
+                    } else{
+                        //se sei loggato
+                        $('#addedToCart').on('show.bs.modal', function () {
+                            $('#modal-body').text(data);
+                        });
+                    };
                      $('#addedToCart').modal("show");  
                 },
                 error: function()
                 {
-                    alert("Chiamata fallita, si prega di riprovare...");
+                    alert("Errore nel database, contattare l'amministratore del sito");
                 }  
            });  
       });  
