@@ -349,10 +349,18 @@ class DatabaseHelper{
       $stmt->bind_param('i',$idCUSTOMER);
       $stmt->execute();
       $result = $stmt->get_result();
-      
+
       $query = "DELETE FROM cart WHERE idCUSTOMER=?";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('i',$idCUSTOMER);
+      $stmt->execute();
+      $result = $stmt->get_result();
+    }
+
+    public function deleteProductFromCart($idCUSTOMER, $idPRODUCT){
+      $query = "DELETE FROM cart_product WHERE idCART=? AND idPRODUCT=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ii', $idCUSTOMER, $idPRODUCT);
       $stmt->execute();
       $result = $stmt->get_result();
     }
