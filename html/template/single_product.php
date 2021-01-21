@@ -55,7 +55,7 @@
 
 
 
-            <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2" >Aggiungi al carrello</button>
+            <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2">Aggiungi al carrello</button>
             <!-- Button trigger modal -->
             <!-- Modal -->
             <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="addedToCart" aria-hidden="true">
@@ -135,3 +135,27 @@
 <?php endif; ?>
 </div>
 
+<script>  
+ $(document).ready(function(){  
+      $('#addToCart').click(function(){  
+          //php if is logged
+            let product=<?php echo $product['idPRODUCT']; ?>;
+            let quantity=$("#text-quantity").val();
+            let customer=<?php echo $_SESSION['idCUSTOMER']; ?>;
+            $.ajax({  
+                url:"./AJAXaddToCart.php",  
+                method:"post",  
+                data:{product:product, quantity:quantity, customer:customer},  
+                success:function(data){  
+                     //$('#employee_detail').html(data);
+                     $('#addToCart').html(data);
+                     $('#addedToCart').modal("show");  
+                },
+                error: function()
+                {
+                    alert("Chiamata fallita, si prega di riprovare...");
+                }  
+           });  
+      });  
+ });  
+ </script>

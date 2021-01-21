@@ -182,5 +182,99 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
 
     }
+
+    public function addToCart($idCustomer, $idProduct, $quantity){
+
+      //controllo se la quantità che vuole acquistare è disponibile.
+      // se non c'è return echo "quantità selezionata non disponibile. nel carrello hai n pezzi che sono tutti i pezzi disponibili in magazzino "
+
+      //controllo la quantità in magazzino
+      $querya = "SELECT quantity FROM product WHERE idPRODUCT = ?";
+      $stmta = $this->db->prepare($querya);
+      $stmta->bind_param('i',$idProduct);
+      $stmta->execute();
+      $resulta = $stmta->get_result();
+      $valuea = $resulta->fetch_all(MYSQLI_ASSOC);
+
+      $quantitaInMagazzino=$valuea[0]["quantity"];
+
+      if($quantitaInMagazzino==0){
+        echo "Articolo esaurito";
+        return;
+      }
+
+      $dataAttuale = date("Y-m-d");
+
+      //controllo se c'è già il carrello
+      $query0 = "SELECT * FROM cart WHERE idCUSTOMER = ?";
+      $stmt0 = $this->db->prepare($query0);
+      $stmt0->bind_param('i',$idCustomer);
+      $stmt0->execute();
+      $result0 = $stmt0->get_result();
+      $value0 = $result0->fetch_all(MYSQLI_ASSOC);
+      if (count($value0) == 0) {
+        //se non c'è faccio la insert
+        $query1 = "INSERT INTO cart (idCUSTOMER, last_update)
+        VALUES (?, ?)";
+        $stmt1 = $this->db->prepare($query1);
+        $stmt1->bind_param('is',$idCustomer, $dataAttuale);
+        $stmt1->execute();
+       }
+       else{
+         //se c'è faccio l'update
+        $query2 = "UPDATE cart SET last_update = ? WHERE idCUSTOMER = ?";
+        $stmt2 = $this->db->prepare($query2);
+        $stmt2->bind_param('si', $dataAttuale, $idCustomer);
+        $stmt2->execute();
+
+       }
+
+       //ora lavoro su cart_product
+       //controllo se c'è il prodotto nel carrello
+      $query3 = "SELECT * FROM cart_product WHERE idCART = ? AND idPRODUCT = ?";
+      $stmt3 = $this->db->prepare($query3);
+      $stmt3->bind_param('ii',$idCustomer, $idProduct);
+      $stmt3->execute();
+      $result3 = $stmt3->get_result();
+      $value3 = $result3->fetch_all(MYSQLI_ASSOC);
+      if (count($value3) == 0) {
+        //se non c'è faccio la insert
+
+        if($quantity>$quantitaInMagazzino){
+          $quantity=$quantitaInMagazzino;
+          echo "sono stati aggiunti ".$quantitaInMagazzino." pezzi nel carrello, che è la quantità disponibile in magazzino";
+        } else{
+          
+          echo "Hai aggiunto questo articolo nel carrello, quantità: ".$quantity;
+        }
+        $query4 = "INSERT INTO cart_product (idCART, idPRODUCT, quantity)
+        VALUES (?, ?, ?)";
+        $stmt4 = $this->db->prepare($query4);
+        $stmt4->bind_param('iii',$idCustomer, $idProduct, $quantity);
+        $stmt4->execute();
+      }
+      else{
+        //se c'è faccio l'update
+        //conto quanti ne ho nel carrello
+        $quantitaInCarrello=$value3[0]["quantity"];
+
+        //li sommo a quelli acquistati (CHECK CHE NON SIA MAGGIORE DELLA QUANTITA IN MAGAZZINO)
+        $nuovaQuantita=$quantity+$quantitaInCarrello;
+
+        if($nuovaQuantita>$quantitaInMagazzino){
+          $nuovaQuantita=$quantitaInMagazzino;
+          echo "Sono stati aggiunti al carrello ".($nuovaQuantita-$quantitaInCarrello)." pezzi. Ora nel carrello hai ".$nuovaQuantita." pezzi, che sono tutti i pezzi disponibili in magazzino";
+        } else{
+          echo "Sono stati aggiunti al carrello ".$quantity." pezzi. Ora nel carrello hai ".$nuovaQuantita." pezzi";
+        }
+        //e metto la nuova quantità
+        $query5 = "UPDATE cart_product SET quantity = ? WHERE idPRODUCT = ?";
+        $stmt5 = $this->db->prepare($query5);
+        $stmt5->bind_param('ii', $nuovaQuantita, $idProduct);
+        $stmt5->execute();
+        
+      }
+
+    }
 }
 ?>
