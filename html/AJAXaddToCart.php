@@ -1,6 +1,9 @@
 <?php
 require_once 'bootstrap.php';
-
-$dbh->addToCart($_POST["customer"], $_POST["product"], $_POST["quantity"]);
+if(isUserLoggedIn()){
+    $dbh->addToCart($_SESSION["idCUSTOMER"], $_POST["product"], $_POST["quantity"]);
+} else{
+    echo "devi fare il login per poter aggiungere prodotti al carrello";
+}
 
 ?>

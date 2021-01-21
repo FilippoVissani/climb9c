@@ -138,16 +138,11 @@
 <script>  
  $(document).ready(function(){  
       $('#addToCart').click(function(){  
-          //php if is logged
-            let product=<?php echo $product['idPRODUCT']; ?>;
-            let quantity=$("#text-quantity").val();
-            let customer=<?php echo $_SESSION['idCUSTOMER']; ?>;
             $.ajax({  
                 url:"./AJAXaddToCart.php",  
                 method:"post",  
-                data:{product:product, quantity:quantity, customer:customer},  
+                data:{product:<?php echo $product['idPRODUCT']; ?>, quantity:$("#text-quantity").val()},  
                 success:function(data){  
-                     //$('#employee_detail').html(data);
                      $('#addToCart').html(data);
                      $('#addedToCart').modal("show");  
                 },
