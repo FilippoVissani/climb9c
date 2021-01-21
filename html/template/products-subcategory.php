@@ -6,7 +6,18 @@
     <?php else:
         $subcategory = $templateParams["subcategory"];
     ?>
-        <h2>Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </h2>
+        <div class="row mb-2">
+            <div class="col-md-11 m-auto">
+                <h2>Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </h2>
+            </div>
+            <div class="col-md-1 m-auto text-center">
+                <!--Bottone per aprire scelta tag-->
+                <button class="btn btn-outline-secondary md-5" type="button" id="button-filters" aria-label="Seleziona filtri">
+                    <span class="fas fa-cog"></span>
+                </button>
+            </div>
+            
+        </div>
         <?php if(count($templateParams["productsInSubcategory"])==0): ?>
             <div class="alert alert-secondary text-center" role="alert">
                 Nessun prodotto in questa categoria. <a href="index.php" class="alert-link">Clicca qui per andare alla home</a>
