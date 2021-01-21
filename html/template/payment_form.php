@@ -65,14 +65,17 @@
       <form action="#" method="post">
       <fieldset>
         <legend>METODO DI PAGAMENTO</legend>
+        <?php if(isset($templateParams["payment_error"])): ?>
+          <p class="fw-bold  bg-danger text-white"><?php echo $templateParams["payment_error"]; ?></p>
+        <?php endif; ?>
         <label for="name" class="invisible">Nome sulla carta</label>
-        <input type="text" id="name" class="form-control" placeholder="Nome sulla Carta" required/>
+        <input type="text" id="name" name="name" class="form-control" placeholder="Nome sulla Carta" required/>
         <label for="ccnum" class="invisible">Numero della Carta</label>
-        <input type="text" id="ccnum" class="form-control" placeholder="Numero della carta" required/>
+        <input type="number" id="ccnum" name="card" class="form-control" placeholder="Numero della carta" maxlength="16" required/>
         <label for="scadenza" class="invisible">Data di scadenza</label>
-        <input type="date" id="scadenza" class="form-control" placeholder="Data di scadenza" required/>
+        <input type="text" id="scadenza" name="valid_thru" class="form-control" placeholder="Data di scadenza  m/Y" required/>
         <label for="cvv" class="invisible">CVV</label>
-        <input type="text" id="cvv" class="form-control" placeholder="CVV" required/>
+        <input type="number" id="cvv" name="cvv" class="form-control" placeholder="CVV" maxlength="4" required/>
       </fieldset>
       <div class="row mt-5">
         <div class="col">
@@ -91,6 +94,10 @@
             </div>
           </fieldset>
         </div>
+      </div>
+      <div class="col-12">
+        <label for="pay" class="invisible">Procedi con il pagamento</label>
+        <input id="pay" type="submit" class="btn btn-primary btn-block" value="Procedi con il pagamento"/>
       </div>
       </form>
     </div>

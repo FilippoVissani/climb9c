@@ -180,7 +180,34 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
+    public function getCoustomerAddressID($idCUSTOMER, $idADDRESS){
+        $query = "SELECT idCUSTOMER_ADDRESS FROM customer_address WHERE idCUSTOMER=? AND idADDRESS=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$idCUSTOMER, $idADDRESS);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $shipping_date, $coupon){
+      $query = "INSERT INTO order (date, customer_address, shipping_date, COUPONcode)
+      VALUES (NULL, NULL, NULL, NULL)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('siss',$date, $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0], $shipping_date, $coupon);
+      $stmt->execute();
+    }
+
+    public function getBestSeller($limit){
+      $query = "SELECT p.idPRODUCT, p.name, p.price, p.quantity FROM product p INNER JOIN product_order po ON p.idPRODUCT=po.idPRODUCT GROUP BY po.idPRODUCT ORDER BY SUM(po.quantity) DESC LIMIT ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$limit);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function addToCart($idCustomer, $idProduct, $quantity){
