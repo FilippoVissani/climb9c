@@ -331,7 +331,7 @@ class DatabaseHelper{
     // END ADD TO CART
 
     public function getTagsBySubcategory($idSubcategory){
-      $query = "SELECT DISTINCT t.name as chiave, tp.value as valore FROM (((tag_product as tp INNER JOIN tag as t ON t.idTAG = tp.idTAG)
+      $query = "SELECT DISTINCT t.name as chiave, tp.value as valore, t.idTAG as id FROM (((tag_product as tp INNER JOIN tag as t ON t.idTAG = tp.idTAG)
                                                                                   INNER JOIN tag_subcategory as ts ON ts.idTAG = t.idTAG)
                                                                                   INNER JOIN subcategory as s ON s.idSUBCATEGORY = ts.idSUBCATEGORY)
                                                                                   WHERE s.idSUBCATEGORY = ?";
@@ -393,6 +393,25 @@ class DatabaseHelper{
       $query2 = "UPDATE cart SET last_update = ? WHERE idCUSTOMER = ?";
       $stmt2 = $this->db->prepare($query2);
       $stmt2->bind_param('si', $dataAttuale, $idCustomer);
+    }
+
+    public function filterProducts($idSubcategory, $chiave, $valore){
+
+        if($valore=="Tutti"){
+          return $this->getproductsInSubcategory($idSubcategory);
+        }
+
+        $query = "SELECT p.idPRODUCT, p.name, p.price, p.quantity 
+        FROM product as p INNER JOIN subcategory as s ON p.idSUBCATEGORY = s.idSUBCATEGORY 
+                          INNER JOIN tag_product as tp ON tp.idPRODUCT = p.idPRODUCT
+                          INNER JOIN tag as t ON t.idTAG = tp.idTAG
+                          INNER JOIN tag_subcategory as ts ON ts.idTAG = t.idTAG AND ts.idSUBCATEGORY = s.idSUBCATEGORY
+                            WHERE s.idSUBCATEGORY = ? AND t.name = ? AND tp.value = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iss',$idSubcategory, $chiave, $valore);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC); 
     }
 
 
