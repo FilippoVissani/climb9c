@@ -40,12 +40,14 @@
                             class="card-img-top img-fluid mx-auto" alt="
                             <?php echo $carouselProduct["name"]; ?>">
                             <div class="card-body">
-                                <h2 class="card-title text-center">
+                                <p class="card-title text-center fs-4">
                                     <?php echo $carouselProduct["name"]; ?>
-                                </h2>
-                                <h3 class="card-text text-center">
-                                    <?php echo $carouselProduct["price"]; ?> €
-                                </h3>
+                                </p>
+                                <p class="card-text text-center">
+                                <span class="badge bg-primary text-dark fs-5">
+                                <?php echo $carouselProduct["price"]; ?> €
+                                </span>
+                                </p>
                                 <a href="./product.php?id=<?php echo $carouselProduct["idPRODUCT"]; ?>"
                                     class="stretched-link"></a>
                             </div>
