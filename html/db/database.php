@@ -441,6 +441,14 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function checkAdminLogin($email, $password){
+      $query="SELECT seller.idSELLER WHERE seller.email LIKE '?' AND seller.password LIKE '?'";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ss',$email, $password);
+      $stmt->execute();
+      $result = $stmt->get_result();
 
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
