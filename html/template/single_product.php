@@ -52,7 +52,7 @@
             <!--END riga quantità-->
 
             <!--Aggiungi al carrello-->
-            <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2">Aggiungi al carrello</button>
+            <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2" <?php echo ($product["quantity"]>0) ? "" : "disabled"; ?>><?php echo ($product["quantity"]>0) ? "Aggiungi al carrello" : "Articolo esaurito"; ?></button>
             <!-- Modal prodotto aggiunto-->
             <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="addedToCart" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
