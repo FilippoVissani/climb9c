@@ -51,25 +51,25 @@
         <label for="birthdate" class="form-label">Data di nascita*</label>
         <input id="birthdate" name="birthdate" class="form-control" type="date" required/>
       </div>
-        <div class="col-md-6 pt-2">
-          <label for="address" class="form-label">Indirizzo*</label>
-          <input id="address" name="address" type="text" class="form-control" value="" required/>
-        </div>
-        <div class="col-md-6  pt-2">
-          <label for="city" class="form-label">Città*</label>
-          <input id="city" name="city" type="text" class="form-control" value="" required/>
-        </div>
-        <div class="col-md-6  pt-2">
-          <label for="province" class="form-label">Provincia*</label>
-          <input id="province" name="province" type="text" class="form-control" value="" required/>
-        </div>
-        <div class="col-md-6  pt-2">
-          <label for="zip" class="form-label">CAP*</label>
-          <input id="zip" name="zip_code" type="text" class="form-control" value="" required/>
-        </div>
-      <div class="col-md-12 justify-content-center h-100 p-3">
+      <div class="col-md-6 pt-2">
+        <label for="address" class="form-label">Indirizzo*</label>
+        <input id="address" name="address" type="text" class="form-control" value="" required/>
+      </div>
+      <div class="col-md-6  pt-2">
+        <label for="city" class="form-label">Città*</label>
+        <input id="city" name="city" type="text" class="form-control" value="" required/>
+      </div>
+      <div class="col-md-6  pt-2">
+        <label for="province" class="form-label">Provincia*</label>
+        <input id="province" name="province" type="text" class="form-control" value="" required/>
+      </div>
+      <div class="col-md-6  pt-2">
+        <label for="zip" class="form-label">CAP*</label>
+        <input id="zip" name="zip_code" type="text" class="form-control" value="" required/>
+      </div>
+      <div class="row justify-content-center align-items-center text-center p-0 m-0">
         <label for="registrati" class="invisible">Registrati</label>
-        <input id="registrati" type="button" class="btn btn-primary btn-block btn-lg" value="Registrati"/>
+        <input id="registrati" type="button" class="btn btn-primary btn-lg btn-block" value="Registrati"/>
       </div>
     </form>
   </main>
