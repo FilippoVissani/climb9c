@@ -34,7 +34,7 @@
                 <td>
                   <form action="./order-detail.php" method="post">
                     <input class="collapse" type="text" name="id" value="<?php echo $order["idORDER"] ?>" readonly="readonly">
-                    <button type="submit" class="btn btn-primary">DETTAGLI</button>
+                    <button type="submit" class="btn btn-primary fw-bold">DETTAGLI</button>
                   </form>
                 </td>
               </tr>

@@ -1,18 +1,22 @@
-<div class="card rounded shadow mb-5 h-100">
+<div class="card rounded shadow mb-2">
     <img src="<?php echo UPLOAD_DIR.$templateParams["idPRODUCT"]; ?>/1.jpg" class="card-img-top" alt="
-    <?php echo $templateParams["productName"]; ?>">
+    <?php
+    $wordsArray=array_slice(explode(" ", $templateParams["productName"]), 0, 5);
+    foreach($wordsArray as $word){
+        echo $word . " ";
+    }
+    ?>">
     <div class="card-body border-top">
-        <p class="card-title text-center fs-5">
-            <?php echo $templateParams["productName"]; ?>
+        <p class="card-title fs-6">
+        <?php
+        foreach($wordsArray as $word){
+            echo $word . " ";
+        }
+        ?>
         </p>
-        <a href="./product.php?id=<?php echo $templateParams["idPRODUCT"]; ?>" class="stretched-link"></a>
-    </div>
-    <div class="card-footer">
-        <span class="badge bg-primary text-dark fs-5">
+        <span class="badge bg-primary text-dark fs-6">
             <?php echo $templateParams["productPrice"]; ?> €
         </span>
-        <p class="text-muted fs-5">
-            Pezzi disponibili: <?php echo $templateParams["quantity"]; ?>
-        </p>
+        <a href="./product.php?id=<?php echo $templateParams["idPRODUCT"]; ?>" class="stretched-link"></a>
     </div>
 </div>
