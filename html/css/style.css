@@ -38,8 +38,8 @@
     text-align: right;
 }
 
-.menu-item > a {
-    text-decoration: none;
+.menu-item {
+    text-decoration: none!important;
 }
 
 .scroll {
