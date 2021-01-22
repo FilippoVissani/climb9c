@@ -450,5 +450,15 @@ class DatabaseHelper{
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getCustomerNotifications($idCustomer){
+      $query="SELECT * FROM `customer_notification` WHERE `customer_notification`.`id_customer`=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idCustomer);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
