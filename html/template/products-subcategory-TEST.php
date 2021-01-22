@@ -50,7 +50,7 @@
                     </div>
                 <?php else : ?>
 
-                    <div class="row row-cols-2 row-cols-md-4 g-4 filter_data">
+                    <div class="row row-cols-2 row-cols-xl-4 g-4 filter_data">
 
                     </div>
 
