@@ -6,40 +6,51 @@
     <?php else :
         $subcategory = $templateParams["subcategory"];
     ?>
-        <div class="row mb-2">
-            <h2>Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </h2>
-        </div>
+
 
         <div class="row">
             <!--Filtri-->
             <div class="col-md-2">
                 <?php
-                    $group = array();
-                    foreach ( $templateParams["tags"] as $value ) {
-                        $group[$value['chiave']][] = $value;
-                    };
+                $group = array();
+                foreach ($templateParams["tags"] as $value) {
+                    $group[$value['chiave']][] = $value;
+                };
                 ?>
-
-                <?php foreach($group as $key=>$value): ?>
-                <div class="list-group">
-                    <h3><?php echo $key; ?></h3>
-                    <div style="height: 180px; overflow-y: auto; overflow-x: hidden;">
-                    
-                    </div>
+                <h3>FILTRI</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="" name="radioFilter" id="Tutti" checked>
+                    <label class="form-check-label" for="Tutti">
+                        Senza filtri
+                    </label>
                 </div>
-                <?php endforeach; ?> 
+                <?php foreach ($group as $key => $value) : ?>
+                    <h4><?php echo $key; ?></h4>
+
+                    <?php foreach ($value as $k => $v) : ?>
+                        <div class="form-check">
+                            <input class="form-check-input" value="<?php echo $key; ?>" type="radio" name="radioFilter" id="<?php echo $v["valore"]; ?>">
+                            <label class="form-check-label" for="<?php echo $v["valore"]; ?>">
+                                <?php echo $v["valore"]; ?>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
             <!--END Filtri-->
 
             <!--Prodotti-->
             <div class="col-md-10">
+                <div class="row mb-2">
+                    <h2>Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </h2>
+                </div>
                 <?php if (count($templateParams["productsInSubcategory"]) == 0) : ?>
                     <div class="alert alert-secondary text-center" role="alert">
                         Nessun prodotto in questa categoria. <a href="index.php" class="alert-link">Clicca qui per andare alla home</a>
                     </div>
                 <?php else : ?>
 
-                    <div class="row row-cols-2 row-cols-md-4 g-4 filter_data">
+                    <div class="row row-cols-2 row-cols-xl-4 g-4 filter_data">
 
                     </div>
 
@@ -49,7 +60,7 @@
                         </div>
                     </div>
                 <?php endif; ?>
-                
+
             </div>
             <!--END Prodotti-->
         </div>
@@ -58,16 +69,21 @@
 
     <?php endif; ?>
 </div>
-
+<style>
+    .card:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+</style>
 
 <script>
     $(document).ready(function() {
 
         filter_data("Chiave", "Tutti");
 
-        $('select').on('change', function() {
-            $chiave = this.id;
-            $valore = this.value;
+        $('input[type=radio][name=radioFilter]').on('change', function() {
+            $chiave = this.value;
+            $valore = this.id;
 
             filter_data($chiave, $valore);
         });
