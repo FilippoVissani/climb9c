@@ -1,6 +1,6 @@
 <?php
+require_once 'bootstrap.php';
 if(isset($_SESSION["idCUSTOMER"])){
-    require_once 'bootstrap.php';
     $templateParams["title"]="Climb9c - Riepilogo ordini";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "orders-summary-template.php";
