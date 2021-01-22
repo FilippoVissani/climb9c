@@ -15,6 +15,12 @@ if(count($_POST) > 0){
     $dbh->addNewCustomer($_POST["username"], $pw, $_POST["name"], $_POST["surname"], $_POST["telephone"], $_POST["gender"], $_POST["birthdate"]);
     //inserisci indirizzo nel db
     $dbh->addNewAddressToCustomer($_POST["username"], $_POST["name"], $_POST["surname"], $_POST["address"], $_POST["province"], $_POST["city"], $_POST["zip_code"]);
+    //login
+    $_SESSION["idCUSTOMER"] = $dbh->getCustomerIdByEmail($_POST["username"])[0]["idCUSTOMER"];
+    $_SESSION["name"] = $_POST["name"];
+    $_SESSION["surname"] = $_POST["surname"];
+    $_SESSION["email"] = $_POST["username"];
+    $_SESSION["telephone"] = $_POST["telephone"];
     //visualizza pagina account
     $templateParams["title"]="Climb9c - Account";
     $templateParams["search_bar"] = FALSE;

@@ -68,7 +68,7 @@
       </div>
     <div class="col-md-12 justify-content-center h-100 p-3">
       <label for="registrati" class="invisible">Registrati</label>
-      <input id="registrati" type="submit" class="btn btn-primary btn-block btn-lg" value="Registrati"/>
+      <input id="registrati" type="button" class="btn btn-primary btn-block btn-lg" value="Registrati"/>
     </div>
   </form>
 </main>
