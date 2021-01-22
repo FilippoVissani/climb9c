@@ -1,11 +1,11 @@
-
+<div class="container-fluid">
   <div class="row">
     <header>
       <h1 class="font-weight-bold">CARRELLO</h1>
     </header>
   </div>
   <hr/>
-<?php if(!isset($_SESSION["idCUSTOMER"])): ?>
+  <?php if(!isset($_SESSION["idCUSTOMER"])): ?>
   <div class="alert alert-danger text-center" role="alert">
     <a href="login.php" class="alert-link">ACCEDI PER VISUALIZZARE IL CARRELLO</a>
   </div>
@@ -64,5 +64,5 @@
       </div>
     </div>
   </main>
-
-<?php endif; ?>
+  <?php endif; ?>
+</div>
