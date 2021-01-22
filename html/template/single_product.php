@@ -1,86 +1,99 @@
-<div class="container-xl border">
+<div class="container-xl">
     <?php if (count($templateParams["product"]) == 0) : ?>
         <div class="alert alert-danger text-center" role="alert">
             L'articolo non esiste. <a href="index.php" class="alert-link">Clicca qui per andare alla home</a>
         </div>
     <?php else : $product = $templateParams["product"]; ?>
 
-
-
-
-
         <div class="row">
+            <hr />
+            <!--Immagine-->
             <div class="col-xl-6">
-
-                <img class="card-img-top" src="<?php echo UPLOAD_DIR . $product["idPRODUCT"]; ?>/1.jpg" alt="<?php echo $product["name"]; ?>">
-
+                <img class="w-100 shadow px-auto rounded-pill-home" src="<?php echo UPLOAD_DIR . $product["idPRODUCT"]; ?>/1.jpg" alt="<?php echo $product["name"]; ?>">
             </div>
+            <!--END Immagine-->
+
+            <!--Colonna a destra dell'immagine-->
             <div class="col-xl-6">
                 <!--riga nome e prezzo-->
-                <div class="row mb-2">
+                <div class="row mb-2  text-center">
                     <p class="fs-2"><?php echo $product["name"]; ?></p>
                     <p class="fs-3 fw-bold">Prezzo: <?php echo $product["price"]; ?> €</p>
                 </div>
                 <!--END riga nome e prezzo-->
 
                 <!--riga quantità-->
-                <div class="row mb-2">
-                    <div class="col-auto align-self-center">
-                        <label for="text-quantity" class="align-middle">Quantità: </label>
-                    </div>
-                    <div class="col-auto">
-                        <div class="input-group quantity-wrapper mb-2">
+                <div class="col">
+                    <div class="row mb-2">
+                        <div class="col-auto align-self-center">
+                            <label for="text-quantity" class="align-middle">Quantità: </label>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group quantity-wrapper mb-2">
 
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus" aria-label="Meno">
-                                    <span class="fas fa-minus"></span>
-                                </button>
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus" aria-label="Meno">
+                                        <span class="fas fa-minus"></span>
+                                    </button>
+                                </div>
+
+                                <input type="number" name="Quantità" id="text-quantity" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="1" min="1" placeholder="Quantità">
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus" aria-label="Più">
+                                        <span class="fas fa-plus"></span>
+                                    </button>
+                                </div>
+
                             </div>
-
-                            <input type="number" name="Quantità" id="text-quantity" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="1" min="1" placeholder="Quantità">
-
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus" aria-label="Più">
-                                    <span class="fas fa-plus"></span>
-                                </button>
-                            </div>
-
                         </div>
                     </div>
                 </div>
                 <!--END riga quantità-->
 
                 <!--Aggiungi al carrello-->
-                <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2" <?php echo ($product["quantity"] > 0) ? "" : "disabled"; ?>><?php echo ($product["quantity"] > 0) ? "<i class='fas fa-shopping-cart pr-2'></i>Aggiungi al carrello" : "Articolo esaurito"; ?></button>
+                <div class="col">
+                    <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2" <?php echo ($product["quantity"] > 0) ? "" : "disabled"; ?>><?php echo ($product["quantity"] > 0) ? "<i class='fas fa-shopping-cart pr-2'></i>Aggiungi al carrello" : "Articolo esaurito"; ?></button>
+                </div>
                 <!--END Aggiungi al carrello-->
+
+                <!--Caratteristiche tecniche-->
+                <div class="row">
+                    <hr />
+                    <h3>Caratteristiche tecniche:</h3>
+                    <p class="card-text">
+                        <?php $tecnical_specs = json_decode($product["tecnical_specifications"]); ?>
+                        <?php if (JSON_ERROR_NONE == json_last_error()) : ?>
+                    <table class="table table-striped table-responsive">
+                        <tbody>
+                            <?php foreach ($tecnical_specs as $key => $val) : ?>
+                                <tr>
+                                    <th scope="row"><?php echo $key ?></th>
+                                    <td><?php echo $val ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!--END Caratteristiche tecniche-->
 
 
             </div>
+            <!--END Colonna a destra dell'immagine-->
 
-            <!-- descrizione e caratteristiche tecniche-->
+
+
+
+            <!-- descrizione -->
             <div class="col">
                 <hr />
                 <h3>Descrizione:</h3>
-                <p class="card-text"><?php echo $product["description"]; ?></p>
-                <hr />
-                <h3>Caratteristiche tecniche:</h3>
-                <p class="card-text">
-                    <?php $tecnical_specs = json_decode($product["tecnical_specifications"]); ?>
-                    <?php if (JSON_ERROR_NONE == json_last_error()) : ?>
-                <table class="table table-striped">
-                    <tbody>
-                        <?php foreach ($tecnical_specs as $key => $val) : ?>
-                            <tr>
-                                <th scope="row"><?php echo $key ?></th>
-                                <td><?php echo $val ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                <p class="fs-5"><?php echo $product["description"]; ?></p>
+
             <?php endif; ?>
             </p>
             </div>
-            <!-- END descrizione e caratteristiche tecniche-->
+            <!-- END descrizione -->
 
 
         </div>
