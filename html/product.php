@@ -25,6 +25,6 @@ foreach($templateParams["categories"] as $category){
 
 $templateParams["search_bar"] = TRUE;
 $templateParams["name"]="single_product.php";
-require 'template/base.php';
+require 'template/base-template.php';
 
 ?>
