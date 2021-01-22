@@ -9,5 +9,5 @@ $templateParams["categories"]=$dbh->getCategories();
 foreach($templateParams["categories"] as $category){
     $templateParams[$category["id"]."-subcategory"]=$dbh->getSubcategories($category["id"]);
 }
-require './template/base.php';
+require './template/base-template.php';
 ?>

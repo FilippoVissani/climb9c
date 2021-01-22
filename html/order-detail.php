@@ -15,7 +15,7 @@ if(isset($_SESSION["idCUSTOMER"])){
     foreach($templateParams["categories"] as $category){
         $templateParams[$category["id"]."-subcategory"]=$dbh->getSubcategories($category["id"]);
     }
-    require './template/base.php';
+    require './template/base-template.php';
 }else{
     header("location: login.php");
 }

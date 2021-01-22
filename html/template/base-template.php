@@ -13,7 +13,7 @@
     </head>
     <body class="bg-light m-0">
         <?php
-        require './template/menu.php';
+        require './template/menu-template.php';
         ?>
         <div class="container-fluid p-0">
             <div class="row mx-0">
@@ -38,7 +38,7 @@
             
                 <?php
                     if($templateParams["search_bar"] == TRUE){
-                        require './template/search-bar.php';
+                        require './template/search-bar-template.php';
                     }
                 ?>
                 <?php
