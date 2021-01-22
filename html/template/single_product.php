@@ -72,7 +72,6 @@
                 </div>
             </div>
             <!-- Modal caricamento-->
-            
             <div class="modal fade" id="adding" tabindex="-1" aria-labelledby="Loading" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
