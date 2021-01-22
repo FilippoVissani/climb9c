@@ -53,7 +53,7 @@
 
             <!--Aggiungi al carrello-->
             <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2">Aggiungi al carrello</button>
-            <!-- Modal -->
+            <!-- Modal prodotto aggiunto-->
             <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="addedToCart" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -71,7 +71,22 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal caricamento-->
+            
+            <div class="modal fade" id="adding" tabindex="-1" aria-labelledby="Loading" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div id="loading" class="text-center m-5">
+                            <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--END Aggiungi al carrello-->
+
+
 
             <!-- descrizione e caratteristiche tecniche-->
             <div class="col">
@@ -134,6 +149,9 @@
 <script>  
  $(document).ready(function(){  
       $('#addToCart').click(function(){  
+
+        $('#adding').modal("show"); 
+
             $.ajax({  
                 url:"./AJAXaddToCart.php",  
                 method:"post",  
@@ -156,7 +174,8 @@
                             $('#modal-body').text(data);
                         });
                     };
-                     $('#addedToCart').modal("show");  
+                    $('#adding').modal("hide"); 
+                    $('#addedToCart').modal("show");  
                 },
                 error: function()
                 {
