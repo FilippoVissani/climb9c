@@ -1,4 +1,4 @@
-<div class="container-xl">
+<div class="container-fluid">
   <div class="row justify-content-center">
     <header>
       <h1 class="font-weight-bold">IL MIO ACCOUNT</h1>

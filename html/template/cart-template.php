@@ -1,4 +1,4 @@
-<div class="container-xl">
+<div class="container-fluid">
   <div class="row">
     <header>
       <h1 class="font-weight-bold">CARRELLO</h1>

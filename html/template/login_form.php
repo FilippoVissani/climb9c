@@ -1,4 +1,4 @@
-</div>
+<div class="container-fluid">
   <div class="row justify-content-center align-items-center">
     <header>
       <h1>LOGIN</h1>
