@@ -7,7 +7,7 @@
 </div>
 <hr/>
 <main>
-  <form class="row g-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <form id="form" class="row g-3" action="sign.php" method="post">
     <?php if(isset($templateParams["sign_up_error"])): ?>
     <p class="fw-bold  bg-danger text-white"><?php echo $templateParams["sign_up_error"]; ?></p>
     <?php endif; ?>

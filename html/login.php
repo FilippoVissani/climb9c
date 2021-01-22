@@ -1,18 +1,23 @@
 <?php
 require_once 'bootstrap.php';
 
-if(isset($_POST["username"]) && isset($_POST["password"])){
-    $result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
+if(isset($_POST["username"]) && isset($_POST["p"])){
+    $result = $dbh->checkLogin($_POST["username"]);
     if(count($result)==0){
-        //Login fallito
-        $templateParams["login_error"] = "Errore! Username o password errata!";
+        //Email non registrata
+        $templateParams["login_error"] = "Errore! Utente non registrato!";
     }
     else{
-      $_SESSION["idCUSTOMER"] = $result[0]["idCUSTOMER"];
-      $_SESSION["name"] = $result[0]["name"];
-      $_SESSION["surname"] = $result[0]["surname"];
-      $_SESSION["email"] = $result[0]["email"];
-      $_SESSION["telephone"] = $result[0]["telephone"];
+      if(password_verify($_POST["p"], $result[0]["password"])){
+        $_SESSION["idCUSTOMER"] = $result[0]["idCUSTOMER"];
+        $_SESSION["name"] = $result[0]["name"];
+        $_SESSION["surname"] = $result[0]["surname"];
+        $_SESSION["email"] = $result[0]["email"];
+        $_SESSION["telephone"] = $result[0]["telephone"];
+      }
+      else{
+        $templateParams["login_error"] = "Errore! Password Errata!";
+      }
     }
 }
 
@@ -33,5 +38,5 @@ foreach($templateParams["categories"] as $category){
     $templateParams[$category["id"]."-subcategory"]=$dbh->getSubcategories($category["id"]);
 }
 
-require 'template/base.php';
+require 'template/base-template.php';
 ?>

@@ -14,5 +14,5 @@ foreach($templateParams["categories"] as $category){
 }
 
 
-require './template/base.php';
+require './template/base-template.php';
 ?>

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        
+
     </head>
     <body class="bg-light m-0">
         <?php
@@ -32,10 +32,10 @@
                             </a>
                             <i class="d-inline-block mx-4 fas fa-bars fs-2" id="menu-toggler"></i>
                         </div>
-                    </header>  
+                    </header>
                 </div>
             </div>
-            
+
                 <?php
                     if($templateParams["search_bar"] == TRUE){
                         require './template/search-bar-template.php';
@@ -92,5 +92,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
         <?php require './js/toggle-menu.php'; ?>
         <script src="./js/quantity-product.js"></script>
+        <script src="./js/forms.js"></script>
     </body>
 </html>
