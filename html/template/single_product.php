@@ -22,58 +22,54 @@
                 </div>
                 <!--END riga nome e prezzo-->
 
-                <!--riga quantità-->
-                <div class="col">
-                    <div class="row mb-2">
-                        <div class="col-auto align-self-center">
-                            <label for="text-quantity" class="align-middle">Quantità: </label>
-                        </div>
-                        <div class="col-auto">
-                            <div class="input-group quantity-wrapper mb-2">
 
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus" aria-label="Meno">
-                                        <span class="fas fa-minus"></span>
-                                    </button>
-                                </div>
-
-                                <input type="number" name="Quantità" id="text-quantity" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="1" min="1" placeholder="Quantità">
-
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus" aria-label="Più">
-                                        <span class="fas fa-plus"></span>
-                                    </button>
-                                </div>
-
+                <div class="row p-2">
+                    <div class="col-sm-6 mb-2">
+                        <!--riga quantità-->
+                        <label for="text-quantity" class="fs-5" hidden>Quantità: </label>
+                        <div class="input-group quantity-wrapper">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus" aria-label="Meno">
+                                    <span class="fas fa-minus"></span>
+                                </button>
+                            </div>
+                            <input type="number" name="Quantità" id="text-quantity" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="1" min="1" placeholder="Quantità">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus" aria-label="Più">
+                                    <span class="fas fa-plus"></span>
+                                </button>
                             </div>
                         </div>
+                        <!--END riga quantità-->
+                    </div>
+                    <div class="col-sm-6">
+                        <!--Aggiungi al carrello-->
+                        <div class="d-grid">
+                            <button type="button" id="addToCart" class="btn btn-primary fw-bold btn-block" <?php echo ($product["quantity"] > 0) ? "" : "disabled"; ?>><?php echo ($product["quantity"] > 0) ? "<i class='fas fa-shopping-cart pr-2'></i> Aggiungi al carrello" : "Articolo esaurito"; ?></button>
+                        </div>
+                        <!--END Aggiungi al carrello-->
                     </div>
                 </div>
-                <!--END riga quantità-->
-
-                <!--Aggiungi al carrello-->
-                <div class="col">
-                    <button type="button" id="addToCart" class="btn btn-primary d-grid mb-2" <?php echo ($product["quantity"] > 0) ? "" : "disabled"; ?>><?php echo ($product["quantity"] > 0) ? "<i class='fas fa-shopping-cart pr-2'></i>Aggiungi al carrello" : "Articolo esaurito"; ?></button>
-                </div>
-                <!--END Aggiungi al carrello-->
 
                 <!--Caratteristiche tecniche-->
                 <div class="row">
                     <hr />
-                    <h3>Caratteristiche tecniche:</h3>
-                    <p class="card-text">
-                        <?php $tecnical_specs = json_decode($product["tecnical_specifications"]); ?>
-                        <?php if (JSON_ERROR_NONE == json_last_error()) : ?>
-                    <table class="table table-striped table-responsive">
-                        <tbody>
-                            <?php foreach ($tecnical_specs as $key => $val) : ?>
-                                <tr>
-                                    <th scope="row"><?php echo $key ?></th>
-                                    <td><?php echo $val ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                    <p class="fs-3">Caratteristiche tecniche:</p>
+                    <?php $tecnical_specs = json_decode($product["tecnical_specifications"]); ?>
+                    <?php if (JSON_ERROR_NONE == json_last_error()) : ?>
+                        <div class="">
+                            <table class="table table-striped table-responsive">
+                                <tbody>
+                                    <?php foreach ($tecnical_specs as $key => $val) : ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $key ?></th>
+                                            <td><?php echo $val ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+
                 </div>
                 <!--END Caratteristiche tecniche-->
 
@@ -87,11 +83,10 @@
             <!-- descrizione -->
             <div class="col">
                 <hr />
-                <h3>Descrizione:</h3>
-                <p class="fs-5"><?php echo $product["description"]; ?></p>
+                <p class="fs-3">Descrizione:</p>
+                <p class="fs-5" style="text-align: justify"><?php echo $product["description"]; ?></p>
 
             <?php endif; ?>
-            </p>
             </div>
             <!-- END descrizione -->
 
@@ -119,7 +114,7 @@
         <!-- END Modal prodotto aggiunto-->
 
         <!-- Modal caricamento-->
-        <div class="modal" id="adding" tabindex="-1" aria-labelledby="Loading" aria-hidden="true">
+        <div class="modal" id="adding" tabindex="-1" aria-labelledby="adding" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div id="loading" class="text-center m-5">
