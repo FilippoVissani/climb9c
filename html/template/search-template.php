@@ -4,9 +4,9 @@
     </div>
 </div>
 
-<div class="row row row-cols-2 row-cols-md-4 g-4 mx-0">
+<div class="row row-cols-2 row-cols-xl-4 g-4 mx-0">
         <?php foreach($templateParams["products"] as $product): ?>
-            <div class="col">
+            <div class="col d-flex">
                 <?php
                 $templateParams["idPRODUCT"]=$product["idPRODUCT"];
                 $templateParams["productName"]=$product["name"];
