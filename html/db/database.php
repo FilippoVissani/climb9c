@@ -100,10 +100,10 @@ class DatabaseHelper{
       $stmt1->execute();
     }
 
-    public function checkLogin($email, $password){
-      $query = "SELECT * FROM customer WHERE email = ? AND password = ?";
+    public function checkLogin($email){
+      $query = "SELECT * FROM customer WHERE email = ?";
       $stmt = $this->db->prepare($query);
-      $stmt->bind_param('ss',$email, $password);
+      $stmt->bind_param('s',$email);
       $stmt->execute();
       $result = $stmt->get_result();
 
@@ -246,7 +246,7 @@ class DatabaseHelper{
       $stmt->bind_param('i',$idOrder);
       $stmt->execute();
       $result = $stmt->get_result();
-      
+
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 

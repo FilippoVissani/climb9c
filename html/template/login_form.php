@@ -7,7 +7,7 @@
 <main>
   <div class="row justify-content-center align-items-center h-100">
     <div class="col-md-5">
-      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <form id="form" action="login.php" method="post">
         <?php if(isset($templateParams["login_error"])): ?>
         <p class="fw-bold  bg-danger text-white"><?php echo $templateParams["login_error"]; ?></p>
         <?php endif; ?>
@@ -21,7 +21,7 @@
         </div>
         <div class="row justify-content-center align-items-center h-100">
           <label for="accedi" class="invisible">Accedi</label>
-          <input id="accedi" type="submit" class="btn btn-primary" value="Accedi"/>
+          <input id="accedi" type="button" class="btn btn-primary" value="Accedi"/>
         </div>
       </form>
       <div class="text-center p-4">

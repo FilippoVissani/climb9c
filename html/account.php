@@ -10,5 +10,5 @@ else if(isset($_POST["address"])){
 }
 header("location: login.php");
 
-require './template/base.php';
+require './template/base-template.php';
 ?>
