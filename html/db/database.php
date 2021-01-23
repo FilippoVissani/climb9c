@@ -194,7 +194,7 @@ class DatabaseHelper{
     }
 
     public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $coupon){
-      $query = "INSERT INTO climb_9c.order (order.date, customer_address, COUPONcode) VALUES (?, ?, ?)";
+      $query = "INSERT INTO climb_9c.order (order.date, customer_address, shipping_date, COUPONcode) VALUES (?, ?, NULL, ?)";
       $stmt = $this->db->prepare($query);
       $IDcustomer_address = $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0]["idCUSTOMER_ADDRESS"];
       $stmt->bind_param('sis', $date, $IDcustomer_address, $coupon);
