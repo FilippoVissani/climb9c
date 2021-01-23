@@ -1,6 +1,9 @@
 <div class="row mt-3 px-3">
-  <?php foreach($templateParams["notifications"] as $notification): ?>
-  <div class="col-md m-auto">
+  <?php
+  if(!isset($_SESSION["idCUSTOMER"]) || !isset($templateParams["notifications"])){ header("location: login.php"); }
+  foreach($templateParams["notifications"] as $notification):
+  ?>
+  <div class="col-md-4 m-auto">
     <div class="card border-dark mb-3 mx-auto" id="card-<?php echo $notification["id_customer_notification"]; ?>">
       <div class="card-header">
         <button type="button" class="btn-close" aria-label="Close" id="close-<?php echo $notification["id_customer_notification"]; ?>"></button>
@@ -31,12 +34,7 @@
                 data: {
                     idCustomer: <?php echo $notification["id_customer"]; ?>,
                     idNotification: <?php echo $notification["id_customer_notification"]; ?>
-                },
-                /*
-                success: function(data) {
-                    $("#loading").hide();
-                    $('.filter_data').html(data);
-                }*/
+            }
         });
     })
     <?php endforeach; ?>
