@@ -6,7 +6,7 @@ $output = '';
 foreach ($templateParams["FilteredProduct"] as $row) {
     $output .= '
                     <div class="col d-flex">
-                        <div class="card rounded shadow mb-5 flex-fill">
+                        <div class="card rounded shadow mb-5 flex-fill card-hover">
                         <img src="' . UPLOAD_DIR . $row["idPRODUCT"] . '/1.jpg" class="card-img-top" alt="' . $row["name"] . '">
                         <div class="card-body border-top pb-0">
                             <p class="card-title text-center fs-5">' . $row["name"] . '</p>

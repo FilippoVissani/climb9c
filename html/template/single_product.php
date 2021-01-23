@@ -57,7 +57,7 @@
                     <p class="fs-3">Caratteristiche tecniche:</p>
                     <?php $tecnical_specs = json_decode($product["tecnical_specifications"]); ?>
                     <?php if (JSON_ERROR_NONE == json_last_error()) : ?>
-                        <div class="">
+                        <!--<div style="height: 320px;overflow: scroll;">-->
                             <table class="table table-striped table-responsive">
                                 <tbody>
                                     <?php foreach ($tecnical_specs as $key => $val) : ?>
@@ -68,7 +68,7 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-                        </div>
+                        <!--</div>-->
 
                 </div>
                 <!--END Caratteristiche tecniche-->
