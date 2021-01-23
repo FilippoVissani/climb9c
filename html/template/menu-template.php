@@ -7,7 +7,7 @@
     <ul class="list-group collapse" id="<?php echo $category["id"] ?>-subcategory">
         <?php foreach($templateParams[$category["id"]."-subcategory"] as $subcategory): ?>
             <li class="list-group-item">
-                <a class="text-dark fw-bold menu-item" href="subcategory.php?id=<?php echo $subcategory["id"] ?>">
+                <a class="text-dark fw-bold menu-item subcategory-link" href="subcategory.php?id=<?php echo $subcategory["id"] ?>">
                     <?php echo strtoupper($subcategory["name"]) ?>
                     <i class="fas fa-chevron-right fs-3 d-inline-block float-end"></i>
                 </a>
