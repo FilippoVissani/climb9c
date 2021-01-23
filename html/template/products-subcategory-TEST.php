@@ -11,31 +11,21 @@
         <div class="row">
             <!--Filtri-->
             <div class="col-md-2">
-                <?php
-                $group = array();
-                foreach ($templateParams["tags"] as $value) {
-                    $group[$value['chiave']][] = $value;
-                };
-                ?>
-                <h3>FILTRI</h3>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="" name="radioFilter" id="Tutti" checked>
-                    <label class="form-check-label" for="Tutti">
-                        Senza filtri
-                    </label>
-                </div>
-                <?php foreach ($group as $key => $value) : ?>
-                    <h4><?php echo $key; ?></h4>
-
-                    <?php foreach ($value as $k => $v) : ?>
-                        <div class="form-check">
-                            <input class="form-check-input" value="<?php echo $key; ?>" type="radio" name="radioFilter" id="<?php echo $v["valore"]; ?>">
-                            <label class="form-check-label" for="<?php echo $v["valore"]; ?>">
-                                <?php echo $v["valore"]; ?>
-                            </label>
+                <div class="accordion mb-2" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fas fa-filter"></i>Filtri
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <!-- Require filtri-->
+                                <?php require "filter.php"; ?>
+                            </div>
                         </div>
-                    <?php endforeach; ?>
-                <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
             <!--END Filtri-->
 
@@ -69,12 +59,6 @@
 
     <?php endif; ?>
 </div>
-<style>
-    .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
-    }
-</style>
 
 <script>
     $(document).ready(function() {
