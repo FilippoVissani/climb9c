@@ -1,4 +1,4 @@
-<div class="card rounded shadow mb-2 flex-fill">
+<div class="card rounded shadow mb-2 flex-fill card-hover">
     <img src="<?php echo UPLOAD_DIR.$templateParams["idPRODUCT"]; ?>/1.jpg" class="card-img-top" alt="
     <?php echo $templateParams["productName"]; ?>">
     <div class="card-body border-top">
