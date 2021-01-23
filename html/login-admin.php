@@ -1,18 +1,23 @@
 <?php
 require_once 'bootstrap.php';
 
-if(isset($_POST["email"]) && isset($_POST["password"])){
-    $result = $dbh->checkAdminLogin($_POST["email"], $_POST["password"]);
+if(isset($_POST["username"]) && isset($_POST["p"])){
+    $result = $dbh->checkAdmin($_POST["username"]);
     if(count($result)==0){
-        //Login fallito
-        $templateParams["login_error"] = "Errore! Username o password errata!";
+        //Email non registrata
+        $templateParams["login_error"] = "Errore! Utente non registrato!";
     }
     else{
-      $_SESSION["idSELLER"] = $result[0]["idSELLER"];
+      if(password_verify($_POST["p"], $result[0]["password"])){
+        $_SESSION["idSELLER"] = $result[0]["idSELLER"];
+      }
+      else{
+        $templateParams["login_error"] = "Errore! Password Errata!";
+      }
     }
 }
 
-if(isset($_SESSION["idSELLER"])){
+if(isAdminLoggedIn()){
     header("location: admin.php");
 }
 
