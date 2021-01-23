@@ -6,7 +6,13 @@
     <?php else : $product = $templateParams["product"]; ?>
 
         <div class="row">
-            <hr />
+            <div class="row mb-0">
+                <a href="subcategory.php?id=<?php echo $templateParams["posizione"]["idSubcategory"]; ?>" class="text-reset text-decoration-none">
+                    <p class="fs-3 mb-0">Categoria: <?php echo $templateParams["posizione"]["category"]; ?> > <?php echo $templateParams["posizione"]["subcategory"]; ?></p>
+                </a>
+                <hr />
+            </div>
+
             <!--Immagine-->
             <div class="col-xl-6">
                 <img class="w-100 shadow px-auto rounded-pill-home" src="<?php echo UPLOAD_DIR . $product["idPRODUCT"]; ?>/1.jpg" alt="<?php echo $product["name"]; ?>">
@@ -58,16 +64,16 @@
                     <?php $tecnical_specs = json_decode($product["tecnical_specifications"]); ?>
                     <?php if (JSON_ERROR_NONE == json_last_error()) : ?>
                         <!--<div style="height: 320px;overflow: scroll;">-->
-                            <table class="table table-striped table-responsive">
-                                <tbody>
-                                    <?php foreach ($tecnical_specs as $key => $val) : ?>
-                                        <tr>
-                                            <th scope="row"><?php echo $key ?></th>
-                                            <td><?php echo $val ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                        <table class="table table-striped table-responsive">
+                            <tbody>
+                                <?php foreach ($tecnical_specs as $key => $val) : ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $key ?></th>
+                                        <td><?php echo $val ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
                         <!--</div>-->
 
                 </div>
