@@ -12,6 +12,9 @@
         <p class="card-text">
           <?php echo $notification["message"]; ?>
         </p>
+        <p class="card-text text-end">
+          <?php echo $notification["time"]; ?>
+        </p>
       </div>
     </div>
   </div>
@@ -22,6 +25,19 @@
     <?php foreach($templateParams["notifications"] as $notification): ?>
     $("button#close-<?php echo $notification["id_customer_notification"]; ?>").click(function () {
       $("div#card-<?php echo $notification["id_customer_notification"]; ?>").hide();
+      $.ajax({
+                url: "./AJAX-set-notification-visualized.php",
+                method: "POST",
+                data: {
+                    idCustomer: <?php echo $notification["id_customer"]; ?>,
+                    idNotification: <?php echo $notification["id_customer_notification"]; ?>
+                },
+                /*
+                success: function(data) {
+                    $("#loading").hide();
+                    $('.filter_data').html(data);
+                }*/
+        });
     })
     <?php endforeach; ?>
   });

@@ -6,12 +6,12 @@
     <?php foreach($templateParams["categories"] as $category): ?>
     <ul class="list-group collapse" id="<?php echo $category["id"] ?>-subcategory">
         <?php foreach($templateParams[$category["id"]."-subcategory"] as $subcategory): ?>
-            <a class="text-dark fw-bold menu-item" href="subcategory.php?id=<?php echo $subcategory["id"] ?>">
-                <li class="list-group-item">
+            <li class="list-group-item">
+                <a class="text-dark fw-bold menu-item" href="subcategory.php?id=<?php echo $subcategory["id"] ?>">
                     <?php echo strtoupper($subcategory["name"]) ?>
                     <i class="fas fa-chevron-right fs-3 d-inline-block float-end"></i>
-                </li>
-            </a>
+                </a>
+            </li>
         <?php endforeach; ?>
     </ul>
     <?php endforeach; ?>

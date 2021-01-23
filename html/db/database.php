@@ -452,9 +452,19 @@ class DatabaseHelper{
     }
 
     public function getCustomerNotifications($idCustomer){
-      $query="SELECT * FROM `customer_notification` WHERE `customer_notification`.`id_customer`=?";
+      $query="SELECT * FROM `customer_notification` WHERE `customer_notification`.`id_customer`=? AND `customer_notification`.`visualized`=0";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('i',$idCustomer);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function setCustomerNotificationVisualized($idCustomer, $idNotification){
+      $query="UPDATE `customer_notification` SET `visualized` = '1' WHERE `customer_notification`.`id_customer_notification` = ? AND `customer_notification`.`id_customer`=?;";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ii',$idNotification, $idCustomer);
       $stmt->execute();
       $result = $stmt->get_result();
 
