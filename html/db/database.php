@@ -470,5 +470,25 @@ class DatabaseHelper{
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getSellerNotifications($idSeller){
+      $query="SELECT * FROM `seller_notification` WHERE `seller_notification`.`id_seller`=? AND `seller_notification`.`visualized`=0";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idSeller);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function setSellerNotificationVisualized($idSeller, $idNotification){
+      $query="UPDATE `seller_notification` SET `visualized` = '1' WHERE `seller_notification`.`id_seller_notification` = ? AND `seller_notification`.`id_seller`=?;";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ii',$idNotification, $idSeller);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
