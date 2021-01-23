@@ -193,11 +193,11 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $shipping_date, $coupon){
-      $query = "INSERT INTO climb_9c.order (order.date, customer_address, shipping_date, COUPONcode) VALUES (?, ?, ?, ?)";
+    public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $coupon){
+      $query = "INSERT INTO climb_9c.order (order.date, customer_address, COUPONcode) VALUES (?, ?, ?)";
       $stmt = $this->db->prepare($query);
       $IDcustomer_address = $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0]["idCUSTOMER_ADDRESS"];
-      $stmt->bind_param('siss', $date, $IDcustomer_address, $date, $coupon);
+      $stmt->bind_param('sis', $date, $IDcustomer_address, $coupon);
       $stmt->execute();
 
       $lastIdAddrress = $this->db->insert_id;
