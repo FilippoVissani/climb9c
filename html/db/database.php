@@ -490,5 +490,19 @@ class DatabaseHelper{
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getCategoryAndSubcategoryFromProductID($idProduct){
+      $query = "SELECT c.name as category, s.name as subcategory, s.idSUBCATEGORY as idSubcategory FROM product p INNER JOIN subcategory s ON p.idSUBCATEGORY = s.idSUBCATEGORY
+                                                                                INNER JOIN category c ON c.idCATEGORY = s.idCATEGORY
+                                                                                WHERE p.idPRODUCT = ?";
+      $stmt = $this->db->prepare($query);
+      
+      $stmt->bind_param('i',$idProduct);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $result = $result->fetch_all(MYSQLI_ASSOC);
+
+      return $result[0];
+    }
 }
 ?>
