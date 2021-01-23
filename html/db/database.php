@@ -223,10 +223,9 @@ class DatabaseHelper{
     }
 
     public function getOrders($idCUSTOMER){
-      $query = "SELECT o.idORDER, o.date, o.shipping_date, o.COUPONcode, a.street, a.province, a.city, a.zip_code, p.unit_price, p.quantity
-      FROM (((`order` o JOIN `customer_address` c ON o.customer_address=c.idCUSTOMER_ADDRESS)
-      JOIN `address` a ON c.idADDRESS=a.idADDRESS)
-      JOIN `product_order` p ON p.idORDER=o.idORDER)
+      $query = "SELECT o.idORDER, o.date, o.shipping_date, o.COUPONcode, a.street, a.province, a.city, a.zip_code
+      FROM (`order` o JOIN `customer_address` c ON o.customer_address=c.idCUSTOMER_ADDRESS)
+      JOIN `address` a ON c.idADDRESS=a.idADDRESS
       WHERE c.idCUSTOMER=?
       GROUP BY o.idORDER";
       $stmt = $this->db->prepare($query);
@@ -485,6 +484,49 @@ class DatabaseHelper{
       $query="UPDATE `seller_notification` SET `visualized` = '1' WHERE `seller_notification`.`id_seller_notification` = ? AND `seller_notification`.`id_seller`=?;";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('ii',$idNotification, $idSeller);
+      $stmt->execute();
+    }
+
+    public function getShippedOrders(){
+      $query="SELECT o.idORDER, o.date, o.shipping_date, o.COUPONcode, a.street, a.province, a.city, a.zip_code
+      FROM (`order` o JOIN `customer_address` c ON o.customer_address=c.idCUSTOMER_ADDRESS)
+      JOIN `address` a ON c.idADDRESS=a.idADDRESS
+      WHERE o.`shipping_date` IS NOT NULL
+      GROUP BY o.idORDER";
+      $stmt = $this->db->prepare($query);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNewOrders(){
+      $query="SELECT o.idORDER, o.date, o.COUPONcode, a.street, a.province, a.city, a.zip_code
+      FROM (`order` o JOIN `customer_address` c ON o.customer_address=c.idCUSTOMER_ADDRESS)
+      JOIN `address` a ON c.idADDRESS=a.idADDRESS
+      WHERE o.`shipping_date` IS NULL
+      GROUP BY o.idORDER";
+      $stmt = $this->db->prepare($query);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function shipOrder($idOrder){
+      $query="UPDATE `order` SET `shipping_date`=NOW() WHERE idORDER=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idOrder);
+      $stmt->execute();
+    }
+
+    public function getOrderDetails($idOrder){
+      $query="SELECT `order`.*, `address`.* FROM
+      (`order` INNER JOIN `customer_address` ON `order`.customer_address=`customer_address`.idCUSTOMER_ADDRESS)
+      INNER JOIN `address` ON `address`.idADDRESS=`customer_address`.idADDRESS
+      WHERE `order`.`idORDER`=?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idOrder);
       $stmt->execute();
       $result = $stmt->get_result();
 
