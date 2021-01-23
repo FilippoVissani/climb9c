@@ -7,9 +7,11 @@
 
         <div class="row">
             <div class="row mb-0">
-                <a href="subcategory.php?id=<?php echo $templateParams["posizione"]["idSubcategory"]; ?>" class="text-reset text-decoration-none">
-                    <p class="fs-3 mb-0">Categoria: <?php echo $templateParams["posizione"]["category"]; ?> > <?php echo $templateParams["posizione"]["subcategory"]; ?></p>
-                </a>
+                <div>
+                    <a href="subcategory.php?id=<?php echo $templateParams["posizione"]["idSubcategory"]; ?>" class="text-reset text-decoration-none fs-3 mb-0">
+                        Categoria: <?php echo $templateParams["posizione"]["category"]; ?> > <?php echo $templateParams["posizione"]["subcategory"]; ?>
+                    </a>
+                </div>
                 <hr />
             </div>
 
