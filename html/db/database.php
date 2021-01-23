@@ -429,6 +429,7 @@ class DatabaseHelper{
       $query2 = "UPDATE cart SET last_update = ? WHERE idCUSTOMER = ?";
       $stmt2 = $this->db->prepare($query2);
       $stmt2->bind_param('si', $dataAttuale, $idCustomer);
+      $stmt2->execute();
     }
 
     public function filterProducts($idSubcategory, $chiave, $valore){
