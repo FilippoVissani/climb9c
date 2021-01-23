@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION["idCUSTOMER"]) || !isset($templateParams["products"])){ header("location: login.php"); } ?>
 <div class="row mx-auto mt-5">
     <div class="col-12 m-auto">
         <h1 class="m-auto fw-bold text-center">DETTAGLI ORDINE N° <?php echo $_POST["id"] ?></h1>

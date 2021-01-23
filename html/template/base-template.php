@@ -24,13 +24,16 @@
                                 Climb9c
                         </a>
                         <div class="d-flex text-light">
-                            <a href="<?php echo isset($_SESSION["idCUSTOMER"]) ? "account.php" : "login.php" ?>">
-                            <i class="d-inline-block mx-4 far fa-user text-light fs-2"></i>
+                            <a href="<?php echo "account.php" ?>">
+                            <i class="d-inline-block mx-2 far fa-user text-light fs-2"></i>
                             </a>
-                            <a href="<?php echo isset($_SESSION["idCUSTOMER"]) ? "cart.php" : "login.php" ?>">
-                            <i class="d-inline-block mx-4 fas fa-shopping-cart text-light fs-2"></i>
+                            <a href="<?php echo "notifications.php" ?>">
+                            <i class="d-inline-block mx-2 far fa-envelope text-light fs-2"></i>
                             </a>
-                            <i class="d-inline-block mx-4 fas fa-bars fs-2" id="menu-toggler"></i>
+                            <a href="<?php echo "cart.php" ?>">
+                            <i class="d-inline-block mx-2 fas fa-shopping-cart text-light fs-2"></i>
+                            </a>
+                            <i class="d-inline-block mx-2 fas fa-bars fs-2" id="menu-toggler"></i>
                         </div>
                     </header>
                 </div>

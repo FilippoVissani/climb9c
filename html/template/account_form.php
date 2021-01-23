@@ -14,6 +14,11 @@
   <main>
     <div class="row">
       <div class="col-12">
+        <div class="col-6">
+          <h2>I MIEI ORDINI</h2>
+          <a class="btn btn-primary" href="orders-summary.php" role="button">Visualizza ordini effettuati</a>
+        </div>
+        <hr/>
         <h2>INFORMAZIONI ACCOUNT</h2>
         <div class="col-12">
           <section>
@@ -23,7 +28,7 @@
             <p><?php echo $_SESSION["email"]; ?></p>
             <p><?php echo $_SESSION["telephone"]; ?></p>
             <?php endif; ?>
-            <div class="row justify-content-center">
+            <div class="col-6">
               <form class="" action="account.php" method="get">
                 <input type="hidden" name="logout"/>
                 <label for="logout" class="invisible">Logout</label>
