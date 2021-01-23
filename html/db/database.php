@@ -194,7 +194,7 @@ class DatabaseHelper{
     }
 
     public function addNewOrder($date, $idCUSTOMER, $idADDRESS, $coupon){
-      $query = "INSERT INTO climb_9c.order (order.date, customer_address, COUPONcode) VALUES (?, ?, ?)";
+      $query = "INSERT INTO climb_9c.order (order.date, customer_address, shipping_date, COUPONcode) VALUES (?, ?, NULL, ?)";
       $stmt = $this->db->prepare($query);
       $IDcustomer_address = $this->getCoustomerAddressID($idCUSTOMER, $idADDRESS)[0]["idCUSTOMER_ADDRESS"];
       $stmt->bind_param('sis', $date, $IDcustomer_address, $coupon);
@@ -359,9 +359,18 @@ class DatabaseHelper{
       //update quantities in stock
       $product = $this->getCartByCustomerID($idCUSTOMER);
       foreach($product as $singleProduct){
+        $query = "SELECT quantity FROM product WHERE idPRODUCT = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $singleProduct["idPRODUCT"]);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        $quantity = $result[0]["quantity"] - $singleProduct["productQuantity"];
+
         $query = "UPDATE product SET quantity = ? WHERE idPRODUCT = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', $singleProduct["productQuantity"], $singleProduct["idPRODUCT"]);
+        $stmt->bind_param('ii', $quantity, $singleProduct["idPRODUCT"]);
         $stmt->execute();
       }
       //delete from cart_product
@@ -531,6 +540,20 @@ class DatabaseHelper{
       $result = $stmt->get_result();
 
       return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getCategoryAndSubcategoryFromProductID($idProduct){
+      $query = "SELECT c.name as category, s.name as subcategory, s.idSUBCATEGORY as idSubcategory FROM product p INNER JOIN subcategory s ON p.idSUBCATEGORY = s.idSUBCATEGORY
+                                                                                INNER JOIN category c ON c.idCATEGORY = s.idCATEGORY
+                                                                                WHERE p.idPRODUCT = ?";
+      $stmt = $this->db->prepare($query);
+
+      $stmt->bind_param('i',$idProduct);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $result = $result->fetch_all(MYSQLI_ASSOC);
+
+      return $result[0];
     }
 }
 ?>

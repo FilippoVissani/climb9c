@@ -22,7 +22,7 @@ if(!count($templateParams["subcategory"])==0){
 }
 
 $templateParams["search_bar"] = TRUE;
-$templateParams["name"]="products-subcategory-TEST.php";
+$templateParams["name"]="products-subcategory.php";
 
 $templateParams["categories"]=$dbh->getCategories();
 foreach($templateParams["categories"] as $category){
