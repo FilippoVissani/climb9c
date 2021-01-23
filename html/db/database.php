@@ -360,9 +360,18 @@ class DatabaseHelper{
       //update quantities in stock
       $product = $this->getCartByCustomerID($idCUSTOMER);
       foreach($product as $singleProduct){
+        $query = "SELECT quantity FROM product WHERE idPRODUCT = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $singleProduct["idPRODUCT"]);
+        $result = $stmt->execute();
+        $result = $stmt->get_result();
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        $quantity = $result[0]["quantity"] - $singleProduct["productQuantity"];
+
         $query = "UPDATE product SET quantity = ? WHERE idPRODUCT = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', $singleProduct["productQuantity"], $singleProduct["idPRODUCT"]);
+        $stmt->bind_param('ii', $quantity, $singleProduct["idPRODUCT"]);
         $stmt->execute();
       }
       //delete from cart_product
@@ -496,7 +505,7 @@ class DatabaseHelper{
                                                                                 INNER JOIN category c ON c.idCATEGORY = s.idCATEGORY
                                                                                 WHERE p.idPRODUCT = ?";
       $stmt = $this->db->prepare($query);
-      
+
       $stmt->bind_param('i',$idProduct);
       $stmt->execute();
       $result = $stmt->get_result();
