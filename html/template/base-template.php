@@ -132,30 +132,17 @@
                 });
 
                 $("i#menu-toggler").click(function(){
-                    $( "div#menu" ).show();
+                    $( "div#category-menu" ).slideDown();
                     if (!isDesktop) {
-                        $( "div.container-fluid" ).hide();
+                        $( "div.container-fluid" ).slideUp();
                     }
                 });
-
-                <?php foreach($templateParams["categories"] as $category): ?>
-                    $("i#menu-back").click(function(){
-                        if($( "ul#menu-categories" ).is(":visible")){
-                            $( "div#menu" ).hide();
-                            if (!isDesktop) {
-                                $( "div.container-fluid" ).show();
-                            }
-                        }else{
-                            $("ul#<?php echo $category["id"] ?>-subcategory").hide();
-                            $("ul#menu-categories").show();
-                        }
-                    });
-
-                    $("li#<?php echo $category["id"] ?>-category").click(function(){
-                        $("ul#menu-categories").hide();
-                        $("ul#<?php echo $category["id"] ?>-subcategory").show();
-                    });
-                <?php endforeach; ?>
+                $("i#menu-back").click(function(){
+                    $( "div#category-menu" ).slideUp();
+                    if (!isDesktop) {
+                        $( "div.container-fluid" ).slideDown();
+                    }
+                });
             });
         </script>
     </body>
