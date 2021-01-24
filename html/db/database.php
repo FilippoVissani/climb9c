@@ -356,6 +356,15 @@ class DatabaseHelper{
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllTags(){
+      $query = "SELECT idTAG, name FROM tag";
+      $stmt = $this->db->prepare($query);
+      $result = $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function deleteCart($idCUSTOMER){
       //update quantities in stock
       $product = $this->getCartByCustomerID($idCUSTOMER);
@@ -609,6 +618,13 @@ class DatabaseHelper{
       $stmt2->bind_param('ii', $insertedTagID, $idSubcategory);
       $stmt2->execute();
     }
-    
+
+    public function addTagProduct($idTAG, $idPRODUCT, $value){
+      $query2 = "INSERT INTO tag_product (idTAG, idPRODUCT, value) VALUES (?, ?, ?)";
+      $stmt2 = $this->db->prepare($query2);
+      $stmt2->bind_param('iis', $idTAG, $idPRODUCT, $value);
+      $stmt2->execute();
+    }
+
 }
 ?>

@@ -50,12 +50,25 @@
 
                 <div class="input-group  mb-4">
                   <span class="input-group-text" id="product-quantity">QUANTITA'</span>
-                  <input type="number" min="1" name="product-quantity" class="form-control" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity"/>
+                  <input type="number" min="1" name="product-quantity" class="form-control" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity" required/>
                 </div>
 
                 <div class="input-group  mb-4">
                   <span class="input-group-text" id="product-img">IMMAGINE PRODOTTO</span>
                   <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" required/>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">TAGS</div>
+                    <div class="card-body">
+                      <?php $tags = $dbh->getAllTags(); ?>
+                      <?php foreach ($tags as $singleTag): ?>
+                      <div class="input-group mb-4">
+                        <span class="input-group-text" id="tag-<?php echo $singleTag["name"] ?>"><?php echo $singleTag["name"] ?></span>
+                        <input type="text" name="tag-<?php echo $singleTag["idTAG"] ?>" class="form-control" placeholder="<?php echo $singleTag["name"] ?>" aria-label="tag-<?php echo $singleTag["name"] ?>" aria-describedby="tag-<?php echo $singleTag["name"] ?>"/>
+                      </div>
+                      <?php endforeach; ?>
+                    </div>
                 </div>
 
                 <table id="specifications-table" class="table">
