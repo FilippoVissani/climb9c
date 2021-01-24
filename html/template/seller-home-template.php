@@ -1,3 +1,9 @@
+<?php
+if($_POST["logout"]==TRUE){
+    unset($_SESSION["idSELLER"]);
+    header("location: login-admin.php");
+}
+?>
 <div class="row mt-5 mx-2">
     <div class="col-md-6">
         <div class="card">
@@ -20,5 +26,13 @@
                 <a href="orders-management.php" class="btn btn-primary">Accedi</a>
             </div>
         </div>
+    </div>
+</div>
+<div class="row mt-5 mx-2">
+    <div class="col-md-12">
+        <form action="./seller-home.php" method="post">
+            <input class="collapse" type="text" name="logout" value="TRUE" readonly="readonly">
+            <button type="submit" class="btn btn-primary fw-bold">Logout</button>
+        </form>
     </div>
 </div>

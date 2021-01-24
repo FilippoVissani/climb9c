@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 if(isset($_SESSION["idSELLER"])){
-    $templateParams["title"]="Climb9c - Home";
+    $templateParams["title"]="Climb9c - Seller home";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "seller-home-template.php";
     $templateParams["categories"]=$dbh->getCategories();
