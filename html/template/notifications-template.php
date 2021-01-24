@@ -40,13 +40,11 @@
   <?php endforeach; ?>
 </div>
 <script>
-  $(document).ready(function () {
+  $(document).ready(function() {
     <?php foreach($templateParams["notifications"] as $notification):
         if(isset($_SESSION["idCUSTOMER"])){
-          $tmp["id_owner"]=$notification["id_customer"];
           $tmp["id_notification"]=$notification["id_customer_notification"];
         }else{
-          $tmp["id_owner"]=$notification["id_seller"];
           $tmp["id_notification"]=$notification["id_seller_notification"];
         }  
     ?>
@@ -56,11 +54,10 @@
                 url: "./AJAX-set-notification-visualized.php",
                 method: "POST",
                 data: {
-                  idOwner: <?php echo $tmp["id_owner"]; ?>,
                   idNotification: <?php echo $tmp["id_notification"]; ?>
             }
         });
-    })
+    });
     <?php endforeach; ?>
   });
 </script>
