@@ -5,10 +5,10 @@
                 AGGIUNGI NUOVO PRODOTTO
             </div>
             <div class="card-body">
-              <form class="" action="index.html" method="post">
+              <form class="" action="add_product.php" method="post" enctype="multipart/form-data">
                 <div class="input-group mb-4">
                   <span class="input-group-text" id="product-name">NOME</span>
-                  <input type="text" name="product-name" class="form-control" placeholder="Nome Prodotto" aria-label="product-name" aria-describedby="product-name"/>
+                  <input type="text" name="product-name" class="form-control" placeholder="Nome Prodotto" aria-label="product-name" aria-describedby="product-name" required/>
                 </div>
 
                 <div class="input-group mb-4">
@@ -18,12 +18,12 @@
 
                 <div class="input-group mb-4">
                   <span class="input-group-text" id="product-price">PREZZO</span>
-                  <input type="number" min="0" step=".01" name="product-price" class="form-control" placeholder="Prezzo Prodotto" aria-label="product-price" aria-describedby="product-price"/>
+                  <input type="number" min="0" step=".01" name="product-price" class="form-control" placeholder="Prezzo Prodotto" aria-label="product-price" aria-describedby="product-price" required/>
                 </div>
 
                 <div class="input-group mb-4">
                   <span class="input-group-text">DESCRIZIONE</span>
-                  <textarea class="form-control" name="description" aria-label="description"></textarea>
+                  <input type="text" class="form-control" name="description" aria-label="description"/>
                 </div>
 
                 <div class="input-group mb-4">
@@ -35,7 +35,7 @@
                     <optgroup label="<?php echo $category["name"]; ?>">
                       <?php $subcategories = $dbh->getSubcategories($category["id"]); ?>
                       <?php foreach ($subcategories as $subcategory): ?>
-                      <option value="<?php echo $subcategory["name"]; ?>"><?php echo $subcategory["name"]; ?></option>
+                      <option value="<?php echo $subcategory["id"]; ?>"><?php echo $subcategory["name"]; ?></option>
                       <?php endforeach; ?>
                     </optgroup>
                     <?php endforeach; ?>
@@ -43,11 +43,15 @@
                 </div>
 
                 <div class="input-group  mb-4">
-                <span class="input-group-text" id="product-quantity">QUANTITA'</span>
-                    <input type="number" min="1" class="form-control" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity"/>
+                  <span class="input-group-text" id="product-quantity">QUANTITA'</span>
+                  <input type="number" min="1" name="product-quantity" class="form-control" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity"/>
                 </div>
 
-                <?php $numberRow="1"; ?>
+                <div class="input-group  mb-4">
+                  <span class="input-group-text" id="product-img">IMMAGINE PRODOTTO</span>
+                  <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" required/>
+                </div>
+
                 <table id="specifications-table" class="table">
                   <caption class="p-0">SPECIFICHE TECNICHE</caption>
                   <thead>
@@ -68,11 +72,11 @@
                     <span class="fas fa-plus ">Aggiungi specifica</span>
                   </button>
                 </div>
-                  <div class=" text-center mt-4">
-                    <label for="inserisci-prodotto" class="invisible">Accedi</label>
-                    <input id="inserisci-prodotto" type="submit" class="btn btn-primary btn-lg btn-block w-100" value="Inserisci prodotto"/>
-                  </div>
-
+                <div class=" text-center mt-4">
+                  <input type="hidden" id="specifications_number" name="specifications_number" value="1"/>
+                  <label for="inserisci-prodotto" class="invisible">Inserisci prodotto</label>
+                  <input id="inserisci-prodotto" type="submit" class="btn btn-primary btn-lg btn-block w-100" value="Inserisci prodotto"/>
+                </div>
               </form>
             </div>
         </div>
@@ -82,10 +86,14 @@
 <script>
   $(document).ready(function () {
 
-    <?php $numberRow = $numberRow + 1; ?>
     $("#add_row").click(function () {
-      let markup = '<tr><td headers="specifica" ><input class="col-12" type="text" name="specifica<?php echo $numberRow; ?>" /></td><td headers="descrizione" ><input class="col-12" type="text" name="descrizione<?php echo $numberRow; ?>"/></td></tr>';
+      let row = $("#specifications_number");
+      row.val(parseInt(row.val())+1);
+      let nameS = "specifica"+row.val();
+      let nameD = "descrizione"+row.val();
+      let markup = '<tr><td headers="specifica" ><input class="col-12" type="text" name='+nameS+' /></td><td headers="descrizione" ><input class="col-12" type="text" name='+nameD+' /></td></tr>';
       $("table tbody").append(markup);
+
     })
 
   });

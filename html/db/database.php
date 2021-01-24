@@ -577,6 +577,8 @@ class DatabaseHelper{
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('ssiissi',$name, $brand, $price, $idSubcategory, $description, $tecnical_specs, $quantity);
       $stmt->execute();
+      return $this->db->insert_id;
+
     }
 }
 ?>
