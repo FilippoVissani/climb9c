@@ -452,7 +452,7 @@ class DatabaseHelper{
     }
 
     public function checkAdminLogin($email){
-      $query="SELECT seller.idSELLER WHERE seller.email LIKE '?'";
+      $query="SELECT * FROM seller WHERE email = ?";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('s',$email);
       $stmt->execute();
@@ -570,6 +570,13 @@ class DatabaseHelper{
       $result = $result->fetch_all(MYSQLI_ASSOC);
 
       return $result[0];
+    }
+
+    public function AddNewProduct($name, $brand, $price, $idSubcategory, $description, $tecnical_specs, $quantity){
+      $query = "INSERT INTO product (name, brand, price, idSUBCATEGORY, description, tecnical_specifications, quantity) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ssiissi',$name, $brand, $price, $idSubcategory, $description, $tecnical_specs, $quantity);
+      $stmt->execute();
     }
 }
 ?>

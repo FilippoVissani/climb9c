@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 
 if(isset($_POST["username"]) && isset($_POST["p"])){
-    $result = $dbh->checkAdmin($_POST["username"]);
+    $result = $dbh->checkAdminLogin($_POST["username"]);
     if(count($result)==0){
         //Email non registrata
         $templateParams["login_error"] = "Errore! Utente non registrato!";
