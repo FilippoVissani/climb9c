@@ -1,5 +1,5 @@
 <?php
-if($_POST["logout"]==TRUE){
+if(isset($_POST["logout"]) && $_POST["logout"]==TRUE){
     unset($_SESSION["idSELLER"]);
     header("location: login-admin.php");
 }
