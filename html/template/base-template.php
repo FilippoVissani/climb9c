@@ -56,39 +56,25 @@
                     }
                 ?>
 
-            <div class="row mx-0 mt-3">
+            <div class="row mx-auto">
                 <div class="col-12 p-0">
-                    <footer class="nav bg-dark py-3">
-                        <div class="col-3 border-end border-1 border-light mb-2">
-                            <div class="row m-0 d-flex">
-                                <i class="far fa-credit-card text-light fs-2 mb-2 text-center p-0"></i>
+                    <footer class="nav bg-dark">
+                        <div class="row mx-auto my-3">
+                            <div class="col-3 border-end border-light text-center">
+                                <i class="far fa-credit-card text-light fs-2"></i>
+                                <p class="text-light">Metodo di pagamento sicuro</p>
                             </div>
-                            <div class="row m-0">
-                                <p class="text-light text-center m-0 p-0">Metodo di pagamento sicuro</p>
+                            <div class="col-3 border-end border-light text-center">
+                                <i class="fas fa-truck-moving text-light fs-2"></i>
+                                <p class="text-light">Spedizioni in tutto il mondo</p>
                             </div>
-                        </div>
-                        <div class="col-3 border-end border-1 border-light mb-2">
-                            <div class="row m-0 d-flex justify-content-center">
-                            <i class="fas fa-truck-moving text-light fs-2 mb-2 text-center p-0"></i>
+                            <div class="col-3 border-end border-light text-center">
+                                <i class="fas fa-clock text-light fs-2"></i>
+                                <p class="text-light">Spedizioni in 24 ore + 100 giorni per il reso</p>
                             </div>
-                            <div class="row m-0">
-                                <p class="text-light text-center m-0 p-0">Spedizioni in tutto il mondo</p>
-                            </div>
-                        </div>
-                        <div class="col-3 border-end border-1 border-light mb-2">
-                            <div class="row m-0 d-flex justify-content-center">
-                            <i class="fas fa-clock text-light fs-2 mb-2 text-center p-0"></i>
-                            </div>
-                            <div class="row m-0">
-                                <p class="text-light text-center m-0 p-0">Spedizioni in 24 ore + 100 giorni per il reso</p>
-                            </div>
-                        </div>
-                        <div class="col-3 mb-2">
-                            <div class="row m-0 d-flex justify-content-center">
-                            <i class="fas fa-percentage text-light fs-2 mb-2 text-center p-0"></i>
-                            </div>
-                            <div class="row m-0">
-                                <p class="text-light text-center m-0 p-0">Coupon per gli acquisti</p>
+                            <div class="col-3 text-center">
+                                <i class="fas fa-percentage text-light fs-2"></i>
+                                <p class="text-light">Coupon per gli acquisti</p>
                             </div>
                         </div>
                     </footer>
