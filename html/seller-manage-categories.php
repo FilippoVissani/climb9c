@@ -20,6 +20,8 @@ require_once 'bootstrap.php';
         var_dump($_POST["product-subcategory"]);
         
         var_dump($_POST["nuovaSottocategoria"]);
+
+        $dbh->addNewSubcategory($_POST["product-subcategory"], $_POST["nuovaSottocategoria"]);
     }
 
     if(isset($_POST["nuovoTag"])){

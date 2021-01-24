@@ -588,5 +588,12 @@ class DatabaseHelper{
       $stmt->bind_param('s',$name);
       $stmt->execute();
     }
+
+    public function addNewSubcategory($idCategory, $name){
+      $query = "INSERT INTO subcategory (idCATEGORY, name) VALUES (?, ?)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('is',$idCategory, $name);
+      $stmt->execute();
+    }
 }
 ?>
