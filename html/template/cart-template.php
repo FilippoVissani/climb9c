@@ -30,6 +30,7 @@
           <?php endif; ?>
         </section>
         <hr/>
+        <?php if(numberProduct($product)!=0): ?>
         <fieldset>
           <legend>RIEPILOGO ORDINE</legend>
           <?php foreach($product as $singleProduct): ?>
@@ -61,6 +62,7 @@
           <hr/>
           <?php endforeach; ?>
         </fieldset>
+        <?php endif; ?>
       </div>
     </div>
   </main>

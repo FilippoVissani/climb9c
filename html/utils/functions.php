@@ -19,7 +19,8 @@ function numberProduct($productArray){
 function cartPrice($productArray){
   $total = 0;
   for($i = 0; $i < count($productArray); $i++) {
-        $total += $productArray[$i]["productPrice"];
+    $price = $productArray[$i]["productPrice"]*$productArray[$i]["productQuantity"];
+    $total += $price;
   }
   return $total;
 }
