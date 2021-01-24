@@ -515,7 +515,7 @@ class DatabaseHelper{
       FROM (`order` o JOIN `customer_address` c ON o.customer_address=c.idCUSTOMER_ADDRESS)
       JOIN `address` a ON c.idADDRESS=a.idADDRESS
       WHERE o.`shipping_date` IS NOT NULL
-      GROUP BY o.idORDER";
+      GROUP BY o.idORDER LIMIT 50";
       $stmt = $this->db->prepare($query);
       $stmt->execute();
       $result = $stmt->get_result();
