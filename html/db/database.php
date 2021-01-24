@@ -144,7 +144,7 @@ class DatabaseHelper{
     }
 
     public function getSubcategories($idCategory){
-      $query = "SELECT s.name, s.idSUBCATEGORY AS id FROM subcategory s, category c WHERE s.idCATEGORY=?";
+      $query = "SELECT s.name, s.idSUBCATEGORY AS id FROM subcategory s INNER JOIN category c ON s.idCATEGORY=c.idCATEGORY WHERE s.idCATEGORY=?";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('i',$idCategory);
       $stmt->execute();
