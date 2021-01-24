@@ -48,7 +48,7 @@ endforeach;
 <div class="row mx-auto">
     <div class="col-md-12 m-auto d-flex">
         <button class="btn btn-primary fw-bold" id="ship">SPEDISCI</button>
-        <div class="alert alert-success mx-3 collapse" role="alert" id="ship-alert">
+        <div class="alert alert-success collapse" role="alert" id="ship-alert">
             Ordine spedito con successo!
         </div>
     </div>
@@ -63,7 +63,17 @@ endforeach;
                   id: <?php echo $_POST["id"] ?>
                 }
             });
+            $.ajax({
+                url: "./send-notification.php",
+                method: "POST",
+                data: {
+                  title: "Il tuo ordine è stato spedito!",
+                  message: "Il tuo ordine con ID=<?php echo $_POST["id"] ?> è stato spedito.",
+                  recipientId: <?php echo $templateParams["orderDetails"][0]["idCUSTOMER"] ?>
+                }
+            });
             $("div#ship-alert").toggle();
+            $("button#ship").toggle();
         });
     });
 </script>

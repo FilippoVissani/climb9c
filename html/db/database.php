@@ -479,20 +479,34 @@ class DatabaseHelper{
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getSellerNotifications($idSeller){
-      $query="SELECT * FROM `seller_notification` WHERE `seller_notification`.`id_seller`=? AND `seller_notification`.`visualized`=0";
+    public function getSellerNotifications(){
+      $query="SELECT * FROM `seller_notification` WHERE `seller_notification`.`visualized`=0";
       $stmt = $this->db->prepare($query);
-      $stmt->bind_param('i',$idSeller);
       $stmt->execute();
       $result = $stmt->get_result();
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function setSellerNotificationVisualized($idSeller, $idNotification){
-      $query="UPDATE `seller_notification` SET `visualized` = '1' WHERE `seller_notification`.`id_seller_notification` = ? AND `seller_notification`.`id_seller`=?;";
+    public function setSellerNotificationVisualized($idNotification){
+      $query="UPDATE `seller_notification` SET `visualized` = 1 WHERE `seller_notification`.`id_seller_notification` = ?;";
       $stmt = $this->db->prepare($query);
-      $stmt->bind_param('ii',$idNotification, $idSeller);
+      $stmt->bind_param('i',$idNotification);
+      $stmt->execute();
+    }
+
+    public function addSellerNotification($title, $message){
+      $query="INSERT INTO seller_notification (title, message)
+      VALUES (?, ?);";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ss',$title, $message);
+      $stmt->execute();
+    }
+
+    public function addCustomerNotification($title, $message, $idCustomer){
+      $query="INSERT INTO `customer_notification` (`id_customer`, `title`, `message`) VALUES (?, ?, ?);";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('iss', $idCustomer, $title, $message);
       $stmt->execute();
     }
 
@@ -530,7 +544,7 @@ class DatabaseHelper{
     }
 
     public function getOrderDetails($idOrder){
-      $query="SELECT `order`.*, `address`.* FROM
+      $query="SELECT `order`.*, `address`.*, `customer_address`.idCUSTOMER FROM
       (`order` INNER JOIN `customer_address` ON `order`.customer_address=`customer_address`.idCUSTOMER_ADDRESS)
       INNER JOIN `address` ON `address`.idADDRESS=`customer_address`.idADDRESS
       WHERE `order`.`idORDER`=?";
