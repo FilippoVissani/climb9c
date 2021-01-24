@@ -580,5 +580,12 @@ class DatabaseHelper{
       return $this->db->insert_id;
 
     }
+
+    public function addNewCategory($name){
+      $query = "INSERT INTO category (name) VALUES (?)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('s',$name);
+      $stmt->execute();
+    }
 }
 ?>
