@@ -18,7 +18,7 @@ if(isset($_POST["username"]) && isset($_POST["p"])){
 }
 
 if(isAdminLoggedIn()){
-    header("location: admin.php");
+    header("location: seller-home.php");
 }
 
 $templateParams["title"]="Climb9c - Admin login";
