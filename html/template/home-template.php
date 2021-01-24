@@ -138,7 +138,7 @@
 
 <div class="row m-auto row row-cols-2 row-cols-md-4 g-4">
     <?php foreach($templateParams["bestSeller"] as $product): ?>
-    <div class="col-md-2 mx-auto">
+    <div class="col-md-2 mx-auto d-flex">
         <?php 
         $templateParams["idPRODUCT"]=$product["idPRODUCT"];
         $templateParams["productName"]=$product["name"];
