@@ -2,25 +2,52 @@
     <div class="col-xl-1"></div>
     <div class="col-xl-10">
 
-        <form class="row g-3" action="add_product.php" method="post" enctype="multipart/form-data">
+
+        <?php if (isset($templateParams["insertResult"])) : ?>
+            <div class="alert alert-success text-center" role="alert">
+                <?php echo $templateParams["insertResult"]; ?>
+            </div>
+        <?php endif; ?>
+
+
+
+
+
+
+
+
+        <form class="row g-3" action="seller-manage-categories.php" method="post">
             <h1>CREA CATEGORIA</h1>
             <div class="col">
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Nome: </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span class="input-group-text" id="inputGroup-nome">Categoria: </span>
+                    <input type="text" name="nuovaCategoria" class="form-control" aria-label="Nuova categoria" aria-describedby="inputGroup-nome" required>
                 </div>
             </div>
 
             <div class="col">
-                <label for="inserisci-categoria" class="invisible" hidden>Aggiungi ategoria</label>
+                <label for="inserisci-categoria" class="invisible" hidden>Aggiungi categoria</label>
                 <button id="inserisci-categoria" type="submit" class="btn btn-primary mb-3">Aggiungi categoria</button>
             </div>
         </form>
 
-        <form class="row g-3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <form class="row g-3" action="seller-manage-categories.php" method="post">
             <h1>CREA SOTTOCATEGORIA</h1>
             <div class="col">
-                <div class="input-group mb-4">
+                <div class="input-group mb-3">
                     <span class="input-group-text" id="product-subcategory">Categoria: </span>
                     <select class="" name="product-subcategory" aria-label="product-subcategory">
                         <?php $categories = $dbh->getCategories(); ?>
@@ -28,8 +55,8 @@
                             <option value="<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <span class="input-group-text" id="inputGroup-sizing-default">Nome: </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span class="input-group-text" id="inputGroup-sottocat">Sottocategoria: </span>
+                    <input type="text" name="nuovaSottocategoria" class="form-control" aria-label="Nuova sottocategoria" aria-describedby="inputGroup-sottocat" required>
                 </div>
             </div>
 
@@ -40,12 +67,19 @@
             </div>
         </form>
 
-        <form class="row g-3">
+
+
+
+
+
+
+
+        <form class="row g-3" action="seller-manage-categories.php" method="post">
             <h1>CREA TAG</h1>
             <div class="col">
-                <div class="input-group mb-4">
-                    <span class="input-group-text" id="product-subcategory">Sottocategoria: </span>
-                    <select class="" name="product-subcategory" aria-label="product-subcategory">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="product-subcategoryID">Sottocategoria: </span>
+                    <select class="" name="product-subcategoryID" aria-label="product-subcategoryID">
                         <?php $categories = $dbh->getCategories(); ?>
                         <?php foreach ($categories as $category) : ?>
                             <optgroup label="<?php echo $category["name"]; ?>">
@@ -56,8 +90,8 @@
                             </optgroup>
                         <?php endforeach; ?>
                     </select>
-                    <span class="input-group-text" id="inputGroup-sizing-default">Nome: </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span class="input-group-text" id="inputGroup-newTag">Tag: </span>
+                    <input type="text" name="nuovoTag" class="form-control" aria-label="Nuovo tag" aria-describedby="inputGroup-newTag" required>
                 </div>
             </div>
 
