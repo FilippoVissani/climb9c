@@ -1,6 +1,6 @@
 <?php
-if(isset($_SESSION["idCUSTOMER"])){
-    require_once 'bootstrap.php';
+require_once 'bootstrap.php';
+if(isset($_SESSION["idSELLER"])){
     $templateParams["title"]="Climb9c - Home";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "seller-home-template.php";
