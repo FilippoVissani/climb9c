@@ -9,14 +9,19 @@ if(isset($_POST["product-name"])){
   }
   //lo trasformo in Json
   $json = json_encode($tecnical_specs);
-  //salvo imgarticolo
-  //list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["product-img"]);
-  //salvo il nuovo prodotto nel db
 
-  $idProduct = $dbh->addNewProduct($_POST["product-name"], $_POST["product-brand"], $_POST["product-price"], $_POST["product-subcategory"], $_POST["description"], $json, $_POST["product-quantity"]);
-  //prodotto salvato con successo
-  var_dump($_POST);
-
+  //controllo file caricato
+  list($result, $msg) = checkImage($_FILES["product-img"]);
+  if($result==1){
+    //se il caricamento è avvenuto correttamente salvo il nuovo prodotto nel db
+    $idProduct = $dbh->addNewProduct($_POST["product-name"], $_POST["product-brand"], $_POST["product-price"], $_POST["product-subcategory"], $_POST["description"], $json, $_POST["product-quantity"]);
+    mkdir(UPLOAD_DIR."/".$idProduct);
+    uploadImage(UPLOAD_DIR."/".$idProduct."/", $_FILES["product-img"]);
+    $templateParams["product-insert"] = "Prodotto caricato correttamente!";
+  }
+  else{
+    $templateParams["img-error"] = $msg;
+  }
 }
 
 $templateParams["title"]="Climb9c - Nuovo Prodotto";

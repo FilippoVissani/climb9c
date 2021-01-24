@@ -1,9 +1,15 @@
 <div class="row mt-5 mx-2">
     <div class="col">
+      <?php if(isset($templateParams["product-insert"])): ?>
+      <p class="fw-bold  bg-success text-white fs-4 text-center"><?php echo $templateParams["product-insert"]; ?></p>
+      <?php endif; ?>
         <div class="card">
             <div class="card-header fw-bold fs-4 text-center">
                 AGGIUNGI NUOVO PRODOTTO
             </div>
+            <?php if(isset($templateParams["img-error"])): ?>
+            <p class="fw-bold  bg-danger text-white fs-4 text-center"><?php echo $templateParams["img-error"]; ?></p>
+            <?php endif; ?>
             <div class="card-body">
               <form class="" action="add_product.php" method="post" enctype="multipart/form-data">
                 <div class="input-group mb-4">
