@@ -549,7 +549,7 @@ class DatabaseHelper{
       $query="SELECT `order`.*, `address`.*, `customer_address`.idCUSTOMER, `coupon`.discount FROM
       ((`order` INNER JOIN `customer_address` ON `order`.customer_address=`customer_address`.idCUSTOMER_ADDRESS)
       INNER JOIN `address` ON `address`.idADDRESS=`customer_address`.idADDRESS)
-      INNER JOIN `coupon` ON `order`.COUPONcode=`coupon`.code
+      LEFT OUTER JOIN `coupon` ON `order`.COUPONcode=`coupon`.code
       WHERE `order`.`idORDER`=?";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('i',$idOrder);
