@@ -7,7 +7,7 @@
 ?>
 <div class="col-md-4 m-auto">
   <div class="alert alert-primary text-center" role="alert">
-    Non ci sono notifiche disponibili!
+    Non ci sono notifiche disponibili
   </div>
 </div>
 <?php 
