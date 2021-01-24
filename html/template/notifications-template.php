@@ -1,4 +1,4 @@
-<div class="row mt-3 px-3">
+<div class="row mt-3 px-3 mx-auto">
 <?php 
   if((!isset($_SESSION["idCUSTOMER"]) && !isset($_SESSION["idSELLER"])) || !isset($templateParams["notifications"])){ 
     header("location: login.php");

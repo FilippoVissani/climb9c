@@ -99,9 +99,51 @@
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-        <?php require './js/toggle-menu.php'; ?>
         <script src="./js/quantity-product.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.js"></script>
         <script src="./js/forms.js"></script>
+        <script>
+            var isDesktop=false;
+
+            function setDesktop(){
+                isDesktop = ($(window).width() >= 1366) ? true : false;
+            }
+
+            function checkDesktop(){
+                if(isDesktop){
+                    $("div#search-bar").addClass("w-25");
+                    $("div.carousel-item > div > img").addClass("w-25");
+                    $("div#home-card").addClass("w-50");
+                }else{
+                    $("div#search-bar").removeClass("w-25");
+                    $("div.carousel-item > div > img").removeClass("w-25");
+                    $("div#home-card").removeClass("w-50");
+                }
+            }
+
+            $(document).ready(function(){
+
+                setDesktop();
+                checkDesktop();
+
+                $(window).resize(function(){
+                    setDesktop();
+                    checkDesktop();
+                });
+
+                $("i#menu-toggler").click(function(){
+                    $( "div#category-menu" ).slideDown();
+                    if (!isDesktop) {
+                        $( "div.container-fluid" ).slideUp();
+                    }
+                });
+                $("i#menu-back").click(function(){
+                    $( "div#category-menu" ).slideUp();
+                    if (!isDesktop) {
+                        $( "div.container-fluid" ).slideDown();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
