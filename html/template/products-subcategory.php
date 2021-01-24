@@ -67,19 +67,10 @@
 
 <script>
     $(document).ready(function() {
+        adaptFilter();
 
         $(window).resize(function() {
-
-            if ($(this).width() < 768) {
-                //mobile
-                $("#collapseOne").removeClass("show");
-                $("#buttonFilters").addClass("collapsed");
-            } else {
-                //desktop
-                $("#collapseOne").addClass("show");
-                $("#buttonFilters").removeClass("collapsed");
-            }
-
+            adaptFilter();
         });
 
         filter_data("Chiave", "Tutti");
@@ -108,6 +99,18 @@
                     $('.filter_data').html(data);
                 }
             });
+        }
+
+        function adaptFilter() {
+            if ($(this).width() < 768) {
+                //mobile
+                $("#collapseOne").removeClass("show");
+                $("#buttonFilters").addClass("collapsed");
+            } else {
+                //desktop
+                $("#collapseOne").addClass("show");
+                $("#buttonFilters").removeClass("collapsed");
+            }
         }
     });
 </script>
