@@ -3,8 +3,11 @@
     <div class="col-xl-10">
 
 
-
-
+        <?php if (isset($templateParams["insertResult"])) : ?>
+            <div class="alert alert-success text-center" role="alert">
+                <?php echo $templateParams["insertResult"]; ?>
+            </div>
+        <?php endif; ?>
 
 
 

@@ -12,17 +12,18 @@ require_once 'bootstrap.php';
 
     if(isset($_POST["nuovaCategoria"])){
         $dbh->addNewCategory($_POST["nuovaCategoria"]);
+        $templateParams["insertResult"]="Nuova categoria ".$_POST["nuovaCategoria"]." aggiunta";
     }
 
     if(isset($_POST["nuovaSottocategoria"])){
         $dbh->addNewSubcategory($_POST["product-subcategory"], $_POST["nuovaSottocategoria"]);
+        $templateParams["insertResult"]="Nuova sottocategoria ".$_POST["nuovaSottocategoria"]." aggiunta";
     }
 
     if(isset($_POST["nuovoTag"])){
         $dbh->addNewTag($_POST["product-subcategoryID"], $_POST["nuovoTag"]);
+        $templateParams["insertResult"]="Nuovo Tag ".$_POST["nuovoTag"]." aggiunto";
     }
-
-
 
 
     require './template/base-template.php';
