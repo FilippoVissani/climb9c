@@ -24,9 +24,15 @@
                                 Climb9c
                         </a>
                         <div class="d-flex text-light">
+                            <?php if(isset($_SESSION["idSELLER"])): ?>
+                            <a href="<?php echo "seller-home.php" ?>">
+                            <i class="d-inline-block mx-2 fas fa-home text-light fs-2"></i>
+                            </a>
+                            <?php else: ?>
                             <a href="<?php echo "account.php" ?>">
                             <i class="d-inline-block mx-2 far fa-user text-light fs-2"></i>
                             </a>
+                            <?php endif; ?>
                             <a href="<?php echo "notifications.php" ?>">
                             <i class="d-inline-block mx-2 far fa-envelope text-light fs-2"></i>
                             </a>

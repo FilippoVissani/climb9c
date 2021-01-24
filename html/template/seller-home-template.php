@@ -22,3 +22,8 @@
         </div>
     </div>
 </div>
+<div class="row mt-5 mx-2">
+    <div class="col-md-12">
+        <button class="btn btn-primary">LOGOUT</button>
+    </div>
+</div>
