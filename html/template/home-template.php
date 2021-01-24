@@ -83,7 +83,7 @@
                 <h2 class="card-text fw-bold text-light">
                     Allenarsi bene, allenarsi sempre
                 </h2>
-                <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
+                <a class="btn btn-light fw-bold rounded-pill p-3" href="subcategory.php?id=7">SCOPRI DI PIÙ</a>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
                 <h2 class="card-text fw-bold text-dark">
                     Volare sicuri
                 </h2>
-                <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
+                <a class="btn btn-light fw-bold rounded-pill p-3" href="subcategory.php?id=8">SCOPRI DI PIÙ</a>
             </div>
         </div>
     </div>
@@ -111,7 +111,7 @@
                 <h2 class="card-text fw-bold">
                     Indoor, outdoor e boulder
                 </h2>
-                <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
+                <a class="btn btn-light fw-bold rounded-pill p-3" href="subcategory.php?id=1">SCOPRI DI PIÙ</a>
             </div>
         </div>
     </div>
@@ -124,7 +124,7 @@
                 <h2 class="card-text fw-bold text-light">
                     Picche, ramponi e molto altro
                 </h2>
-                <button type="button" class="btn btn-light fw-bold rounded-pill p-3">SCOPRI DI PIÙ</button>
+                <a class="btn btn-light fw-bold rounded-pill p-3" href="subcategory.php?id=9">SCOPRI DI PIÙ</a>
             </div>
         </div>
     </div>
