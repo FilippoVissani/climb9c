@@ -1,7 +1,5 @@
 <?php
 require_once 'bootstrap.php';
-//PER TEST
-$_SESSION["idSELLER"]=0;
 $templateParams["title"]="Climb9c - Gestione ordini";
 $templateParams["search_bar"] = FALSE;
 $templateParams["name"] = "orders-management-template.php";
