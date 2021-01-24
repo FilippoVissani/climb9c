@@ -238,7 +238,7 @@ class DatabaseHelper{
     }
 
     public function getProducts($idOrder){
-      $query = "SELECT `product`.`idPRODUCT`, `product`.`name`, `product`.`brand`,`product_order`.`quantity`, `product_order`.`unit_price`
+      $query = "SELECT `product`.`idPRODUCT`, `product`.`name`, `product`.`brand`,`product_order`.`quantity`, `product_order`.`unit_price`, `product`.`quantity` AS stock_quantity
       FROM (`order` JOIN `product_order` ON `order`.`idORDER`=`product_order`.`idORDER`)
       JOIN `product` ON `product_order`.`idPRODUCT`=`product`.`idPRODUCT`
       WHERE `order`.`idORDER`=?";

@@ -13,9 +13,9 @@ if(isset($_POST["cvv"])){
       $_SESSION["couponCode"]=NULL;
     }
     $templateParams["IdOrder"] = $dbh->addNewOrder(date("Y/m/d"), $_SESSION["idCUSTOMER"], $_POST["idADDRESS"], $_SESSION["couponCode"]);
-
     //elimina ordine dal carrello
     $dbh->deleteCart($_SESSION["idCUSTOMER"]);
+    $templateParams["products"] = $dbh->getProducts($templateParams["IdOrder"]);
 
     $templateParams["title"]="Climb9c - Pagamento";
     $templateParams["search_bar"] = FALSE;

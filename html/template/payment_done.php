@@ -28,5 +28,21 @@
         recipientId: <?php echo $_SESSION["idCUSTOMER"]; ?>
       }
     });
+    <?php 
+    foreach($templateParams["products"] as $product):
+      if($product["stock_quantity"]==0):
+    ?>
+    $.ajax({
+      url: "./send-notification.php",
+      method: "POST",
+      data: {
+        title: "Prodotto non più disponibile in magazzino!",
+        message: "Il prodotto <?php echo $product["name"] ?>, non è più disponibile in magazzino.",
+      }
+    });
+    <?php
+      endif;
+    endforeach;
+    ?>
   });
 </script>
