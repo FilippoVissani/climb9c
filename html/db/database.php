@@ -200,16 +200,17 @@ class DatabaseHelper{
       $stmt->bind_param('sis', $date, $IDcustomer_address, $coupon);
       $stmt->execute();
 
-      $lastIdAddrress = $this->db->insert_id;
+      $lastId = $this->db->insert_id;
       $product = $this->getCartByCustomerID($idCUSTOMER);
 
       foreach($product as $singleProduct){
         $query = "INSERT INTO product_order (idPRODUCT, idORDER, quantity, unit_price)
         VALUES (?,?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('iisd', $singleProduct["idPRODUCT"], $lastIdAddrress, $singleProduct["productQuantity"], $singleProduct["productPrice"]);
+        $stmt->bind_param('iisd', $singleProduct["idPRODUCT"], $lastId, $singleProduct["productQuantity"], $singleProduct["productPrice"]);
         $stmt->execute();
       }
+      return $lastId;
     }
 
     public function getBestSeller($limit){
