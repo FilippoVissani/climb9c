@@ -99,7 +99,6 @@
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-        <?php require './js/toggle-menu.php'; ?>
         <script src="./js/quantity-product.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.js"></script>
         <script src="./js/forms.js"></script>
@@ -112,11 +111,11 @@
 
             function checkDesktop(){
                 if(isDesktop){
-                    $("#search-bar").addClass("w-25");
+                    $("div#search-bar").addClass("w-25");
                     $("div.carousel-item > div > img").addClass("w-25");
                     $("div#home-card").addClass("w-50");
                 }else{
-                    $("#search-bar").removeClass("w-25");
+                    $("div#search-bar").removeClass("w-25");
                     $("div.carousel-item > div > img").removeClass("w-25");
                     $("div#home-card").removeClass("w-50");
                 }
@@ -133,28 +132,28 @@
                 });
 
                 $("i#menu-toggler").click(function(){
-                    $( "div#menu" ).slideDown();
+                    $( "div#menu" ).show();
                     if (!isDesktop) {
-                        $( "div.container-fluid" ).slideUp();
+                        $( "div.container-fluid" ).hide();
                     }
                 });
 
                 <?php foreach($templateParams["categories"] as $category): ?>
                     $("i#menu-back").click(function(){
                         if($( "ul#menu-categories" ).is(":visible")){
-                            $( "div#menu" ).slideUp();
+                            $( "div#menu" ).hide();
                             if (!isDesktop) {
-                                $( "div.container-fluid" ).slideDown();
+                                $( "div.container-fluid" ).show();
                             }
                         }else{
-                            $("ul#<?php echo $category["id"] ?>-subcategory").slideUp();
-                            $("ul#menu-categories").slideDown();
+                            $("ul#<?php echo $category["id"] ?>-subcategory").hide();
+                            $("ul#menu-categories").show();
                         }
                     });
 
                     $("li#<?php echo $category["id"] ?>-category").click(function(){
-                        $("ul#menu-categories").slideUp();
-                        $("ul#<?php echo $category["id"] ?>-subcategory").slideDown();
+                        $("ul#menu-categories").hide();
+                        $("ul#<?php echo $category["id"] ?>-subcategory").show();
                     });
                 <?php endforeach; ?>
             });
