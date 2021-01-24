@@ -55,10 +55,8 @@
           <div class="input-group">
             <label for="coupon" class="invisible">Codice sconto</label>
             <input id="coupon" name="couponCode" type="text" class="form-control" placeholder="Codice Sconto"/>
-            <div class="input-group-append">
-              <label for="inserisci" class="invisible">Inserisci</label>
-              <input id="inserisci" type="submit" class="btn btn-secondary" value="Inserisci"/>
-            </div>
+            <input id="inserisci" type="submit" class="btn btn-secondary" value="Inserisci"/>
+            <label for="inserisci" class="invisible">Inserisci</label>
           </div>
         </form>
       </div>
@@ -79,7 +77,7 @@
           <input type="number" id="cvv" name="cvv" class="form-control" placeholder="CVV" maxlength="4" required/>
         </fieldset>
         <div class="row mt-5">
-          <div class="col">
+          <div class="col-6">
             <fieldset>
               <?php $addresses = $dbh->getAddressByCustomerID($_SESSION['idCUSTOMER']); ?>
               <legend>INDIRIZZO DI SPEDIZIONE</legend>
@@ -95,58 +93,56 @@
               </div>
             </fieldset>
           </div>
-        </div>
-        <div class="col-12">
-          <label for="pay" class="invisible">Procedi con il pagamento</label>
-          <input id="pay" type="submit" class="btn btn-primary btn-block" value="Procedi con il pagamento"/>
+          <div class="mt-5 pt-5 col-md-6 col-12">
+            <label for="pay" class="invisible">Procedi con il pagamento</label>
+            <input id="pay" type="submit" class="btn btn-primary btn-lg btn-block w-100" value="Procedi con il pagamento"/>
+          </div>
         </div>
         </form>
       </div>
     </div>
     <div class="row m-3">
-      <div class="col">
-        <?php if(!isset($_GET["add_address"])): ?>
-        <div class="m-3">
-          <form class="" action="" method="get">
-            <input type="hidden" name="add_address"/>
-            <label for="add_address" class="invisible">Aggiungi indirizzo</label>
-            <input id="add_address" type="submit" class="btn btn-primary" value="Aggiungi indirizzo"/>
-          </form>
-        </div>
-        <?php endif; ?>
-        <?php if(isset($_GET["add_address"])): ?>
-        <form class="row g-3" action="#" method="post">
-          <div class="col-md-6 pt-2">
-            <label for="address" class="form-label">Indirizzo*</label>
-            <input id="address" name="address" type="text" class="form-control" value="" required/>
-          </div>
-          <div class="col-md-6  pt-2">
-            <label for="city" class="form-label">Città*</label>
-            <input id="city" name="city" type="text" class="form-control" value="" required/>
-          </div>
-          <div class="col-md-6  pt-2">
-            <label for="province" class="form-label">Provincia*</label>
-            <input id="province" name="province" type="text" class="form-control" value="" required/>
-          </div>
-          <div class="col-md-6  pt-2">
-            <label for="zip" class="form-label">CAP*</label>
-            <input id="zip" name="zip_code" type="text" class="form-control" value="" required/>
-          </div>
-          <div class="col-md-6 pt-2">
-            <label for="name" class="form-label">Nome sul campanello*</label>
-            <input id="name" name="name" type="text" class="form-control" value="" required/>
-          </div>
-          <div class="col-md-6  pt-2">
-            <label for="surname" class="form-label">Cognome sul campanello*</label>
-            <input id="surname" name="surname" type="text" class="form-control" value="" required/>
-          </div>
-          <div class="col-md-12 justify-content-center h-100 p-3">
-            <label for="aggiungi" class="invisible">Aggiungi</label>
-            <input id="aggiungi" type="submit" class="btn btn-primary btn-block btn-lg" value="Aggiungi"/>
-          </div>
+      <?php if(!isset($_GET["add_address"])): ?>
+      <div class="col text-left">
+        <form class="" action="" method="get">
+          <input type="hidden" name="add_address"/>
+          <input id="add_address" type="submit" class="btn btn-primary btn-sm" value="Aggiungi indirizzo"/>
+          <label for="add_address" class="invisible">Aggiungi indirizzo</label>
         </form>
-        <?php endif; ?>
       </div>
+      <?php endif; ?>
+      <?php if(isset($_GET["add_address"])): ?>
+      <form class="row g-3" action="#" method="post">
+        <div class="col-md-6 pt-2">
+          <label for="address" class="form-label">Indirizzo*</label>
+          <input id="address" name="address" type="text" class="form-control" value="" required/>
+        </div>
+        <div class="col-md-6  pt-2">
+          <label for="city" class="form-label">Città*</label>
+          <input id="city" name="city" type="text" class="form-control" value="" required/>
+        </div>
+        <div class="col-md-6  pt-2">
+          <label for="province" class="form-label">Provincia*</label>
+          <input id="province" name="province" type="text" class="form-control" value="" required/>
+        </div>
+        <div class="col-md-6  pt-2">
+          <label for="zip" class="form-label">CAP*</label>
+          <input id="zip" name="zip_code" type="text" class="form-control" value="" required/>
+        </div>
+        <div class="col-md-6 pt-2">
+          <label for="name" class="form-label">Nome sul campanello*</label>
+          <input id="name" name="name" type="text" class="form-control" value="" required/>
+        </div>
+        <div class="col-md-6  pt-2">
+          <label for="surname" class="form-label">Cognome sul campanello*</label>
+          <input id="surname" name="surname" type="text" class="form-control" value="" required/>
+        </div>
+        <div class="col-12 text-center py-3 px-0">
+          <label for="aggiungi" class="invisible">Aggiungi</label>
+          <input id="aggiungi" type="submit" class="btn btn-primary" value="Aggiungi"/>
+        </div>
+      </form>
+      <?php endif; ?>
     </div>
   </main>
 </div>
