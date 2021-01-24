@@ -30,6 +30,7 @@ foreach ($templateParams["products"] as $product) : ?>
 <?php
     $total += $product["quantity"] * $product["unit_price"];
 endforeach;
+$total=calculateFinalPrice($total, $templateParams["orderDetails"][0]["discount"]);
 ?>
 
 <div class="row mx-auto mt-5">

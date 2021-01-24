@@ -238,7 +238,7 @@ class DatabaseHelper{
     }
 
     public function getProducts($idOrder){
-      $query = "SELECT `product`.`idPRODUCT`, `product`.`name`, `product`.`brand`,`product_order`.`quantity`, `product_order`.`unit_price`
+      $query = "SELECT `product`.`idPRODUCT`, `product`.`name`, `product`.`brand`,`product_order`.`quantity`, `product_order`.`unit_price`, `product`.`quantity` AS stock_quantity
       FROM (`order` JOIN `product_order` ON `order`.`idORDER`=`product_order`.`idORDER`)
       JOIN `product` ON `product_order`.`idPRODUCT`=`product`.`idPRODUCT`
       WHERE `order`.`idORDER`=?";
@@ -546,9 +546,10 @@ class DatabaseHelper{
     }
 
     public function getOrderDetails($idOrder){
-      $query="SELECT `order`.*, `address`.*, `customer_address`.idCUSTOMER FROM
-      (`order` INNER JOIN `customer_address` ON `order`.customer_address=`customer_address`.idCUSTOMER_ADDRESS)
-      INNER JOIN `address` ON `address`.idADDRESS=`customer_address`.idADDRESS
+      $query="SELECT `order`.*, `address`.*, `customer_address`.idCUSTOMER, `coupon`.discount FROM
+      ((`order` INNER JOIN `customer_address` ON `order`.customer_address=`customer_address`.idCUSTOMER_ADDRESS)
+      INNER JOIN `address` ON `address`.idADDRESS=`customer_address`.idADDRESS)
+      INNER JOIN `coupon` ON `order`.COUPONcode=`coupon`.code
       WHERE `order`.`idORDER`=?";
       $stmt = $this->db->prepare($query);
       $stmt->bind_param('i',$idOrder);
