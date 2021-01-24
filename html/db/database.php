@@ -595,5 +595,20 @@ class DatabaseHelper{
       $stmt->bind_param('is',$idCategory, $name);
       $stmt->execute();
     }
+
+
+    public function addNewTag($idSubcategory, $name){
+      $query = "INSERT INTO tag (name) VALUES (?)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('s', $name);
+      $stmt->execute();
+      $insertedTagID = $this->db->insert_id;
+
+      $query2 = "INSERT INTO tag_subcategory (idTAG, idSUBCATEGORY) VALUES (?, ?)";
+      $stmt2 = $this->db->prepare($query2);
+      $stmt2->bind_param('ii', $insertedTagID, $idSubcategory);
+      $stmt2->execute();
+    }
+    
 }
 ?>

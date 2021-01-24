@@ -71,12 +71,12 @@
 
 
 
-        <form class="row g-3">
+        <form class="row g-3" action="seller-manage-categories.php" method="post">
             <h1>CREA TAG</h1>
             <div class="col">
-                <div class="input-group mb-4">
-                    <span class="input-group-text" id="product-subcategory">Sottocategoria: </span>
-                    <select class="" name="product-subcategory" aria-label="product-subcategory">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="product-subcategoryID">Sottocategoria: </span>
+                    <select class="" name="product-subcategoryID" aria-label="product-subcategoryID">
                         <?php $categories = $dbh->getCategories(); ?>
                         <?php foreach ($categories as $category) : ?>
                             <optgroup label="<?php echo $category["name"]; ?>">
@@ -87,8 +87,8 @@
                             </optgroup>
                         <?php endforeach; ?>
                     </select>
-                    <span class="input-group-text" id="inputGroup-sizing-default">Tag: </span>
-                    <input type="text" name="nuovoTag" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span class="input-group-text" id="inputGroup-newTag">Tag: </span>
+                    <input type="text" name="nuovoTag" class="form-control" aria-label="Nuovo tag" aria-describedby="inputGroup-newTag" required>
                 </div>
             </div>
 

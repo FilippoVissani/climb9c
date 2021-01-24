@@ -11,21 +11,15 @@ require_once 'bootstrap.php';
     }
 
     if(isset($_POST["nuovaCategoria"])){
-        var_dump($_POST["nuovaCategoria"]);
         $dbh->addNewCategory($_POST["nuovaCategoria"]);
     }
 
     if(isset($_POST["nuovaSottocategoria"])){
-        
-        var_dump($_POST["product-subcategory"]);
-        
-        var_dump($_POST["nuovaSottocategoria"]);
-
         $dbh->addNewSubcategory($_POST["product-subcategory"], $_POST["nuovaSottocategoria"]);
     }
 
     if(isset($_POST["nuovoTag"])){
-        var_dump($_POST["nuovoTag"]);
+        $dbh->addNewTag($_POST["product-subcategoryID"], $_POST["nuovoTag"]);
     }
 
 
