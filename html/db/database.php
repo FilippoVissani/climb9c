@@ -579,6 +579,20 @@ class DatabaseHelper{
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function addCoupon($code, $discount){
+      $query = "INSERT INTO coupon (code, discount, validity) VALUES (?, ?, 1)";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ss', $code, $discount);
+      $stmt->execute();
+    }
+
+    public function editCoupon($code, $discount, $validity){
+      $query = 'UPDATE `coupon` SET `discount` = ?, `validity` = ? WHERE `code` = ?';
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('sis', $discount, $validity, $code);
+      $stmt->execute();
+    }
+
     public function getCategoryAndSubcategoryFromProductID($idProduct){
       $query = "SELECT c.name as category, s.name as subcategory, s.idSUBCATEGORY as idSubcategory FROM product p INNER JOIN subcategory s ON p.idSUBCATEGORY = s.idSUBCATEGORY
                                                                                 INNER JOIN category c ON c.idCATEGORY = s.idCATEGORY
@@ -635,6 +649,16 @@ class DatabaseHelper{
       $stmt2 = $this->db->prepare($query2);
       $stmt2->bind_param('iis', $idTAG, $idPRODUCT, $value);
       $stmt2->execute();
+    }
+
+
+    public function getAllProducts(){
+      $query = "SELECT * FROM product";
+      $stmt = $this->db->prepare($query);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $result = $result->fetch_all(MYSQLI_ASSOC);
+      return $result;
     }
 
 }
