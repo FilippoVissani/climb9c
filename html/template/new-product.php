@@ -24,7 +24,7 @@
 
                 <div class="input-group mb-4">
                   <span class="input-group-text" id="product-price">PREZZO</span>
-                  <input type="number" min="0" step=".01" name="product-price" class="form-control" placeholder="Prezzo Prodotto" aria-label="product-price" aria-describedby="product-price" required/>
+                  <input type="number" min="0" step="0.01" name="product-price" class="form-control" placeholder="Prezzo Prodotto" aria-label="product-price" aria-describedby="product-price" required/>
                 </div>
 
                 <div class="input-group mb-4">
@@ -56,19 +56,6 @@
                 <div class="input-group  mb-4">
                   <span class="input-group-text" id="product-img">IMMAGINE PRODOTTO</span>
                   <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" required/>
-                </div>
-
-                <div class="card">
-                  <div class="card-header">TAGS</div>
-                    <div class="card-body">
-                      <?php $tags = $dbh->getAllTags(); ?>
-                      <?php foreach ($tags as $singleTag): ?>
-                      <div class="input-group mb-4">
-                        <span class="input-group-text" id="tag-<?php echo $singleTag["name"] ?>"><?php echo $singleTag["name"] ?></span>
-                        <input type="text" name="tag-<?php echo $singleTag["idTAG"] ?>" class="form-control" placeholder="<?php echo $singleTag["name"] ?>" aria-label="tag-<?php echo $singleTag["name"] ?>" aria-describedby="tag-<?php echo $singleTag["name"] ?>"/>
-                      </div>
-                      <?php endforeach; ?>
-                    </div>
                 </div>
 
                 <table id="specifications-table" class="table">

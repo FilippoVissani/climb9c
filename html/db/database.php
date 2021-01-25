@@ -356,9 +356,11 @@ class DatabaseHelper{
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getAllTags(){
-      $query = "SELECT idTAG, name FROM tag";
+    public function getTagsNameBySubcategory($idSubcategory){
+      $query = "SELECT t.name as name, t.idTAG as id FROM  tag_subcategory as ts INNER JOIN tag as t ON t.idTAG = ts.idTAG
+                                                                    WHERE ts.idSUBCATEGORY = ?";
       $stmt = $this->db->prepare($query);
+      $stmt->bind_param('i',$idSubcategory);
       $result = $stmt->execute();
       $result = $stmt->get_result();
 
