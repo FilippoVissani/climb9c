@@ -41,13 +41,13 @@
               <div class="col-md justify-content-center input-group quantity-wrapper  pb-2">
                 <label for="text-quantity" class="invisible">Quantità: </label>
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus" aria-label="Meno">
+                  <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus-<?php echo $singleProduct["idPRODUCT"]; ?>" aria-label="Meno">
                     <span class="fas fa-minus"></span>
                   </button>
                 </div>
-                <input type="number" name="Quantità" id="text-quantity" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="<?php echo $singleProduct["productQuantity"]; ?>" min="1" placeholder="Quantità">
+                <input type="number" name="Quantità" id="quantity-<?php echo $singleProduct["idPRODUCT"]; ?>" class="form-control input-number input-sm quantity-style text-center remove-number-arrows" value="<?php echo $singleProduct["productQuantity"]; ?>" min="1" placeholder="Quantità">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus" aria-label="Più">
+                  <button class="btn btn-outline-secondary" type="button" id="button-quantity-plus-<?php echo $singleProduct["idPRODUCT"]; ?>" aria-label="Più">
                     <span class="fas fa-plus"></span>
                   </button>
                 </div>
@@ -58,6 +58,27 @@
               </div>
               <input type="hidden" name="idproduct" value="<?php echo $singleProduct["idPRODUCT"]; ?>" />
             </div>
+
+            <script>
+              $(document).ready(function () {
+                let value = $("#quantity-<?php echo $singleProduct["idPRODUCT"]; ?>");
+                $("#button-quantity-minus-<?php echo $singleProduct["idPRODUCT"]; ?>").click(function () {
+                    if(parseInt(value.val())>1){
+                        value.val(parseInt(value.val())-1);
+                    } else{
+                        value.val(1);
+                    }
+                });
+                $("#button-quantity-plus-<?php echo $singleProduct["idPRODUCT"]; ?>").click(function () {
+                    if(parseInt(value.val())>=1){
+                        value.val(parseInt(value.val())+1);
+                    } else{
+                        value.val(1);
+                    }
+                });
+              });
+            </script>
+
           </form>
           <hr/>
           <?php endforeach; ?>
