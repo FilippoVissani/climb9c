@@ -56,7 +56,7 @@
                     }
                 ?>
 
-            <div class="row mx-auto">
+            <div class="row mx-auto mt-3">
                 <div class="col-12 p-0">
                     <footer class="nav bg-dark">
                         <div class="row mx-auto my-3">
