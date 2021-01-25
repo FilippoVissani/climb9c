@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="col-md">
-                        <label for="scegli-prodotto" class="invisible">Scegli</label>
+                        <label for="scegli-prodotto" class="invisible">Seleziona prodotto</label>
                         <input id="scegli-prodotto" type="submit" class="btn btn-primary btn-lg btn-block w-100" value="Scegli" />
                     </div>
 
@@ -31,7 +31,7 @@
             <!--Card Body-->
             <div class="card-body">
                 <?php if (isset($templateParams["selectedProduct"])) : ?>
-                    <?php $selectedProduct=$templateParams["selectedProduct"]; ?>
+                    <?php $selectedProduct = $templateParams["selectedProduct"]; ?>
 
 
                     <form class="" action="edit-product.php" method="post" enctype="multipart/form-data">
@@ -85,14 +85,14 @@
                         <!--Quantità-->
                         <div class="input-group  mb-4">
                             <span class="input-group-text" id="product-quantity">QUANTITA'</span>
-                            <input type="number" min="0" name="product-quantity" class="form-control" value="<?php echo $selectedProduct["quantity"]; ?>"placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity" required />
+                            <input type="number" min="0" name="product-quantity" class="form-control" value="<?php echo $selectedProduct["quantity"]; ?>" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity" required />
                         </div>
 
 
                         <!--Immagine-->
                         <div class="input-group  mb-4">
                             <span class="input-group-text" id="product-img">IMMAGINE PRODOTTO</span>
-                            <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" required />
+                            <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" />
                         </div>
 
 
@@ -106,12 +106,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td headers="specifica"><input class="col-12" type="text" name="specifica1" /> </td>
-                                    <td headers="descrizione"><input class="col-12" type="text" name="descrizione1" /></td>
-                                </tr>
+                                <?php $numTechSpec = 1; ?>
+                                <?php foreach ($templateParams["selectedProduct"]["tecnical_specifications"] as $key => $value) : ?>
+                                    <tr>
+                                        <td headers="specifica"><input class="col-12" type="text" name="specifica<?php echo $numTechSpec; ?>" value="<?php echo $key; ?>" /> </td>
+                                        <td headers="descrizione"><input class="col-12" type="text" name="descrizione<?php echo $numTechSpec; ?>" value="<?php echo $value; ?>" /></td>
+                                        <?php $numTechSpec++; ?>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
+
+
                         <div class="input-group-append text-center">
                             <button class="btn btn-outline-secondary" type="button" id="add_row" aria-label="Più">
                                 <span class="fas fa-plus ">Aggiungi specifica</span>
@@ -121,7 +127,8 @@
 
                         <!--Bottone Modifica Prodotto-->
                         <div class=" text-center mt-4">
-                            <input type="hidden" id="specifications_number" name="specifications_number" value="1" />
+                            <input type="hidden" id="specifications_number" name="specifications_number" value="<?php echo $numTechSpec-1; ?>" />
+                            <input type="hidden" id="product_id" name="product_id" value="<?php echo $selectedProduct["idPRODUCT"]; ?>"/>
                             <label for="inserisci-prodotto" class="invisible">Modifica prodotto</label>
                             <input id="inserisci-prodotto" type="submit" class="btn btn-primary btn-lg btn-block w-100" value="Modifica prodotto" />
                         </div>
@@ -146,13 +153,26 @@
 
             <?php echo $selectedProduct["idSUBCATEGORY"]; ?>
 
-            //$("input[name='product-name']").val("<?php echo $templateParams["selectedProduct"]["name"]; ?>");
+            //$("input[name='product-name']").val("<?php //echo $templateParams["selectedProduct"]["name"]; ?>");
             //brand
-            //$("input[name='product-brand']").val("<?php echo $templateParams["selectedProduct"]["brand"]; ?>");
+            //$("input[name='product-brand']").val("<?php //echo $templateParams["selectedProduct"]["brand"]; ?>");
             //prezzo
-           //$("input[name='product-price']").val(<?php echo $templateParams["selectedProduct"]["price"]; ?>);
+            //$("input[name='product-price']").val(<?php //echo $templateParams["selectedProduct"]["price"]; ?>);
             //descrizione
             //$("input[name='description']").val("");
+
+
+            $("#add_row").click(function() {
+                let row = $("#specifications_number");
+                row.val(parseInt(row.val()) + 1);
+                let nameS = "specifica" + row.val();
+                let nameD = "descrizione" + row.val();
+                let markup = '<tr><td headers="specifica" ><input class="col-12" type="text" name=' + nameS + ' /></td><td headers="descrizione" ><input class="col-12" type="text" name=' + nameD + ' /></td></tr>';
+                $("table tbody").append(markup);
+            })
         <?php endif; ?>
+
+
+
     });
 </script>

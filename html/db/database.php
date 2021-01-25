@@ -661,5 +661,12 @@ class DatabaseHelper{
       return $result;
     }
 
+    public function editProduct($name, $brand, $price, $idSUBCATEGORY, $description, $tecnical_specifications, $quantity, $idPRODUCT){
+      $query = "UPDATE `product` SET `name`=?,`brand`=?,`price`=?,`idSUBCATEGORY`=?,`description`=?,`tecnical_specifications`=?,`quantity`=? WHERE `idPRODUCT` = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ssiissii', $name, $brand, $price, $idSUBCATEGORY, $description, $tecnical_specifications, $quantity, $idPRODUCT);
+      $stmt->execute();
+    }
+
 }
 ?>
