@@ -14,7 +14,7 @@
     </div>
   </div>
 </div>
-<div class="row mt-3 px-3">
+<div class="row mt-3 px-3 mx-auto">
     <div class="col-md-6 d-flex">
         <div class="card flex-fill">
             <div class="card-header fw-bold fs-4">
