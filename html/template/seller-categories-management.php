@@ -8,11 +8,20 @@
             </div>
         <?php endif; ?>
 
+        <div class="row mb-0">
+            <div>
+                <a href="catalog-management.php" class="text-reset text-decoration-none fs-3 mb-0">
+                    < Torna alla gestione catalogo
+                </a>
+            </div>
+            <hr />
+        </div>
+
         <!--Crea categoria-->
         <form class="row mx-auto" action="seller-manage-categories.php" method="post">
             <p class="fs-1 mb-0">CREA CATEGORIA</p>
 
-            <div class="col-md-6">
+            <div class="col-md">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-nome">Categoria: </span>
                     <input type="text" name="nuovaCategoria" class="form-control" aria-label="Nuova categoria" aria-describedby="inputGroup-nome" required>
@@ -26,6 +35,8 @@
 
         </form>
         <!--END Crea categoria-->
+
+        <hr />
 
         <!--Crea sottocategoria-->
         <form class="row mx-auto" action="seller-manage-categories.php" method="post">
@@ -43,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sottocat">Sottocategoria: </span>
                     <input type="text" name="nuovaSottocategoria" class="form-control" aria-label="Nuova sottocategoria" aria-describedby="inputGroup-sottocat" required>
@@ -57,6 +68,8 @@
 
         </form>
         <!--END Crea sottocategoria-->
+
+        <hr />
 
         <!--Crea tag-->
         <form class="row mx-auto" action="seller-manage-categories.php" method="post">
@@ -79,7 +92,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-newTag">Tag: </span>
                     <input type="text" name="nuovoTag" class="form-control" aria-label="Nuovo tag" aria-describedby="inputGroup-newTag" required>
@@ -92,6 +105,9 @@
             </div>
         </form>
         <!--END Crea tag-->
+
+        <hr />
+
     </div>
     <div class="col-md-2"></div>
 </div>
