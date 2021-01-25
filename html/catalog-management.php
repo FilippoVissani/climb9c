@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
     if(isset($_SESSION["idSELLER"])) {
-    $templateParams["title"]="Climb9c - Gestione ordini";
+    $templateParams["title"]="Climb9c - Gestione Catalogo";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "seller-catalog-management.php";
 
