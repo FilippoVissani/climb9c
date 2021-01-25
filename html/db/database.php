@@ -651,5 +651,15 @@ class DatabaseHelper{
       $stmt2->execute();
     }
 
+
+    public function getAllProducts(){
+      $query = "SELECT * FROM product";
+      $stmt = $this->db->prepare($query);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $result = $result->fetch_all(MYSQLI_ASSOC);
+      return $result;
+    }
+
 }
 ?>
