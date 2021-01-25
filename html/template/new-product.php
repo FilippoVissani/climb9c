@@ -1,9 +1,15 @@
 <div class="row mt-5 mx-2">
     <div class="col">
+      <?php if(isset($templateParams["product-insert"])): ?>
+      <p class="fw-bold  bg-success text-white fs-4 text-center"><?php echo $templateParams["product-insert"]; ?></p>
+      <?php endif; ?>
         <div class="card">
             <div class="card-header fw-bold fs-4 text-center">
                 AGGIUNGI NUOVO PRODOTTO
             </div>
+            <?php if(isset($templateParams["img-error"])): ?>
+            <p class="fw-bold  bg-danger text-white fs-4 text-center"><?php echo $templateParams["img-error"]; ?></p>
+            <?php endif; ?>
             <div class="card-body">
               <form class="" action="add_product.php" method="post" enctype="multipart/form-data">
                 <div class="input-group mb-4">
@@ -44,12 +50,25 @@
 
                 <div class="input-group  mb-4">
                   <span class="input-group-text" id="product-quantity">QUANTITA'</span>
-                  <input type="number" min="1" name="product-quantity" class="form-control" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity"/>
+                  <input type="number" min="1" name="product-quantity" class="form-control" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity" required/>
                 </div>
 
                 <div class="input-group  mb-4">
                   <span class="input-group-text" id="product-img">IMMAGINE PRODOTTO</span>
                   <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" required/>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">TAGS</div>
+                    <div class="card-body">
+                      <?php $tags = $dbh->getAllTags(); ?>
+                      <?php foreach ($tags as $singleTag): ?>
+                      <div class="input-group mb-4">
+                        <span class="input-group-text" id="tag-<?php echo $singleTag["name"] ?>"><?php echo $singleTag["name"] ?></span>
+                        <input type="text" name="tag-<?php echo $singleTag["idTAG"] ?>" class="form-control" placeholder="<?php echo $singleTag["name"] ?>" aria-label="tag-<?php echo $singleTag["name"] ?>" aria-describedby="tag-<?php echo $singleTag["name"] ?>"/>
+                      </div>
+                      <?php endforeach; ?>
+                    </div>
                 </div>
 
                 <table id="specifications-table" class="table">

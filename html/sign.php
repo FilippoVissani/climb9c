@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
-if(count($_POST) > 0){
+if(count($_POST) > 11){
   //check username esistente || check pw != pw-confirm
   if($dbh->checkEmailPresence($_POST["username"]) == TRUE || $_POST["p"] != $_POST["pc"]){
     $templateParams["sign_up_error"] = "Errore! Dati inseriti non validi";
