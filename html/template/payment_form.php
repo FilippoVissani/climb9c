@@ -70,11 +70,11 @@
           <label for="name" class="invisible">Nome sulla carta</label>
           <input type="text" id="name" name="name" class="form-control" placeholder="Nome sulla Carta" required/>
           <label for="ccnum" class="invisible">Numero della Carta</label>
-          <input type="number" id="ccnum" name="card" class="form-control" placeholder="Numero della carta" maxlength="16" required/>
+          <input type="number" id="ccnum" name="card" class="form-control" placeholder="Numero della carta" required/>
           <label for="scadenza" class="invisible">Data di scadenza</label>
           <input type="text" id="scadenza" name="valid_thru" class="form-control" placeholder="Data di scadenza  m/Y" required/>
           <label for="cvv" class="invisible">CVV</label>
-          <input type="number" id="cvv" name="cvv" class="form-control" placeholder="CVV" maxlength="4" required/>
+          <input type="number" id="cvv" name="cvv" class="form-control" placeholder="CVV" required/>
         </fieldset>
         <div class="row mt-5">
           <div class="col-6">
@@ -85,8 +85,8 @@
               <?php foreach($addresses as $address): ?>
                 <input type="radio" id="<?php echo $address["idADDRESS"]; ?>" name="idADDRESS" value="<?php echo $address["idADDRESS"]; ?>"/>
                 <label for="<?php echo $address["idADDRESS"]; ?>" class="pt-2">
-                  <?php echo $address["street"]; ?></br>
-                  <?php echo $address["city"].", ".$address["province"].", ".$address["zip_code"]; ?></br>
+                  <?php echo $address["street"]; ?> </br>
+                  <?php echo $address["city"].", ".$address["province"].", ".$address["zip_code"]; ?> </br>
                   <?php echo "Presso ".$address["name"]." ".$address["surname"]; ?>
                 </label><br/>
               <?php endforeach; ?>
@@ -104,7 +104,7 @@
     <div class="row m-3">
       <?php if(!isset($_GET["add_address"])): ?>
       <div class="col text-left">
-        <form class="" action="" method="get">
+        <form class="" action="#" method="get">
           <input type="hidden" name="add_address"/>
           <input id="add_address" type="submit" class="btn btn-primary btn-sm" value="Aggiungi indirizzo"/>
           <label for="add_address" class="invisible">Aggiungi indirizzo</label>
