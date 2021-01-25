@@ -12,19 +12,21 @@ if (isset($_POST["productSelect-text"])) {
     $templateParams["selectedProduct"]["tecnical_specifications"] = json_decode($templateParams["selectedProduct"]["tecnical_specifications"]);
 }
 
+var_dump($_FILES["product-img"]);
 
-
-
-
-
-var_dump($_POST);
 //click sul pulsante modifica
 if (isset($_POST["product-name"])) {
     // creao array associativo con le specifiche tecniche
-    $tecnical_specs[$_POST["specifica1"]] = $_POST["descrizione1"];
-    for ($i = 2; $i <= $_POST["specifications_number"]; $i++) {
-        $tecnical_specs =  $tecnical_specs + array($_POST["specifica" . $i] => $_POST["descrizione" . $i]);
+
+    if ($_POST["specifications_number"] > 0) {
+        $tecnical_specs[$_POST["specifica1"]] = $_POST["descrizione1"];
+        for ($i = 2; $i <= $_POST["specifications_number"]; $i++) {
+            $tecnical_specs =  $tecnical_specs + array($_POST["specifica" . $i] => $_POST["descrizione" . $i]);
+        }
+    } else {
+        $tecnical_specs["Specifica"] = "Descrizione";
     }
+
     //lo trasformo in Json
     $json = json_encode($tecnical_specs);
 

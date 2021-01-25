@@ -106,12 +106,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $numTechSpec = 1; ?>
+                                <?php $numTechSpec = 0; ?>
                                 <?php foreach ($templateParams["selectedProduct"]["tecnical_specifications"] as $key => $value) : ?>
-                                    <tr>
+                                    <tr id="<?php echo ++$numTechSpec; ?>">
                                         <td headers="specifica"><input class="col-12" type="text" name="specifica<?php echo $numTechSpec; ?>" value="<?php echo $key; ?>" /> </td>
                                         <td headers="descrizione"><input class="col-12" type="text" name="descrizione<?php echo $numTechSpec; ?>" value="<?php echo $value; ?>" /></td>
-                                        <?php $numTechSpec++; ?>
+
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -119,6 +119,9 @@
 
 
                         <div class="input-group-append text-center">
+                            <button class="btn btn-outline-secondary" type="button" id="remove_row" aria-label="Meno">
+                                <span class="fas fa-minus ">Rimuovi specifica</span>
+                            </button>
                             <button class="btn btn-outline-secondary" type="button" id="add_row" aria-label="Più">
                                 <span class="fas fa-plus ">Aggiungi specifica</span>
                             </button>
@@ -127,8 +130,8 @@
 
                         <!--Bottone Modifica Prodotto-->
                         <div class=" text-center mt-4">
-                            <input type="hidden" id="specifications_number" name="specifications_number" value="<?php echo $numTechSpec-1; ?>" />
-                            <input type="hidden" id="product_id" name="product_id" value="<?php echo $selectedProduct["idPRODUCT"]; ?>"/>
+                            <input type="hidden" id="specifications_number" name="specifications_number" value="<?php echo $numTechSpec; ?>" />
+                            <input type="hidden" id="product_id" name="product_id" value="<?php echo $selectedProduct["idPRODUCT"]; ?>" />
                             <label for="inserisci-prodotto" class="invisible">Modifica prodotto</label>
                             <input id="inserisci-prodotto" type="submit" class="btn btn-primary btn-lg btn-block w-100" value="Modifica prodotto" />
                         </div>
@@ -153,13 +156,26 @@
 
             <?php echo $selectedProduct["idSUBCATEGORY"]; ?>
 
-            //$("input[name='product-name']").val("<?php //echo $templateParams["selectedProduct"]["name"]; ?>");
+            //$("input[name='product-name']").val("<?php //echo $templateParams["selectedProduct"]["name"]; 
+                                                    ?>");
             //brand
-            //$("input[name='product-brand']").val("<?php //echo $templateParams["selectedProduct"]["brand"]; ?>");
+            //$("input[name='product-brand']").val("<?php //echo $templateParams["selectedProduct"]["brand"]; 
+                                                    ?>");
             //prezzo
-            //$("input[name='product-price']").val(<?php //echo $templateParams["selectedProduct"]["price"]; ?>);
+            //$("input[name='product-price']").val(<?php //echo $templateParams["selectedProduct"]["price"]; 
+                                                    ?>);
             //descrizione
             //$("input[name='description']").val("");
+
+            $("#remove_row").click(function() {
+                let row = $("#specifications_number");
+                if (parseInt(row.val()) > 0) {
+                    $('table tr:last').remove();
+
+                    row.val(parseInt(row.val()) - 1);
+                }
+
+            });
 
 
             $("#add_row").click(function() {
@@ -167,9 +183,9 @@
                 row.val(parseInt(row.val()) + 1);
                 let nameS = "specifica" + row.val();
                 let nameD = "descrizione" + row.val();
-                let markup = '<tr><td headers="specifica" ><input class="col-12" type="text" name=' + nameS + ' /></td><td headers="descrizione" ><input class="col-12" type="text" name=' + nameD + ' /></td></tr>';
+                let markup = '<tr id="' + row.val() + '"><td headers="specifica" ><input class="col-12" type="text" name=' + nameS + ' /></td><td headers="descrizione" ><input class="col-12" type="text" name=' + nameD + ' /></td></tr>';
                 $("table tbody").append(markup);
-            })
+            });
         <?php endif; ?>
 
 
