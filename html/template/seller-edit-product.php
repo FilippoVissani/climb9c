@@ -5,53 +5,56 @@
 
             <div class="card-header fw-bold fs-4 text-center">
                 MODIFICA PRODOTTO
+                <!--Scelta prodotto-->
+                <div class="input-group mb-4">
+                    <span class="input-group-text" id="product-subcategory">Prodotto: </span>
+                    <select class="form-select" name="product-subcategory" aria-label="product-subcategory">
+                        <?php foreach ($templateParams["products"] as $product) : ?>
+                            <option value="<?php echo $product["idPRODUCT"]; ?>"><?php echo $product["name"]; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <!--END Scelta prodotto-->
             </div>
             <!--Card Body-->
             <div class="card-body">
 
                 <form class="" action="edit-product.php" method="post" enctype="multipart/form-data">
-                    <!--Scelta prodotto-->
 
 
 
-
-                    <!--END Scelta prodotto-->
-                    <div class="input-group mb-4">
-                        <span class="input-group-text" id="product-subcategory">Prodotto: </span>
-                        <select class="form-select" name="product-subcategory" aria-label="product-subcategory">
-                            <?php foreach ($templateParams["products"] as $product) : ?>
-
-                                        <option value="<?php echo $product["idPRODUCT"]; ?>"><?php echo $product["name"]; ?></option>
-                                
-
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-
+                    <!--Nome-->
                     <div class="input-group mb-4">
                         <span class="input-group-text" id="product-name">NOME</span>
                         <input type="text" name="product-name" class="form-control" placeholder="Nome Prodotto" aria-label="product-name" aria-describedby="product-name" required />
                     </div>
 
+
+                    <!--Brand-->
                     <div class="input-group mb-4">
                         <span class="input-group-text" id="product-brand">BRAND</span>
                         <input type="text" name="product-brand" class="form-control" placeholder="Brand Prodotto" aria-label="product-brand" aria-describedby="product-brand" />
                     </div>
 
+
+                    <!--Prezzo-->
                     <div class="input-group mb-4">
                         <span class="input-group-text" id="product-price">PREZZO</span>
                         <input type="number" min="0" step="0.01" name="product-price" class="form-control" placeholder="Prezzo Prodotto" aria-label="product-price" aria-describedby="product-price" required />
                     </div>
 
+
+                    <!--Descrizione-->
                     <div class="input-group mb-4">
                         <span class="input-group-text">DESCRIZIONE</span>
                         <input type="text" class="form-control" name="description" aria-label="description" />
                     </div>
 
+
+                    <!--Sottocategoria-->
                     <div class="input-group mb-4">
                         <span class="input-group-text" id="product-subcategory">SOTTOCATEGORIA</span>
-                        <select class="" name="product-subcategory" aria-label="product-subcategory">
+                        <select class="form-select" name="product-subcategory" aria-label="product-subcategory">
                             <?php $categories = $dbh->getCategories(); ?>
                             <?php foreach ($categories as $category) : ?>
                                 <option></option>
@@ -64,17 +67,23 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+                    <!--END Sottocategoria-->
 
+                    <!--Quantità-->
                     <div class="input-group  mb-4">
                         <span class="input-group-text" id="product-quantity">QUANTITA'</span>
                         <input type="number" min="1" name="product-quantity" class="form-control" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity" required />
                     </div>
 
+
+                    <!--Immagine-->
                     <div class="input-group  mb-4">
                         <span class="input-group-text" id="product-img">IMMAGINE PRODOTTO</span>
                         <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" required />
                     </div>
 
+
+                    <!--Specifiche Tecniche-->
                     <table id="specifications-table" class="table">
                         <caption class="p-0">SPECIFICHE TECNICHE</caption>
                         <thead>
@@ -95,11 +104,16 @@
                             <span class="fas fa-plus ">Aggiungi specifica</span>
                         </button>
                     </div>
+                    <!--END Specifiche Tecniche-->
+
+                    <!--Bottone Modifica Prodotto-->
                     <div class=" text-center mt-4">
                         <input type="hidden" id="specifications_number" name="specifications_number" value="1" />
                         <label for="inserisci-prodotto" class="invisible">Inserisci prodotto</label>
                         <input id="inserisci-prodotto" type="submit" class="btn btn-primary btn-lg btn-block w-100" value="Inserisci prodotto" />
                     </div>
+                    <!--END Bottone Modifica Prodotto-->
+
                 </form>
             </div>
             <!--END Card Body-->
