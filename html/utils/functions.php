@@ -33,7 +33,7 @@ function calculateFinalPrice($total, $discount){
 function checkImage($image){
     $imageName = basename($image["name"]);
     $maxKB = 500;
-    $acceptedExtensions = array("jpg", "jpeg", "png", "gif");
+    $acceptedExtensions = "jpg";
     $result = 1;
     $msg = "";
     //Controllo se immagine è veramente un'immagine
@@ -50,8 +50,8 @@ function checkImage($image){
 
     //Controllo estensione del file
     $imageFileType = strtolower(pathinfo($imageName,PATHINFO_EXTENSION));
-    if(!in_array($imageFileType, $acceptedExtensions)){
-        $msg .= "Accettate solo le seguenti estensioni: ".implode(", ", $acceptedExtensions);
+    if($imageFileType != $acceptedExtensions){
+        $msg .= "Accettate solo le immagini in formato ".$acceptedExtensions;
         $result = 0;
     }
     return array($result, $msg);
@@ -59,7 +59,18 @@ function checkImage($image){
 
 function uploadImage($path, $image){
   $imageName = basename($image["name"]);
+  $imageFileType = strtolower(pathinfo($imageName,PATHINFO_EXTENSION));
+  $imageName = "1.".$imageFileType;
   $fullPath = $path.$imageName;
+  if (file_exists($fullPath)) {
+       $i = 1;
+       do{
+           ++$i;
+           $imageName = $i.".".$imageFileType;
+       }
+       while(file_exists($path.$imageName));
+       $fullPath = $path.$imageName;
+   }
   move_uploaded_file($image["tmp_name"], $fullPath);
 }
 ?>
