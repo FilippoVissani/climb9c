@@ -10,7 +10,7 @@ class DatabaseHelper{
     }
 
     public function getProductById($idProduct){
-        $query = "SELECT idPRODUCT, name, price, description, tecnical_specifications, quantity FROM product WHERE idPRODUCT=?";
+        $query = "SELECT * FROM product WHERE idPRODUCT=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$idProduct);
         $stmt->execute();
@@ -132,7 +132,7 @@ class DatabaseHelper{
     }
 
     public function getCartByCustomerID($idCUSTOMER){
-      $query = "SELECT p.name as productName, cp.quantity as productQuantity, p.price as productPrice, p.idPRODUCT as idPRODUCT FROM customer
+      $query = "SELECT p.name as productName, cp.quantity as productQuantity, p.price as productPrice, p.idPRODUCT as idPRODUCT, p.quantity as stockQuantity FROM customer
       as cu INNER JOIN cart as ca ON ca.idCUSTOMER = cu.idCUSTOMER INNER JOIN cart_product
       as cp ON cp.idCART = ca.idCUSTOMER INNER JOIN product as p ON p.idPRODUCT = cp.idPRODUCT WHERE cu.idCUSTOMER = ?";
       $stmt = $this->db->prepare($query);
@@ -649,6 +649,16 @@ class DatabaseHelper{
       $stmt2 = $this->db->prepare($query2);
       $stmt2->bind_param('iis', $idTAG, $idPRODUCT, $value);
       $stmt2->execute();
+    }
+
+
+    public function getAllProducts(){
+      $query = "SELECT * FROM product";
+      $stmt = $this->db->prepare($query);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $result = $result->fetch_all(MYSQLI_ASSOC);
+      return $result;
     }
 
 }
