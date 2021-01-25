@@ -39,7 +39,7 @@
             </div>
             <div class="card-body">
                 <p class="card-text fs-4">Entra nell'area dedicata.</p>
-                <a href="#" class="btn btn-primary">Entra</a>
+                <a href="seller-coupon-management.php" class="btn btn-primary">Entra</a>
             </div>
         </div>
     </div>
