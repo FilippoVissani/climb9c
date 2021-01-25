@@ -27,6 +27,16 @@
                 </form>
                 <!--END Scelta prodotto-->
 
+                <!--Warning se c'è stato un problema con l'upload dell'immagine-->
+                <?php if (isset($templateParams["img-error"])) : ?>
+                    <p class="fw-bold  bg-danger text-white fs-4 text-center mb-2 mt-2"><?php echo $templateParams["img-error"]; ?></p>
+                <?php endif; ?>
+
+                <!--Messaggio se è stato modificato correttamente-->
+                <?php if (isset($templateParams["product-edit"])) : ?>
+                    <p class="fw-bold  bg-success text-white fs-4 text-center mb-2 mt-2"><?php echo $templateParams["product-edit"]; ?></p>
+                <?php endif; ?>
+
             </div>
             <!--Card Body-->
             <div class="card-body">
@@ -150,34 +160,22 @@
 <script>
     $(document).ready(function() {
 
+        //se ho selezionato il prodotto da modificare
         <?php if (isset($templateParams["selectedProduct"])) : ?>
+            //setto id prodotto e id sottocategoria, per fare l'update
             $("#productSelect").val(<?php echo $selectedProduct["idPRODUCT"]; ?>);
             $("#idSubcategory").val(<?php echo $selectedProduct["idSUBCATEGORY"]; ?>);
 
-            <?php echo $selectedProduct["idSUBCATEGORY"]; ?>
-
-            //$("input[name='product-name']").val("<?php //echo $templateParams["selectedProduct"]["name"]; 
-                                                    ?>");
-            //brand
-            //$("input[name='product-brand']").val("<?php //echo $templateParams["selectedProduct"]["brand"]; 
-                                                    ?>");
-            //prezzo
-            //$("input[name='product-price']").val(<?php //echo $templateParams["selectedProduct"]["price"]; 
-                                                    ?>);
-            //descrizione
-            //$("input[name='description']").val("");
-
+            //click su rimuovi riga delle specifiche tecniche
             $("#remove_row").click(function() {
                 let row = $("#specifications_number");
                 if (parseInt(row.val()) > 0) {
                     $('table tr:last').remove();
-
                     row.val(parseInt(row.val()) - 1);
                 }
-
             });
 
-
+            //click su aggiungi riga delle specifiche tecniche
             $("#add_row").click(function() {
                 let row = $("#specifications_number");
                 row.val(parseInt(row.val()) + 1);
@@ -187,8 +185,6 @@
                 $("table tbody").append(markup);
             });
         <?php endif; ?>
-
-
 
     });
 </script>
