@@ -49,7 +49,7 @@
                                 </span>
                                 </p>
                                 <a href="./product.php?id=<?php echo $carouselProduct["idPRODUCT"]; ?>"
-                                    class="stretched-link"></a>
+                                    class="stretched-link" title="link"></a>
                             </div>
 
                         </div>
@@ -76,7 +76,7 @@
 
 <div class="row my-2 mx-auto">
     <div class="col-md-12">
-        <div class="card text-white shadow mb-5 w-100 px-auto rounded-pill-home" id="home-card">
+        <div class="card home-card text-white shadow mb-5 w-100 px-auto rounded-pill-home">
             <img src="./images/trave2.jpg" class="card-img rounded-pill-home" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold text-light">TRAVI ARRAMPICATA</h1>
@@ -91,7 +91,7 @@
 
 <div class="row my-2 mx-auto">
     <div class="col-md-4">
-        <div class="card text-white shadow mb-5 w-100 px-auto rounded-pill-home" id="home-card">
+        <div class="card home-card text-white shadow mb-5 w-100 px-auto rounded-pill-home">
             <img src="./images/corde.jpg" class="card-img h-100 rounded-pill-home" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold text-dark">CORDE</h1>
@@ -104,7 +104,7 @@
     </div>
 
     <div class="col-md-4">
-        <div class="card text-white shadow mb-5 w-100 px-auto rounded-pill-home" id="home-card">
+        <div class="card home-card text-white shadow mb-5 w-100 px-auto rounded-pill-home">
             <img src="./images/scarpette.jpg" class="card-img h-100 rounded-pill-home" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold">SCARPETTE DA ARRAMPICATA</h1>
@@ -117,7 +117,7 @@
     </div>
 
     <div class="col-md-4">
-        <div class="card text-white shadow mb-5 w-100 px-auto rounded-pill-home" id="home-card">
+        <div class="card home-card text-white shadow mb-5 w-100 px-auto rounded-pill-home">
             <img src="./images/ghiaccio.jpg" class="card-img h-100 rounded-pill-home" alt="">
             <div class="card-img-overlay">
                 <h1 class="card-title fw-bold text-light">ATTREZZATURA DA GHIACCIO</h1>

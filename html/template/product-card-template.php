@@ -6,7 +6,7 @@
             <p class="card-title text-center fs-5">
                 <?php echo $templateParams["productName"]; ?>
             </p>
-            <a href="./product.php?id=<?php echo $templateParams["idPRODUCT"]; ?>" class="stretched-link"></a>
+            <a href="./product.php?id=<?php echo $templateParams["idPRODUCT"]; ?>" class="stretched-link" title="link"></a>
         </div>
         <div class="text-center mb-1">
             <span class="badge bg-primary text-dark fs-5">

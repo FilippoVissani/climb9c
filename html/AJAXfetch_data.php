@@ -11,7 +11,7 @@ foreach ($templateParams["FilteredProduct"] as $row) {
                         <div class="card-body border-top pb-0">
                             <p class="card-title text-center fs-5">' . $row["name"] . '</p>
                             
-                            <a href="./product.php?id=' . $row["idPRODUCT"] . '" class="stretched-link"></a>
+                            <a href="./product.php?id=' . $row["idPRODUCT"] . '" class="stretched-link" title="link"></a>
                             
                             
                         </div>

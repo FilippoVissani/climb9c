@@ -20,26 +20,26 @@
                 <div class="col-12 p-0">
                     <header class="navbar navbar-dark bg-dark fw-bold shadow">
                         <a class="navbar-brand" href="./index.php">
-                        <i class="fas fa-mountain fs-2 mx-2"></i>
+                        <span class="fas fa-mountain fs-2 mx-2"></span>
                                 Climb9c
                         </a>
                         <div class="d-flex text-light">
                             <?php if(isset($_SESSION["idSELLER"])): ?>
                             <a href="<?php echo "seller-home.php" ?>">
-                            <i class="d-inline-block mx-2 fas fa-home text-light fs-2"></i>
+                            <span class="d-inline-block mx-2 fas fa-home text-light fs-2"></span>
                             </a>
                             <?php else: ?>
                             <a href="<?php echo "account.php" ?>">
-                            <i class="d-inline-block mx-2 far fa-user text-light fs-2"></i>
+                            <span class="d-inline-block mx-2 far fa-user text-light fs-2"></span>
                             </a>
                             <?php endif; ?>
                             <a href="<?php echo "notifications.php" ?>">
-                            <i class="d-inline-block mx-2 far fa-envelope text-light fs-2"></i>
+                            <span class="d-inline-block mx-2 far fa-envelope text-light fs-2"></span>
                             </a>
                             <a href="<?php echo "cart.php" ?>">
-                            <i class="d-inline-block mx-2 fas fa-shopping-cart text-light fs-2"></i>
+                            <span class="d-inline-block mx-2 fas fa-shopping-cart text-light fs-2"></span>
                             </a>
-                            <i class="d-inline-block mx-2 fas fa-bars fs-2" id="menu-toggler"></i>
+                            <span class="d-inline-block mx-2 fas fa-bars fs-2" id="menu-toggler"></span>
                         </div>
                     </header>
                 </div>
@@ -61,19 +61,19 @@
                     <footer class="nav bg-dark">
                         <div class="row mx-auto my-3">
                             <div class="col-3 border-end border-light text-center">
-                                <i class="far fa-credit-card text-light fs-2"></i>
+                                <span class="far fa-credit-card text-light fs-2"></span>
                                 <p class="text-light">Metodo di pagamento sicuro</p>
                             </div>
                             <div class="col-3 border-end border-light text-center">
-                                <i class="fas fa-truck-moving text-light fs-2"></i>
+                                <span class="fas fa-truck-moving text-light fs-2"></span>
                                 <p class="text-light">Spedizioni in tutto il mondo</p>
                             </div>
                             <div class="col-3 border-end border-light text-center">
-                                <i class="fas fa-clock text-light fs-2"></i>
+                                <span class="fas fa-clock text-light fs-2"></span>
                                 <p class="text-light">Spedizioni in 24 ore + 100 giorni per il reso</p>
                             </div>
                             <div class="col-3 text-center">
-                                <i class="fas fa-percentage text-light fs-2"></i>
+                                <span class="fas fa-percentage text-light fs-2"></span>
                                 <p class="text-light">Coupon per gli acquisti</p>
                             </div>
                         </div>
@@ -99,11 +99,11 @@
                 if(isDesktop){
                     $("div#search-bar").addClass("w-25");
                     $("div.carousel-item > div > img").addClass("w-25");
-                    $("div#home-card").addClass("w-50");
+                    $("div.home-card").addClass("w-50");
                 }else{
                     $("div#search-bar").removeClass("w-25");
                     $("div.carousel-item > div > img").removeClass("w-25");
-                    $("div#home-card").removeClass("w-50");
+                    $("div.home-card").removeClass("w-50");
                 }
             }
 

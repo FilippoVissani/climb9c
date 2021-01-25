@@ -1,6 +1,6 @@
 <div class="collapse" id="category-menu">
     <header class="nav bg-dark d-flex justify-content-end">
-        <i class="fas fa-arrow-left fs-2 text-light m-3" id="menu-back"></i>
+        <span class="fas fa-arrow-left fs-2 text-light m-3" id="menu-back"></span>
     </header>
 
     <div class="accordion" id="accordionCategory">
@@ -19,7 +19,7 @@
                         <a class="text-dark fw-bold menu-item subcategory-link" href="subcategory.php?id=<?php echo $subcategory["id"]
                             ?>">
                             <?php echo strtoupper($subcategory["name"]) ?>
-                            <i class="fas fa-chevron-right fs-3 d-inline-block float-end"></i>
+                            <span class="fas fa-chevron-right fs-3 d-inline-block float-end"></span>
                         </a>
                     </li>
                 </ul>

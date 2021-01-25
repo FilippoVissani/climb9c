@@ -53,7 +53,7 @@
                     <div class="col-sm-6">
                         <!--Aggiungi al carrello-->
                         <div class="d-grid">
-                            <button type="button" id="addToCart" class="btn btn-primary fw-bold btn-block" <?php echo ($product["quantity"] > 0) ? "" : "disabled"; ?>><?php echo ($product["quantity"] > 0) ? "<i class='fas fa-shopping-cart pr-2'></i> Aggiungi al carrello" : "Articolo esaurito"; ?></button>
+                            <button type="button" id="addToCart" class="btn btn-primary fw-bold btn-block" <?php echo ($product["quantity"] > 0) ? "" : "disabled"; ?>><?php echo ($product["quantity"] > 0) ? "<span class='fas fa-shopping-cart pr-2'></span> Aggiungi al carrello" : "Articolo esaurito"; ?></button>
                         </div>
                         <!--END Aggiungi al carrello-->
                     </div>
