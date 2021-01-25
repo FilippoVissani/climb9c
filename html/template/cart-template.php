@@ -9,7 +9,7 @@
   <div class="alert alert-danger text-center" role="alert">
     <a href="login.php" class="alert-link">ACCEDI PER VISUALIZZARE IL CARRELLO</a>
   </div>
-  <?php else: $product = $dbh->getCartByCustomerID($_SESSION['idCUSTOMER']); ?>
+<?php else: $product = $dbh->getCartByCustomerID($_SESSION['idCUSTOMER']);?>
   <main>
     <div class="row">
       <div class="col-12">
@@ -33,6 +33,7 @@
         <?php if(numberProduct($product)!=0): ?>
         <fieldset>
           <legend>RIEPILOGO ORDINE</legend>
+          <div class="row justify-content-center p-0" id="update"></div>
           <?php foreach($product as $singleProduct): ?>
           <form class="" action="#" method="get">
             <div class="row m-2">
@@ -68,14 +69,43 @@
                     } else{
                         value.val(1);
                     }
+
+                    if($("div#update a").length!=1){
+                      let markup = '<a class="btn btn-secondary btn-block mb-2" href="cart.php" role="button">AGGIORNA CARRELLO</a>';
+                      $("div#update").append(markup);
+                    }
+
+                    $.ajax({
+                        url: "./AJAXUpdateCartQuantity.php",
+                        method: "post",
+                        data: {
+                            product: <?php echo $singleProduct['idPRODUCT']; ?>,
+                            quantity: $("#quantity-<?php echo $singleProduct["idPRODUCT"]; ?>").val()
+                        },
+                    });
                 });
                 $("#button-quantity-plus-<?php echo $singleProduct["idPRODUCT"]; ?>").click(function () {
-                    if(parseInt(value.val())>=1){
+
+                    if(parseInt(value.val())<parseInt(<?php echo $singleProduct["stockQuantity"]; ?>)){
                         value.val(parseInt(value.val())+1);
-                    } else{
-                        value.val(1);
                     }
+
+                    if($("div#update a").length!=1){
+                      console.log($("div#update a"));
+                      let markup = '<a class="btn btn-secondary btn-block mb-2" href="cart.php" role="button">AGGIORNA CARRELLO</a>';
+                      $("div#update").append(markup);
+                    }
+
+                    $.ajax({
+                        url: "./AJAXUpdateCartQuantity.php",
+                        method: "post",
+                        data: {
+                            product: <?php echo $singleProduct['idPRODUCT']; ?>,
+                            quantity: $("#quantity-<?php echo $singleProduct["idPRODUCT"]; ?>").val()
+                        },
+                    });
                 });
+
               });
             </script>
 
@@ -84,6 +114,7 @@
           <?php endforeach; ?>
         </fieldset>
         <?php endif; ?>
+
       </div>
     </div>
   </main>
