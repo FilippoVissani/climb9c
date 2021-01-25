@@ -16,7 +16,11 @@ foreach($templateParams["categories"] as $category){
 
 $templateParams["products"]=$dbh->getAllProducts();
 
-
+if(isset($_POST["productSelect-text"])){
+    $templateParams["selectedProduct"]=$dbh->getProductById($_POST["productSelect-text"])[0];
+    
+    var_dump($templateParams["selectedProduct"]["idPRODUCT"]);
+}
 
 
 require './template/base-template.php';
