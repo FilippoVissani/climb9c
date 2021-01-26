@@ -10,7 +10,7 @@ $total = 0;
 foreach ($templateParams["products"] as $product) : ?>
     <div class="row mx-auto mt-3 border-bottom border-3 border-dark">
         <div class="col-md-3 m-auto">
-            <img class="w-100 shadow mb-5 w-100 px-auto rounded-pill-home" src="<?php echo UPLOAD_DIR . $product["idPRODUCT"]; ?>/1.jpg" />
+            <img class="w-100 shadow mb-5 w-100 px-auto rounded-pill-home" alt="immagine-prodotto" src="<?php echo UPLOAD_DIR . $product["idPRODUCT"]; ?>/1.jpg" />
         </div>
         <div class="col-md-9 m-auto">
             <h1>
