@@ -40,7 +40,7 @@
               <div class="col-md text-center"><?php echo $singleProduct["productName"]; ?></div>
               <div class="col-md text-center"><?php echo $singleProduct["productPrice"]."€"; ?></div>
               <div class="col-md justify-content-center input-group quantity-wrapper  pb-2">
-                <label for="text-quantity" class="invisible">Quantità: </label>
+                <label for="quantity-<?php echo $singleProduct["idPRODUCT"]; ?>" class="invisible">Quantità: </label>
                 <div class="input-group-prepend">
                   <button class="btn btn-outline-secondary" type="button" id="button-quantity-minus-<?php echo $singleProduct["idPRODUCT"]; ?>" aria-label="Meno">
                     <span class="fas fa-minus"></span>
@@ -55,7 +55,7 @@
               </div>
               <div class="col-md justify-content-center">
                 <label for="<?php echo $singleProduct["idPRODUCT"]; ?>" class="invisible">Elimina</label>
-                <input id="<?php echo $singleProduct["idPRODUCT"]; ?>" name"delete" type="submit" class="btn btn-secondary" value="Elimina"/>
+                <input id="<?php echo $singleProduct["idPRODUCT"]; ?>" name="delete" type="submit" class="btn btn-secondary" value="Elimina"/>
               </div>
               <input type="hidden" name="idproduct" value="<?php echo $singleProduct["idPRODUCT"]; ?>" />
             </div>

@@ -13,35 +13,35 @@
             <div class="card-body">
               <form class="" action="add_product.php" method="post" enctype="multipart/form-data">
                 <div class="input-group mb-4">
-                  <span class="input-group-text" id="product-name">NOME</span>
-                  <input type="text" name="product-name" class="form-control" placeholder="Nome Prodotto" aria-label="product-name" aria-describedby="product-name" required/>
+                  <label class="input-group-text" for="product-name">NOME</label>
+                  <input type="text" name="product-name" class="form-control" placeholder="Nome Prodotto" id="product-name" required/>
                 </div>
 
                 <div class="input-group mb-4">
-                  <span class="input-group-text" id="product-brand">BRAND</span>
-                  <input type="text" name="product-brand" class="form-control" placeholder="Brand Prodotto" aria-label="product-brand" aria-describedby="product-brand"/>
+                  <label class="input-group-text" for="product-brand">BRAND</label>
+                  <input type="text" name="product-brand" class="form-control" placeholder="Brand Prodotto" id="product-brand"/>
                 </div>
 
                 <div class="input-group mb-4">
-                  <span class="input-group-text" id="product-price">PREZZO</span>
-                  <input type="number" min="0" step="0.01" name="product-price" class="form-control" placeholder="Prezzo Prodotto" aria-label="product-price" aria-describedby="product-price" required/>
+                  <label class="input-group-text" for="product-price">PREZZO</label>
+                  <input type="number" min="0" step="0.01" name="product-price" class="form-control" placeholder="Prezzo Prodotto" id="product-price" required/>
                 </div>
 
                 <div class="input-group mb-4">
-                  <span class="input-group-text">DESCRIZIONE</span>
-                  <input type="text" class="form-control" name="description" aria-label="description"/>
+                  <label class="input-group-text" for="description">DESCRIZIONE</label>
+                  <input type="text" class="form-control" name="description" id="description"/>
                 </div>
 
                 <div class="input-group mb-4">
-                  <span class="input-group-text" id="product-subcategory">SOTTOCATEGORIA</span>
-                  <select class="" name="product-subcategory" aria-label="product-subcategory">
+                  <label class="input-group-text" for="product-subcategory">SOTTOCATEGORIA</label>
+                  <select class="" name="product-subcategory" id="product-subcategory">
                     <?php $categories = $dbh->getCategories(); ?>
-                    <?php foreach ($categories as $category): ?>
                     <option></option>
+                    <?php foreach ($categories as $category): ?>
                     <optgroup label="<?php echo $category["name"]; ?>">
                       <?php $subcategories = $dbh->getSubcategories($category["id"]); ?>
                       <?php foreach ($subcategories as $subcategory): ?>
-                      <option value="<?php echo $subcategory["id"]; ?>"><?php echo $subcategory["name"]; ?></option>
+                      <option value="<?php echo $subcategory["id"]; ?>" label="<?php echo $subcategory["name"]; ?>"><?php echo $subcategory["name"]; ?></option>
                       <?php endforeach; ?>
                     </optgroup>
                     <?php endforeach; ?>
@@ -49,13 +49,13 @@
                 </div>
 
                 <div class="input-group  mb-4">
-                  <span class="input-group-text" id="product-quantity">QUANTITA'</span>
-                  <input type="number" min="1" name="product-quantity" class="form-control" placeholder="Quantità in Magazzino" aria-label="product-quantity" aria-describedby="product-quantity" required/>
+                  <label class="input-group-text" for="product-quantity">QUANTITA'</label>
+                  <input type="number" min="1" name="product-quantity" class="form-control" placeholder="Quantità in Magazzino" id="product-quantity" required/>
                 </div>
 
                 <div class="input-group  mb-4">
-                  <span class="input-group-text" id="product-img">IMMAGINE PRODOTTO</span>
-                  <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" required/>
+                  <label class="input-group-text" for="product-img">IMMAGINE PRODOTTO</label>
+                  <input type="file" name="product-img" class="form-control" id="product-img" required/>
                 </div>
 
                 <table id="specifications-table" class="table">

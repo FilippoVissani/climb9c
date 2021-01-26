@@ -11,8 +11,8 @@
           <?php $tags = $dbh->getTagsNameBySubcategory($templateParams["subcategory"]); ?>
           <?php foreach ($tags as $singleTag): ?>
           <div class="input-group mb-4">
-            <span class="input-group-text" id="tag-<?php echo $singleTag["name"] ?>"><?php echo $singleTag["name"] ?></span>
-            <input type="text" name="tag-<?php echo $singleTag["id"] ?>" class="form-control" placeholder="<?php echo $singleTag["name"] ?>" aria-label="tag-<?php echo $singleTag["name"] ?>" aria-describedby="tag-<?php echo $singleTag["name"] ?>"/>
+            <label class="input-group-text" for="tag-<?php echo $singleTag["name"] ?>"><?php echo $singleTag["name"] ?></label>
+            <input type="text" name="tag-<?php echo $singleTag["id"] ?>" class="form-control" placeholder="<?php echo $singleTag["name"] ?>" id="tag-<?php echo $singleTag["name"] ?>"/>
           </div>
           <?php endforeach; ?>
           <div class=" text-center">

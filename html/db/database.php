@@ -661,5 +661,34 @@ class DatabaseHelper{
       return $result;
     }
 
+    public function editProduct($name, $brand, $price, $idSUBCATEGORY, $description, $tecnical_specifications, $quantity, $idPRODUCT){
+      $query = "UPDATE `product` SET `name`=?,`brand`=?,`price`=?,`idSUBCATEGORY`=?,`description`=?,`tecnical_specifications`=?,`quantity`=? WHERE `idPRODUCT` = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ssiissii', $name, $brand, $price, $idSUBCATEGORY, $description, $tecnical_specifications, $quantity, $idPRODUCT);
+      $stmt->execute();
+    }
+
+    public function getTagsByProductIDandSubID($idProduct, $idSubcategory){
+      $query = "SELECT t.name as tagKey, tp.value as tagValue, tp.idTAG as id 
+      FROM product p 
+      INNER JOIN tag_product tp ON tp.idPRODUCT = p.idPRODUCT 
+      INNER JOIN tag t ON t.idTAG = tp.idTAG 
+      INNER JOIN tag_subcategory ts ON ts.idTAG = t.idTAG
+      WHERE p.idPRODUCT = ? AND ts.idSUBCATEGORY = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ii',$idProduct, $idSubcategory);
+      $result = $stmt->execute();
+      $result = $stmt->get_result();
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function editTagProduct($idTAG, $idPRODUCT, $value){
+      $query2 = "UPDATE tag_product SET value = ? WHERE idTAG = ? AND idPRODUCT = ?";
+      $stmt2 = $this->db->prepare($query2);
+      $stmt2->bind_param('sii', $value, $idTAG, $idPRODUCT);
+      $stmt2->execute();
+    }
+
 }
 ?>

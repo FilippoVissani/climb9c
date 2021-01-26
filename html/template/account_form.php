@@ -49,7 +49,7 @@
         <h2>RUBRICA</h2>
       </div>
       <?php if(!isset($_GET["add_address"])): ?>
-      <form class="col-md-3 col-6 p-0 " action="" method="get">
+      <form class="col-md-3 col-6 p-0 " action="#" method="get">
         <div class="d-grid gap-2 d-md-block mx-auto">
           <input type="hidden" name="add_address"/>
           <label for="add_address" class="invisible">Aggiungi indirizzo</label>
