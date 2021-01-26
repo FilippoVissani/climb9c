@@ -1,9 +1,3 @@
-<?php
-if(isset($_POST["logout"]) && $_POST["logout"]==TRUE){
-    unset($_SESSION["idSELLER"]);
-    header("location: login-admin.php");
-}
-?>
 <div class="row mt-5 mx-2">
     <div class="col-md-6">
         <div class="card">
