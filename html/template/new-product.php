@@ -34,7 +34,7 @@
 
                 <div class="input-group mb-4">
                   <label class="input-group-text" for="product-subcategory">SOTTOCATEGORIA</label>
-                  <select class="" name="product-subcategory" id="product-subcategory">
+                  <select class="form-control" name="product-subcategory" id="product-subcategory">
                     <?php $categories = $dbh->getCategories(); ?>
                     <option></option>
                     <?php foreach ($categories as $category): ?>
@@ -74,8 +74,8 @@
                   </tbody>
                 </table>
                 <div class="input-group-append text-center">
-                  <button class="btn btn-outline-secondary" type="button" id="add_row" aria-label="Più">
-                    <span class="fas fa-plus ">Aggiungi specifica</span>
+                  <button class="btn btn-outline-secondary" type="button" id="add_row" aria-label="Aggiungi specifica">
+                    <span class="fas fa-plus "></span> Aggiungi specifica
                   </button>
                 </div>
                 <div class=" text-center mt-4">
