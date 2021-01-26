@@ -73,4 +73,12 @@ function uploadImage($path, $image){
    }
   move_uploaded_file($image["tmp_name"], $fullPath);
 }
+
+function overwriteImage($path, $image){
+  $imageName = basename($image["name"]);
+  $imageFileType = strtolower(pathinfo($imageName,PATHINFO_EXTENSION));
+  $imageName = "1.".$imageFileType;
+  $fullPath = $path.$imageName;
+  move_uploaded_file($image["tmp_name"], $fullPath);
+}
 ?>
