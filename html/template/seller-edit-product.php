@@ -99,9 +99,15 @@
                         </div>
 
 
-                        <!--Immagine-->
+                        <!--Immagine Attuale-->
                         <div class="input-group  mb-4">
-                            <span class="input-group-text" id="product-img">IMMAGINE PRODOTTO</span>
+                            <span class="input-group-text" id="product-act-img">IMMAGINE ATTUALE PRODOTTO</span>
+                            <a href="<?php echo UPLOAD_DIR . $selectedProduct["idPRODUCT"] . '/' . '1.jpg'; ?>"><img src="<?php echo UPLOAD_DIR . $selectedProduct["idPRODUCT"] . '/' . '1.jpg'; ?>" class="rounded float-start w-25 img-thumbnail" alt="Immagine corrente"></a>
+                        </div>
+
+                        <!--Immagine Nuova-->
+                        <div class="input-group  mb-4">
+                            <span class="input-group-text" id="product-img">NUOVA IMMAGINE</span>
                             <input type="file" name="product-img" class="form-control" aria-label="product-img" aria-describedby="product-img" />
                         </div>
 
