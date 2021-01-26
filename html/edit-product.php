@@ -5,9 +5,6 @@ if (!isset($_SESSION["idSELLER"])) {
     header("location: login-admin.php");
 }
 
-
-
-
 //se ho selezionato il prodotto prendo i suoi dati
 if (isset($_POST["productSelect-text"])) {
     $templateParams["selectedProduct"] = $dbh->getProductById($_POST["productSelect-text"])[0];
@@ -15,7 +12,7 @@ if (isset($_POST["productSelect-text"])) {
 }
 
 
-//click sul pulsante modifica
+//click sul pulsante scegli prodotto
 if (isset($_POST["product-name"])) {
 
     // creo array associativo con le specifiche tecniche
@@ -32,16 +29,20 @@ if (isset($_POST["product-name"])) {
     $json = json_encode($tecnical_specs);
 
     //se l'immagine è settata
-    if (false && isset($_FILES["product-img"])) {
+    if ($_FILES["product-img"]["size"] != 0) {
         //faccio update prodotto e dell'immagine
         //controllo l'immagine
         list($result, $msg) = checkImage($_FILES["product-img"]);
         if ($result == 1) {
             //se l'immagine è adatta salvo il nuovo prodotto nel db e l'immagine nella directory corretta
-            mkdir(UPLOAD_DIR . "/" . $idProduct);
-            uploadImage(UPLOAD_DIR . "/" . $idProduct . "/", $_FILES["product-img"]);
+            $dir = UPLOAD_DIR . "/" . $_POST["product_id"] . "/";
+            overwriteImage($dir, $_FILES["product-img"]);
             $dbh->editProduct($_POST["product-name"], $_POST["product-brand"], $_POST["product-price"], $_POST["product-subcategory"], $_POST["description"], $json, $_POST["product-quantity"], $_POST["product_id"]);
             $templateParams["product-edit"] = "Prodotto modificato correttamente!";
+
+            $templateParams["subcategory"] = $_POST["product-subcategory"];
+            $templateParams["productId"] = $_POST["product_id"];
+            $templateParams["tagsProduct"] = $dbh->getTagsByProductIDandSubID($_POST["product_id"], $_POST["product-subcategory"]);
         } else {
             $templateParams["img-error"] = $msg;
             $templateParams["title"] = "Climb9c - Modifica Prodotto";
@@ -53,7 +54,7 @@ if (isset($_POST["product-name"])) {
         $dbh->editProduct($_POST["product-name"], $_POST["product-brand"], $_POST["product-price"], $_POST["product-subcategory"], $_POST["description"], $json, $_POST["product-quantity"], $_POST["product_id"]);
         $templateParams["product-edit"] = "Prodotto modificato correttamente!";
 
-        $templateParams["title"] = "Climb9c - Modifica Prodotto - Tags";
+        $templateParams["title"] = "Climb9c - Modifica Prodotto - Tag";
         $templateParams["search_bar"] = FALSE;
         $templateParams["name"] = "seller-edit-tags-product.php";
 
@@ -68,13 +69,12 @@ if (isset($_POST["product-name"])) {
 }
 
 
-if(isset($_POST["buttonConfermaModifichePremuto"])){
-    
-    $templateParams["title"] = "Climb9c - Modifica Tags";
+if (isset($_POST["buttonConfermaModifichePremuto"])) {
+
+    $templateParams["title"] = "Climb9c - Modifica Tag";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "seller-edit-tags-product.php";
     $templateParams["tagsOfProduct"] = $dbh->getTagsByProductIDandSubID($_POST["product_id"], $_POST["product-subcategory"]);
-
 }
 
 if (isset($_POST["buttonTagsPremuto"])) {
@@ -87,8 +87,8 @@ if (isset($_POST["buttonTagsPremuto"])) {
         }
     }
 
-    
-    $templateParams["title"]="Climb9c - Gestione Catalogo";
+
+    $templateParams["title"] = "Climb9c - Gestione Catalogo";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "seller-catalog-management.php";
 }

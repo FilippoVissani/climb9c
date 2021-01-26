@@ -13,7 +13,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
                     <div class="row mb-2">
-                        <h2>Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </h2>
+                        <p class="fs-2 mb-1">Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </p>
                     </div>
                 </div>
             </div>
@@ -21,11 +21,11 @@
             <div class="col-md-2">
                 <div class="accordion mb-2" id="accordionExample">
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
+                        <p class="accordion-header fs-2" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="buttonFilters">
                                 <span class="fas fa-filter"></span>Filtri
                             </button>
-                        </h2>
+                        </p>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <!-- Require filtri-->
