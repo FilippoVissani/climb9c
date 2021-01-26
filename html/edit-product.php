@@ -54,7 +54,7 @@ if (isset($_POST["product-name"])) {
         $dbh->editProduct($_POST["product-name"], $_POST["product-brand"], $_POST["product-price"], $_POST["product-subcategory"], $_POST["description"], $json, $_POST["product-quantity"], $_POST["product_id"]);
         $templateParams["product-edit"] = "Prodotto modificato correttamente!";
 
-        $templateParams["title"] = "Climb9c - Modifica Prodotto - Tags";
+        $templateParams["title"] = "Climb9c - Modifica Prodotto - Tag";
         $templateParams["search_bar"] = FALSE;
         $templateParams["name"] = "seller-edit-tags-product.php";
 
@@ -71,7 +71,7 @@ if (isset($_POST["product-name"])) {
 
 if (isset($_POST["buttonConfermaModifichePremuto"])) {
 
-    $templateParams["title"] = "Climb9c - Modifica Tags";
+    $templateParams["title"] = "Climb9c - Modifica Tag";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "seller-edit-tags-product.php";
     $templateParams["tagsOfProduct"] = $dbh->getTagsByProductIDandSubID($_POST["product_id"], $_POST["product-subcategory"]);

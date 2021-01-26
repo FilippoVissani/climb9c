@@ -18,7 +18,7 @@ if(isset($_POST["product-name"])){
     uploadImage(UPLOAD_DIR."/".$idProduct."/", $_FILES["product-img"]);
     $templateParams["product-insert"] = "Prodotto caricato correttamente!";
     //pagina per inserire tag al prodotto
-    $templateParams["title"]="Climb9c - Nuovo Prodotto - Tags";
+    $templateParams["title"]="Climb9c - Nuovo Prodotto - Tag";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "add-tags-template.php";
     $templateParams["subcategory"]= $_POST["product-subcategory"];

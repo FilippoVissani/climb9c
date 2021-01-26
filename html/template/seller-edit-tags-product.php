@@ -6,7 +6,7 @@
         <?php if (isset($templateParams["subcategory"])) : ?>
             <div class="card">
                 <form class="" action="edit-product.php" method="post" enctype="multipart/form-data">
-                    <div class="card-header fw-bold fs-4 text-center">MODIFICA TAGS DEL PRODOTTO</div>
+                    <div class="card-header fw-bold fs-4 text-center">MODIFICA TAG DEL PRODOTTO</div>
                     <div class="card-body">
                         <?php $tags = $dbh->getTagsNameBySubcategory($templateParams["subcategory"]); ?>
                         <?php foreach ($tags as $singleTag) : ?>
@@ -27,8 +27,8 @@
                             <input type="hidden" id="product-id" name="product-id" value="<?php echo ($templateParams["productId"]) ?>" />
                             <input type="hidden" id="product-subcategory" name="product-subcategory" value="<?php echo ($templateParams["subcategory"]) ?>" />
                             <input type="hidden" id="buttonTagsPremuto" name="buttonTagsPremuto" value="<?php echo $selectedProduct["idPRODUCT"]; ?>" />
-                            <label for="inserisci-prodotto" class="invisible">Modifica Tags</label>
-                            <input id="inserisci-prodotto" type="submit" class="btn btn-primary btn-block w-100" value="Modifica tags" />
+                            <label for="inserisci-prodotto" class="invisible">Modifica Tag</label>
+                            <input id="inserisci-prodotto" type="submit" class="btn btn-primary btn-block w-100" value="Modifica tag" />
                         </div>
                     </div>
                 </form>
