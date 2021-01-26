@@ -13,7 +13,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
                     <div class="row mb-2">
-                        <h2>Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </h2>
+                        <p class="fs-2 mb-1">Categoria: <?php echo $subcategory["categoryName"]; ?> > <?php echo $subcategory["subcategoryName"]; ?> </p>
                     </div>
                 </div>
             </div>

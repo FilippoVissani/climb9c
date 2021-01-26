@@ -11,7 +11,7 @@
         <div class="row mb-0">
             <div>
                 <a href="catalog-management.php" class="text-reset text-decoration-none fs-3 mb-0">
-                    < Torna alla gestione catalogo
+                    &lt; Torna alla gestione catalogo
                 </a>
             </div>
             <hr />
@@ -23,8 +23,10 @@
 
             <div class="col-md">
                 <div class="input-group mb-3">
+
+                    <label for="idInputCat" class="invisible" hidden>Categoria</label>
                     <span class="input-group-text" id="inputGroup-nome">Categoria: </span>
-                    <input type="text" name="nuovaCategoria" class="form-control" aria-label="Nuova categoria" aria-describedby="inputGroup-nome" required>
+                    <input type="text" name="nuovaCategoria" id="idInputCat" class="form-control" aria-label="Nuova categoria" aria-describedby="inputGroup-nome" required>
                 </div>
             </div>
 
@@ -44,8 +46,9 @@
 
             <div class="col-md-auto">
                 <div class="input-group mb-3">
+                    <label for="idSelectCat" class="invisible" hidden>Categoria</label>
                     <span class="input-group-text" id="product-subcategory">Categoria: </span>
-                    <select class="" name="product-subcategory" aria-label="product-subcategory">
+                    <select class="" name="product-subcategory" id="idSelectCat" aria-label="product-subcategory">
                         <?php $categories = $dbh->getCategories(); ?>
                         <?php foreach ($categories as $category) : ?>
                             <option value="<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></option>
@@ -56,8 +59,10 @@
 
             <div class="col-md">
                 <div class="input-group mb-3">
+
+                    <label for="idInputSubcat" class="invisible" hidden>Sottocategoria</label>
                     <span class="input-group-text" id="inputGroup-sottocat">Sottocategoria: </span>
-                    <input type="text" name="nuovaSottocategoria" class="form-control" aria-label="Nuova sottocategoria" aria-describedby="inputGroup-sottocat" required>
+                    <input type="text" name="nuovaSottocategoria" id="idInputSubcat" class="form-control" aria-label="Nuova sottocategoria" aria-describedby="inputGroup-sottocat" required>
                 </div>
             </div>
 
@@ -77,8 +82,10 @@
 
             <div class="col-md-auto">
                 <div class="input-group mb-3">
+
+                    <label for="idSelectSubcat" class="invisible" hidden>Sottocategoria</label>
                     <span class="input-group-text" id="product-subcategoryID">Sottocategoria: </span>
-                    <select class="" name="product-subcategoryID" aria-label="product-subcategoryID">
+                    <select class="" name="product-subcategoryID" id="idSelectSubcat" aria-label="product-subcategoryID">
                         <?php $categories = $dbh->getCategories(); ?>
                         <?php foreach ($categories as $category) : ?>
                             <optgroup label="<?php echo $category["name"]; ?>">
@@ -94,8 +101,9 @@
 
             <div class="col-md">
                 <div class="input-group mb-3">
+                    <label for="idInputTag" class="invisible" hidden>tag</label>
                     <span class="input-group-text" id="inputGroup-newTag">Tag: </span>
-                    <input type="text" name="nuovoTag" class="form-control" aria-label="Nuovo tag" aria-describedby="inputGroup-newTag" required>
+                    <input type="text" name="nuovoTag" id="idInputTag" class="form-control" aria-label="Nuovo tag" aria-describedby="inputGroup-newTag" required>
                 </div>
             </div>
 
