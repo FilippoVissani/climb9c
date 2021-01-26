@@ -69,7 +69,7 @@ $total=calculateFinalPrice($total, $templateParams["orderDetails"][0]["discount"
                 method: "POST",
                 data: {
                   title: "Il tuo ordine è stato spedito!",
-                  message: 'Il tuo ordine con ID=<?php echo $_POST["id"] ?> è stato spedito. <form action="./order-detail.php" method="post"><input class="collapse" type="text" name="id" value="<?php echo $_POST["id"] ?>" readonly="readonly"><button type="submit" class="btn btn-primary fw-bold">DETTAGLI</button></form>',
+                  message: 'Il tuo ordine con ID=<?php echo $_POST["id"] ?> è stato spedito.',
                   recipientId: <?php echo $templateParams["orderDetails"][0]["idCUSTOMER"] ?>
                 }
             });
