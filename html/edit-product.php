@@ -88,10 +88,9 @@ if (isset($_POST["buttonTagsPremuto"])) {
     }
 
     
-
-    $templateParams["title"] = "Climb9c - Seller home";
+    $templateParams["title"]="Climb9c - Gestione Catalogo";
     $templateParams["search_bar"] = FALSE;
-    $templateParams["name"] = "seller-home-template.php";
+    $templateParams["name"] = "seller-catalog-management.php";
 }
 
 
