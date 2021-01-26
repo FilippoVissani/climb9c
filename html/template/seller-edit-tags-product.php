@@ -20,7 +20,7 @@
                                                     }
 
 
-                                                    ?> name="tag-<?php echo $singleTag["id"] ?>" class="form-control" placeholder="<?php echo $singleTag["name"] ?>" id="tag-<?php echo $singleTag["name"] ?>" />
+                                                    ?> name="tag-<?php echo $singleTag["id"] ?>" class="form-control" placeholder="<?php echo $singleTag["name"] ?>" id="tag-<?php echo $singleTag["name"] ?>" required />
                             </div>
                         <?php endforeach; ?>
                         <div class=" text-center">
