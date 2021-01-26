@@ -684,10 +684,41 @@ class DatabaseHelper{
     }
 
     public function editTagProduct($idTAG, $idPRODUCT, $value){
-      $query2 = "UPDATE tag_product SET value = ? WHERE idTAG = ? AND idPRODUCT = ?";
+      
+      $query = "SELECT * FROM tag_product WHERE idTAG = ? AND idPRODUCT = ?";
+      $stmt = $this->db->prepare($query);
+      $stmt->bind_param('ii', $idTAG, $idPRODUCT);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $result = $result->fetch_all(MYSQLI_ASSOC);
+      if (count($result) == 0) {
+        //se non c'è faccio la insert
+        $this->addTagProduct($idTAG, $idPRODUCT, $value);
+       }
+       else{
+         //se c'è faccio l'update
+         $query2 = "UPDATE tag_product SET value = ? WHERE idTAG = ? AND idPRODUCT = ?";
+         $stmt2 = $this->db->prepare($query2);
+         $stmt2->bind_param('sii', $value, $idTAG, $idPRODUCT);
+         $stmt2->execute();
+       }
+    }
+
+    public function existValueOfTagAndProduct($idTAG, $idPRODUCT){
+      $query2 = "SELECT * FROM tag_product WHERE idTAG = ? AND idPRODUCT = ?";
       $stmt2 = $this->db->prepare($query2);
-      $stmt2->bind_param('sii', $value, $idTAG, $idPRODUCT);
+      $stmt2->bind_param('ii', $idTAG, $idPRODUCT);
       $stmt2->execute();
+      $result = $stmt2->get_result();
+      $result = $result->fetch_all(MYSQLI_ASSOC);
+      if (count($result) != 0) {
+        return $result[0];
+      }
+      else{
+        return FALSE;
+      }
+
+      
     }
 
 }

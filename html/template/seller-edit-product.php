@@ -142,6 +142,7 @@
                         <div class=" text-center mt-4">
                             <input type="hidden" id="specifications_number" name="specifications_number" value="<?php echo $numTechSpec; ?>" />
                             <input type="hidden" id="product_id" name="product_id" value="<?php echo $selectedProduct["idPRODUCT"]; ?>" />
+                            <input type="hidden" id="buttonConfermaModifichePremuto" name="buttonConfermaModifichePremuto" value="<?php echo $selectedProduct["idPRODUCT"]; ?>" />
                             <label for="inserisci-prodotto" class="invisible">Conferma modifiche e vai alla modifica tag</label>
                             <input id="inserisci-prodotto" type="submit" class="btn btn-primary btn-lg btn-block w-100" value="Conferma modifiche e vai alla modifica tag" />
                         </div>

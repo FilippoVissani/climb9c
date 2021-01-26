@@ -6,6 +6,8 @@ if (!isset($_SESSION["idSELLER"])) {
 }
 
 
+
+
 //se ho selezionato il prodotto prendo i suoi dati
 if (isset($_POST["productSelect-text"])) {
     $templateParams["selectedProduct"] = $dbh->getProductById($_POST["productSelect-text"])[0];
@@ -65,7 +67,18 @@ if (isset($_POST["product-name"])) {
     $templateParams["name"] = "seller-edit-product.php";
 }
 
-if (isset($_POST["product-id"])) {
+
+if(isset($_POST["buttonConfermaModifichePremuto"])){
+    
+    $templateParams["title"] = "Climb9c - Modifica Tags";
+    $templateParams["search_bar"] = FALSE;
+    $templateParams["name"] = "seller-edit-tags-product.php";
+    $templateParams["tagsOfProduct"] = $dbh->getTagsByProductIDandSubID($_POST["product_id"], $_POST["product-subcategory"]);
+
+}
+
+if (isset($_POST["buttonTagsPremuto"])) {
+
     $tags = $dbh->getTagsNameBySubcategory($_POST["product-subcategory"]);
     foreach ($tags as $singleTag) {
         $name = "tag-" . $singleTag["id"];
@@ -73,6 +86,9 @@ if (isset($_POST["product-id"])) {
             $dbh->editTagProduct($singleTag["id"], $_POST["product-id"], $_POST[$name]);
         }
     }
+
+    
+
     $templateParams["title"] = "Climb9c - Seller home";
     $templateParams["search_bar"] = FALSE;
     $templateParams["name"] = "seller-home-template.php";
