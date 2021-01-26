@@ -14,29 +14,30 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Data Ordine</th>
-                    <th scope="col">Città</th>
-                    <th scope="col">Via</th>
-                    <th scope="col">Provincia</th>
-                    <th scope="col">Codice Postale</th>
-                    <th scope="col">Coupon</th>
-                    <th scope="col">Visualizza Dettagli</th>
+                    <th id="ID-th-n" scope="col">ID</th>
+                    <th id="data-ordine-th-n" scope="col">Data Ordine</th>
+                    <th id="citta-th-n" scope="col">Città</th>
+                    <th id="via-th-n" scope="col">Via</th>
+                    <th id="provincia-th-n" scope="col">Provincia</th>
+                    <th id="codice-postale-th-n" scope="col">Codice Postale</th>
+                    <th id="coupon-th-n" scope="col">Coupon</th>
+                    <th id="visualizza-dettagli-th-n" scope="col">Visualizza Dettagli</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($templateParams["newOrders"] as $order): ?>
                     <tr>
-                        <th scope="row"><?php echo $order["idORDER"]; ?></th>
-                        <td><?php echo $order["date"]; ?></td>
-                        <td><?php echo $order["city"]; ?></td>
-                        <td><?php echo $order["street"]; ?></td>
-                        <td><?php echo $order["province"]; ?></td>
-                        <td><?php echo $order["zip_code"]; ?></td>
-                        <td><?php echo $order["COUPONcode"]; ?></td>
-                        <td>
+                        <th id="ID-n-<?php echo $order["idORDER"]; ?>" headers="ID-th-n" scope="row"><?php echo $order["idORDER"]; ?></th>
+                        <td headers="data-ordine-th-n"><?php echo $order["date"]; ?></td>
+                        <td headers="citta-th-n"><?php echo $order["city"]; ?></td>
+                        <td headers="via-th-n"><?php echo $order["street"]; ?></td>
+                        <td headers="provincia-th-n"><?php echo $order["province"]; ?></td>
+                        <td headers="codice-postale-th-n"><?php echo $order["zip_code"]; ?></td>
+                        <td headers="coupon-th-n"><?php echo $order["COUPONcode"]; ?></td>
+                        <td headers="visualizza-dettagli-th-n">
                             <form action="./order-detail.php" method="post">
-                                <input class="collapse" type="text" name="id" value="<?php echo $order["idORDER"] ?>" readonly="readonly">
+                                <input class="collapse" type="text" name="id" value="<?php echo $order["idORDER"] ?>" readonly="readonly" id="order-<?php echo $order["idORDER"] ?>">
+                                <label for="order-<?php echo $order["idORDER"] ?>" hidden>order-<?php echo $order["idORDER"] ?> </label>
                                 <button type="submit" class="btn btn-primary fw-bold">DETTAGLI</button>
                             </form>
                         </td>
@@ -58,31 +59,32 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Data Ordine</th>
-                    <th scope="col">Data Spedizione</th>
-                    <th scope="col">Città</th>
-                    <th scope="col">Via</th>
-                    <th scope="col">Provincia</th>
-                    <th scope="col">Codice Postale</th>
-                    <th scope="col">Coupon</th>
-                    <th scope="col">Visualizza Dettagli</th>
+                    <th id="ID-th" scope="col">ID</th>
+                    <th id="data-ordine-th" scope="col">Data Ordine</th>
+                    <th id="data-spedizione-th" scope="col">Data Spedizione</th>
+                    <th id="citta-th" scope="col">Città</th>
+                    <th id="via-th" scope="col">Via</th>
+                    <th id="provincia-th" scope="col">Provincia</th>
+                    <th id="codice-postale-th" scope="col">Codice Postale</th>
+                    <th id="coupon-th" scope="col">Coupon</th>
+                    <th id="visualizza-dettagli-th" scope="col">Visualizza Dettagli</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($templateParams["shippedOrders"] as $order): ?>
                     <tr>
-                        <th scope="row"><?php echo $order["idORDER"]; ?></th>
-                        <td><?php echo $order["date"]; ?></td>
-                        <td><?php echo $order["shipping_date"]; ?></td>
-                        <td><?php echo $order["city"]; ?></td>
-                        <td><?php echo $order["street"]; ?></td>
-                        <td><?php echo $order["province"]; ?></td>
-                        <td><?php echo $order["zip_code"]; ?></td>
-                        <td><?php echo $order["COUPONcode"]; ?></td>
-                        <td>
+                        <th id="ID-<?php echo $order["idORDER"]; ?>" headers="ID-th" scope="row"><?php echo $order["idORDER"]; ?></th>
+                        <td headers="data-ordine-th"><?php echo $order["date"]; ?></td>
+                        <td headers="data-spedizione-th"><?php echo $order["shipping_date"]; ?></td>
+                        <td headers="citta-th"><?php echo $order["city"]; ?></td>
+                        <td headers="via-th"><?php echo $order["street"]; ?></td>
+                        <td headers="provincia-th"><?php echo $order["province"]; ?></td>
+                        <td headers="codice-postale-th"><?php echo $order["zip_code"]; ?></td>
+                        <td headers="coupon-th"><?php echo $order["COUPONcode"]; ?></td>
+                        <td headers="visualizza-dettagli-th">
                             <form action="./order-detail.php" method="post">
-                                <input class="collapse" type="text" name="id" value="<?php echo $order["idORDER"] ?>" readonly="readonly">
+                                <input class="collapse" type="text" name="id" value="<?php echo $order["idORDER"] ?>" readonly="readonly" id="order-<?php echo $order["idORDER"] ?>">
+                                <label for="order-<?php echo $order["idORDER"] ?>" hidden>order-<?php echo $order["idORDER"] ?> </label>
                                 <button type="submit" class="btn btn-primary fw-bold">DETTAGLI</button>
                             </form>
                         </td>

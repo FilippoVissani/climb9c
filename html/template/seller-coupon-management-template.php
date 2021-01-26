@@ -24,10 +24,12 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="coupon-code-label">Codice sconto</span>
                     <input type="text" class="form-control" aria-describedby="coupon-code-label" id="add-coupon-code">
+                    <label for="add-coupon-code" hidden>Codice sconto </label>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="coupon-discount-label">Percentuale sconto</span>
                     <input type="number" class="form-control" aria-describedby="coupon-discount-label" id="add-coupon-discount">
+                    <label for="add-coupon-discount" hidden>Percentuale sconto </label>
                 </div>
                 <button class="btn btn-primary" id="add-coupon">Aggiungi</button>
             </div>
@@ -40,15 +42,17 @@
             </div>
             <div class="card-body">
                 <div class="input-group mb-3">
-                    <select class="form-select" aria-label="coupon-select">
+                    <select class="form-select" aria-label="coupon-select" id="coupon-select">
                         <?php foreach($templateParams["coupons"] as $coupon): ?>
                         <option value="<?php echo $coupon["code"] ?>"><?php echo $coupon["code"] ?></option>
                         <?php endforeach; ?>
                     </select>
+                    <label for="coupon-select" hidden>Seleziona coupon </label>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="coupon-discount">Percentuale sconto</span>
                     <input type="number" class="form-control" aria-describedby="coupon-discount" id="edit-coupon-discount">
+                    <label for="edit-coupon-discount" hidden>Percentuale sconto </label>
                 </div>
                 <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" value="" id="edit-coupon-validity">

@@ -117,13 +117,13 @@
                     checkDesktop();
                 });
 
-                $("i#menu-toggler").click(function(){
+                $("span#menu-toggler").click(function(){
                     $( "div#category-menu" ).slideDown();
                     if (!isDesktop) {
                         $( "div.container-fluid" ).slideUp();
                     }
                 });
-                $("i#menu-back").click(function(){
+                $("span#menu-back").click(function(){
                     $( "div#category-menu" ).slideUp();
                     if (!isDesktop) {
                         $( "div.container-fluid" ).slideDown();

@@ -6,11 +6,11 @@
     <div class="accordion" id="accordionCategory">
         <?php foreach($templateParams["categories"] as $category): ?>
         <div class="accordion-item">
-            <h2 class="accordion-header" id="category-<?php echo $category["id"] ?>">
+            <p class="accordion-header fs-2" id="category-<?php echo $category["id"] ?>">
                 <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-category-<?php echo $category["id"] ?>" aria-expanded="false" aria-controls="collapse-category-<?php echo $category["id"] ?>">
                     <?php echo strtoupper($category["name"]) ?>
                 </button>
-            </h2>
+            </p>
             <div id="collapse-category-<?php echo $category["id"] ?>" class="accordion-collapse collapse" aria-labelledby="category-<?php echo $category["id"] ?>" data-bs-parent="#accordionCategory">
                 <div class="accordion-body">
                 <?php foreach($templateParams[$category["id"]."-subcategory"] as $subcategory): ?>

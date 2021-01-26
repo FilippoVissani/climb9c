@@ -31,7 +31,8 @@ if(isset($_POST["logout"]) && $_POST["logout"]==TRUE){
 <div class="row mt-5 mx-2">
     <div class="col-md-12">
         <form action="./seller-home.php" method="post">
-            <input class="collapse" type="text" name="logout" value="TRUE" readonly="readonly">
+            <input class="collapse" type="text" name="logout" value="TRUE" readonly="readonly" id="logout">
+            <label for="logout" hidden>logout </label>
             <button type="submit" class="btn btn-primary fw-bold">Logout</button>
         </form>
     </div>
