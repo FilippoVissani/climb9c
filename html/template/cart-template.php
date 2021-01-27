@@ -25,7 +25,7 @@
           </div>
           <?php if(numberProduct($product)!=0): ?>
           <div class="row justify-content-center pt-3">
-            <div class="col-3 text-center">
+            <div class="col-md-3 col-10 text-center">
               <a class="btn btn-primary btn-block w-100" href="payment.php" role="button">Procedi all'ordine</a>
             </div>
           </div>
@@ -35,7 +35,7 @@
         <?php if(numberProduct($product)!=0): ?>
         <fieldset>
           <legend>RIEPILOGO ORDINE</legend>
-          <div class="row justify-content-center p-0"><div class="col-3 text-center" id="update"></div></div>
+          <div class="row justify-content-center p-0"><div class="col-md-3 col-10 text-center" id="update"></div></div>
           <?php foreach($product as $singleProduct): ?>
           <form class="" action="#" method="get">
             <div class="row m-2">
