@@ -25,7 +25,9 @@
           </div>
           <?php if(numberProduct($product)!=0): ?>
           <div class="row justify-content-center pt-3">
-            <a class="btn btn-primary btn-block" href="payment.php" role="button">Procedi all'ordine</a>
+            <div class="col-3 text-center">
+              <a class="btn btn-primary btn-block w-100" href="payment.php" role="button">Procedi all'ordine</a>
+            </div>
           </div>
           <?php endif; ?>
         </section>
@@ -33,7 +35,7 @@
         <?php if(numberProduct($product)!=0): ?>
         <fieldset>
           <legend>RIEPILOGO ORDINE</legend>
-          <div class="row justify-content-center p-0" id="update"></div>
+          <div class="row justify-content-center p-0"><div class="col-3 text-center" id="update"></div></div>
           <?php foreach($product as $singleProduct): ?>
           <form class="" action="#" method="get">
             <div class="row m-2">
@@ -71,7 +73,7 @@
                     }
 
                     if($("div#update a").length!=1){
-                      let markup = '<a class="btn btn-secondary btn-block mb-2" href="cart.php" role="button">AGGIORNA CARRELLO</a>';
+                      let markup = '<a class="btn btn-secondary btn-block  w-100 mb-2" href="cart.php" role="button">AGGIORNA CARRELLO</a>';
                       $("div#update").append(markup);
                     }
 
@@ -92,7 +94,7 @@
 
                     if($("div#update a").length!=1){
                       console.log($("div#update a"));
-                      let markup = '<a class="btn btn-secondary btn-block mb-2" href="cart.php" role="button">AGGIORNA CARRELLO</a>';
+                      let markup = '<a class="btn btn-secondary btn-block  w-100 mb-2" href="cart.php" role="button">AGGIORNA CARRELLO</a>';
                       $("div#update").append(markup);
                     }
 
