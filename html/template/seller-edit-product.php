@@ -152,10 +152,12 @@
 
                         <div class="input-group-append text-center">
                             <button class="btn btn-outline-secondary" type="button" id="remove_row" aria-label="Meno">
-                                <span class="fas fa-minus ">Rimuovi specifica</span>
+                                <span class="fas fa-minus "></span>
+                                Rimuovi specifica
                             </button>
                             <button class="btn btn-outline-secondary" type="button" id="add_row" aria-label="Più">
-                                <span class="fas fa-plus ">Aggiungi specifica</span>
+                                <span class="fas fa-plus "></span>
+                                Aggiungi specifica
                             </button>
                         </div>
                         <!--END Specifiche Tecniche-->
